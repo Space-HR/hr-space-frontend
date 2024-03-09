@@ -1,126 +1,141 @@
 {
-  "name": "hr-space-frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.87",
-    "@types/react": "^18.2.64",
-    "@types/react-dom": "^18.2.21",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "npm run lint -- --fix",
-    "format": "prettier . --write",
-    "prepare": "husky install",
-    "commit": "cz",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "airbnb",
-      "airbnb/hooks",
-      "prettier",
-      "plugin:storybook/recommended"
-    ],
-    "rules": {
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx",
-            "ts",
-            "tsx"
-          ]
-        }
-      ],
-      "react/react-in-jsx-scope": "off",
-      "import/prefer-default-export": "off",
-      "react/function-component-definition": "off",
-      "react/jsx-props-no-spreading": "off",
-      "react/no-unescaped-entities": "off",
-      "react/button-has-type": "off",
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          "js": "never",
-          "jsx": "never",
-          "ts": "never",
-          "tsx": "never"
-        }
-      ]
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*",
-          "src/stories/**/*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off",
-          "import/no-extraneous-dependencies": "off"
-        }
-      }
-    ],
-    "settings": {
-      "import/resolver": {
-        "typescript": {}
-      }
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "^0.8.0",
-    "husky": "^9.0.11",
-    "prettier": "3.2.5"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "npm run lint"
-    ],
-    "*.{js,jsx,css,md,html,json,ts,tsx}": [
-      "npm run format"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+	"name": "hr-space-frontend",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^5.17.0",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/jest": "^27.5.2",
+		"@types/node": "^16.18.87",
+		"@types/react": "^18.2.64",
+		"@types/react-dom": "^18.2.21",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-scripts": "5.0.1",
+		"typescript": "^4.9.5",
+		"web-vitals": "^2.1.4"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+		"lint:fix": "npm run lint -- --fix",
+		"format": "prettier . --write",
+		"prepare": "husky install",
+		"commit": "cz",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest",
+			"airbnb",
+			"airbnb/hooks",
+			"prettier",
+			"plugin:storybook/recommended"
+		],
+		"rules": {
+			"react/jsx-filename-extension": [
+				1,
+				{
+					"extensions": [
+						".js",
+						".jsx",
+						"ts",
+						"tsx"
+					]
+				}
+			],
+			"react/react-in-jsx-scope": "off",
+			"import/prefer-default-export": "off",
+			"react/function-component-definition": "off",
+			"react/jsx-props-no-spreading": "off",
+			"react/no-unescaped-entities": "off",
+			"react/button-has-type": "off",
+			"import/extensions": [
+				"error",
+				"ignorePackages",
+				{
+					"js": "never",
+					"jsx": "never",
+					"ts": "never",
+					"tsx": "never"
+				}
+			],
+			"react/require-default-props": "off"
+		},
+		"overrides": [
+			{
+				"files": [
+					"**/*.stories.*",
+					"src/stories/**/*"
+				],
+				"rules": {
+					"import/no-anonymous-default-export": "off",
+					"import/no-extraneous-dependencies": "off"
+				}
+			}
+		],
+		"settings": {
+			"import/resolver": {
+				"typescript": {}
+			}
+		}
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@storybook/addon-essentials": "^7.6.17",
+		"@storybook/addon-interactions": "^7.6.17",
+		"@storybook/addon-links": "^7.6.17",
+		"@storybook/addon-onboarding": "^1.0.11",
+		"@storybook/blocks": "^7.6.17",
+		"@storybook/preset-create-react-app": "^7.6.17",
+		"@storybook/react": "^7.6.17",
+		"@storybook/react-webpack5": "^7.6.17",
+		"@storybook/test": "^7.6.17",
+		"commitizen": "^4.3.0",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^8.57.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-import-resolver-typescript": "^3.6.1",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-jsx-a11y": "^6.8.0",
+		"eslint-plugin-react": "^7.34.0",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-storybook": "^0.8.0",
+		"husky": "^9.0.11",
+		"prettier": "3.2.5",
+		"prop-types": "^15.8.1",
+		"storybook": "^7.6.17",
+		"webpack": "^5.90.3"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"npm run lint"
+		],
+		"*.{js,jsx,css,md,html,json,ts,tsx}": [
+			"npm run format"
+		]
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	}
 }

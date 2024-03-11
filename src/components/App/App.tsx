@@ -1,8 +1,12 @@
-import React from 'react';
+import { FC } from 'react';
 import './App.scss';
 
-function App() {
-	return <div className="App" />;
-}
+const App: FC = () => {
+	return (
+		<div className="App">
+			<h1>Title</h1>
+		</div>
+	);
+};
 
 export default App;

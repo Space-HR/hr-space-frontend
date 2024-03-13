@@ -3,9 +3,9 @@ import './WorkConditionsFormPage.scss';
 
 const WorkConditionsFormPage: FC = () => {
 	return (
-		<main>
-			<p>Шаг 1</p>
-		</main>
+		<section>
+			<p>Шаг 2</p>
+		</section>
 	);
 };
 

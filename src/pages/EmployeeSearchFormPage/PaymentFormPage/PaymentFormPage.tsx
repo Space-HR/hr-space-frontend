@@ -3,9 +3,9 @@ import './PaymentFormPage.scss';
 
 const PaymentFormPage: FC = () => {
 	return (
-		<main>
-			<p>Шаг 1</p>
-		</main>
+		<section>
+			<p>Шаг 6</p>
+		</section>
 	);
 };
 

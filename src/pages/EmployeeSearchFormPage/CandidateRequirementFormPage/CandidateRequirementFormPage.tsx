@@ -3,9 +3,9 @@ import './CandidateRequirementFormPage.scss';
 
 const CandidateRequirementFormPage: FC = () => {
 	return (
-		<main>
-			<p>Шаг 1</p>
-		</main>
+		<section>
+			<p>Шаг 3</p>
+		</section>
 	);
 };
 

@@ -3,9 +3,9 @@ import './SpecialistTypeFormPage.scss';
 
 const FirsStepPage: FC = () => {
 	return (
-		<main>
+		<section>
 			<p>Шаг 1</p>
-		</main>
+		</section>
 	);
 };
 

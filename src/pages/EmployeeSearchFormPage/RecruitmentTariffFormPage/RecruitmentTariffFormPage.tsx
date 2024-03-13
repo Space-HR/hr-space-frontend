@@ -3,9 +3,9 @@ import './RecruitmentTariffFormPage.scss';
 
 const RecruitmentTariffFormPage: FC = () => {
 	return (
-		<main>
-			<p>Шаг 1</p>
-		</main>
+		<section>
+			<p>Шаг 4</p>
+		</section>
 	);
 };
 

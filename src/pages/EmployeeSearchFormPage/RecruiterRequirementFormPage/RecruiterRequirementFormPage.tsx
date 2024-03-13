@@ -3,9 +3,9 @@ import './RecruiterRequirementFormPage.scss';
 
 const RecruiterRequirementFormPage: FC = () => {
 	return (
-		<main>
-			<p>Шаг 1</p>
-		</main>
+		<section>
+			<p>Шаг 5</p>
+		</section>
 	);
 };
 

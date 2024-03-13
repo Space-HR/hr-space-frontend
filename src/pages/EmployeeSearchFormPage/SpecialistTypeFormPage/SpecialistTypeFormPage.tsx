@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import './SpecialistTypeFormPage.scss';
 
-const FirsStepPage: FC = () => {
+const SpecialistTypeFormPage: FC = () => {
 	return (
 		<section>
 			<p>Шаг 1</p>
@@ -9,4 +9,4 @@ const FirsStepPage: FC = () => {
 	);
 };
 
-export default FirsStepPage;
+export default SpecialistTypeFormPage;

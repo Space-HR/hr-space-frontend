@@ -7,9 +7,9 @@ import SpecialistTypeFormPege from '../../pages/EmployeeSearchFormPage/Specialis
 import WorkConditionsFormPage from '../../pages/EmployeeSearchFormPage/WorkConditionsFormPage/WorkConditionsFormPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import CandidateRequirementFormPage from '../../pages/EmployeeSearchFormPage/CandidateRequirementFormPage/CandidateRequirementFormPage';
-import RecruitmentTariffFormPage from '../../pages/EmployeeSearchFormPage/RecruitmentTariffFormPage/RecruitmentTariffFormPage';
 import RecruiterRequirementFormPage from '../../pages/EmployeeSearchFormPage/RecruiterRequirementFormPage/RecruiterRequirementFormPage';
 import PaymentFormPage from '../../pages/EmployeeSearchFormPage/PaymentFormPage/PaymentFormPage';
+import TariffFormPage from '../../pages/EmployeeSearchFormPage/TariffFormPage/TariffFormPage';
 
 const App: FC = () => {
 	return (
@@ -19,7 +19,7 @@ const App: FC = () => {
 					<Route path="step-1" element={<SpecialistTypeFormPege />} />
 					<Route path="step-2" element={<WorkConditionsFormPage />} />
 					<Route path="step-3" element={<CandidateRequirementFormPage />} />
-					<Route path="step-4" element={<RecruitmentTariffFormPage />} />
+					<Route path="step-4" element={<TariffFormPage />} />
 					<Route path="step-5" element={<RecruiterRequirementFormPage />} />
 					<Route path="step-6" element={<PaymentFormPage />} />
 				</Route>

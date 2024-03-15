@@ -3,7 +3,7 @@ import './Button.scss';
 
 type TButtonProps = {
 	className?: string;
-	onClick: () => void;
+	onClick?: () => void;
 	type: 'button' | 'submit' | 'reset';
 	disabled?: boolean;
 	label: string;

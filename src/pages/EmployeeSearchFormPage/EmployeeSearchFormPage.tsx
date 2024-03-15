@@ -5,9 +5,11 @@ import FormStepList from '../../components/FormStepList/FormStepList';
 
 const EmployeeSearchFormPage: FC = () => {
 	return (
-		<main className="employee-search-form-page">
+		<main className="form-page">
 			<FormStepList />
-			<Outlet />
+			<div className="form-page__form-container">
+				<Outlet />
+			</div>
 		</main>
 	);
 };

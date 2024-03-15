@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer';
 
 const Layuot: FC = () => {
 	return (
-		<div>
+		<div className="layuot">
 			<Header />
 			<Outlet />
 			<Footer />

@@ -1,0 +1,25 @@
+@import '../../scss/mixins.scss';
+
+.header {
+	padding: 16px 96px;
+	height: 78px;
+	display: flex;
+	align-items: center;
+	background-color: $main-black;
+	column-gap: 16px;
+
+	&__navigation {
+		display: flex;
+		align-items: center;
+		width: inherit;
+		flex-grow: 1;
+	}
+
+	&__link-container {
+		margin: auto;
+	}
+
+	&__link-text {
+		text-decoration: none;
+	}
+}

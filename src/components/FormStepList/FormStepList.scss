@@ -1,0 +1,10 @@
+@import '../../scss/mixins.scss';
+.form-steps {
+	width: 395px;
+	padding-left: 60px;
+
+	&__list {
+		@include mp-null-list;
+		margin-top: 44px;
+	}
+}

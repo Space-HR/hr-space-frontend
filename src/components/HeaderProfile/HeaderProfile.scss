@@ -2,9 +2,8 @@
 @import '../../scss/mixins.scss';
 
 .header-profile {
-		display: flex;
-		align-items: center;
-	
+	display: flex;
+	align-items: center;
 
 	&__avatar {
 		width: 40px;
@@ -19,12 +18,11 @@
 		align-items: center;
 	}
 
-    &__username {
-        @include mp-null;
+	&__username {
+		@include mp-null;
 	}
 
-
-    &__id {
-        @include mp-null;
+	&__id {
+		@include mp-null;
 	}
 }

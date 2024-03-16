@@ -54,7 +54,7 @@
 @mixin text-dropdown-item-hover {
 	// для выбранных значений в выпадающем списке
 	@include text-normal-large;
-	color: $grey-input-placeholder;
+	color: $blue-hover;
 }
 
 // text-normal-medium

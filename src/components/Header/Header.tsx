@@ -3,7 +3,9 @@ import './Header.scss';
 import { NavLink } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import HeaderProfile from '../HeaderProfile/HeaderProfile';
-import BellButton from '../Buttons/BellButton/BellButton';
+import ImageButton from '../Buttons/ImageButton/ImageButton';
+import BellIcon from '../svg/BellIcon';
+import ChatIcon from '../svg/ChatIcon';
 
 const Header: FC = () => {
 	return (
@@ -14,23 +16,22 @@ const Header: FC = () => {
 				</NavLink>
 				<div className="header__link-container">
 					<NavLink to="/" className="header__link-text">
-						Главная
+						Заявки
 					</NavLink>
 					<NavLink to="/" className="header__link-text">
-						Мои заявки
+						Исполнители
 					</NavLink>
 					<NavLink to="/" className="header__link-text">
-						Поиск по рынку
-					</NavLink>
-					<NavLink to="/" className="header__link-text">
-						Счёт
-					</NavLink>
-					<NavLink to="/" className="header__link-text">
-						Помощь
+						Вопросы и ответы
 					</NavLink>
 				</div>
 			</nav>
-			<BellButton />
+			<ImageButton>
+				<BellIcon />
+			</ImageButton>
+			<ImageButton isFilled>
+				<ChatIcon />
+			</ImageButton>
 			<HeaderProfile />
 		</header>
 	);

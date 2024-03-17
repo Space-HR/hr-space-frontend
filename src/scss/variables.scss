@@ -1,8 +1,23 @@
 // Цвета
-$main-light-grey: #e8eaed;
-$main-white: #f5f7fa;
 $main-black: #303233;
+$main-white: #ffffff;
+$main-gray: #6e7070;
+$blue-background: #f5f7fa;
+$blue-hover: #4b86f6;
+$blue-btn: #71a2ff;
+$blue-btn-disabled: #becee3;
+$grey-text-disabled: #838da7;
+$grey-input: #d4d7d9;
+$grey-input-placeholder: #959799;
+$red-error: #d92121;
+$orange: #f9a466;
+$red: #c52929;
+$gradient-color-start: #71a2ff;
+$gradient-color-end: #dbe1ea;
+$gradient: linear-gradient($gradient-color-start, $gradient-color-end);
 
 // Шрифты
+$font-family: Arial, sans-serif;
 
 // Отступы
+$padding-horizontal: 96px;

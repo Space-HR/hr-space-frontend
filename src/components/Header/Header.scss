@@ -1,11 +1,11 @@
+@import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
 
 .header {
-	padding: 16px 96px;
+	padding: 16px $padding-horizontal;
 	height: 78px;
 	display: flex;
 	align-items: center;
-	background-color: $main-black;
 	column-gap: 16px;
 
 	&__navigation {
@@ -13,13 +13,24 @@
 		align-items: center;
 		width: inherit;
 		flex-grow: 1;
+		column-gap: 56px;
 	}
 
 	&__link-container {
-		margin: auto;
+		display: flex;
+		column-gap: 44px;
 	}
 
 	&__link-text {
+		@include text-normal-large-black;
 		text-decoration: none;
+
+		&:hover {
+			color: #4b86f6;
+		}
+
+		&:active {
+			color: #4b86f6;
+		}
 	}
 }

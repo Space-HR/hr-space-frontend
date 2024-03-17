@@ -1,9 +1,12 @@
+@import '../../scss/variables.scss';
+
 .form-page {
 	display: flex;
 	flex-grow: 1;
+	padding: 44px $padding-horizontal;
 
 	&__form-container {
-		margin: 30px 120px 20px 80px;
+		margin: 60px 80px;
 		flex-grow: 1;
 	}
 }

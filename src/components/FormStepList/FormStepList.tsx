@@ -5,7 +5,7 @@ import FormStep from '../FormStep/FormStep';
 const FormStepList: FC = () => {
 	return (
 		<section className="form-steps">
-			<h1>Создание заявки</h1>
+			<h1 className="form-steps__title">Создание заявки</h1>
 			<ul className="form-steps__list">
 				<FormStep title="Выбор специалиста" isFilled />
 				<FormStep title="Условия работы" isFilled />

@@ -1,0 +1,6 @@
+@import '../../../scss/mixins.scss';
+
+.form-title {
+	@include mp-null;
+	@include text-section-title;
+}

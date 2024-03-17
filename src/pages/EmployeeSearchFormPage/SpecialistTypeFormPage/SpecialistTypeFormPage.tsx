@@ -3,9 +3,10 @@ import './SpecialistTypeFormPage.scss';
 
 const SpecialistTypeFormPage: FC = () => {
 	return (
-		<section>
-			<p>Шаг 1</p>
-		</section>
+		<>
+			<h2 className="form-title">Какого специалиста ищете?</h2>
+			<div />
+		</>
 	);
 };
 

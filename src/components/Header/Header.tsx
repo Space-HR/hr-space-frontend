@@ -16,19 +16,13 @@ const Header: FC = () => {
 				</NavLink>
 				<div className="header__link-container">
 					<NavLink to="/" className="header__link-text">
-						Главная
+						Заявки
 					</NavLink>
 					<NavLink to="/" className="header__link-text">
-						Мои заявки
+						Исполнители
 					</NavLink>
 					<NavLink to="/" className="header__link-text">
-						Поиск по рынку
-					</NavLink>
-					<NavLink to="/" className="header__link-text">
-						Счёт
-					</NavLink>
-					<NavLink to="/" className="header__link-text">
-						Помощь
+						Вопросы и ответы
 					</NavLink>
 				</div>
 			</nav>

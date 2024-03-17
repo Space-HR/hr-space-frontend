@@ -27,5 +27,6 @@
 		width: 4px;
 		background-color: gray;
 		margin-left: 21px;
+		@include text-normal-large-disabled;
 	}
 }

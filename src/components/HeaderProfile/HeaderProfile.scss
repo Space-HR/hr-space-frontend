@@ -1,0 +1,35 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.header-profile {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+
+	&__avatar {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		border: 1px $orange solid;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+	}
+
+	&__username {
+		@include mp-null;
+		@include text-normal-large-black;
+	}
+
+	&__id {
+		@include mp-null;
+		@include text-normal-medium-gray;
+	}
+}

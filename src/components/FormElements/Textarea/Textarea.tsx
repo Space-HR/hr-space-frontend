@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
-import { PropInput } from '../../types/formik-elements';
+import { PropInput } from '../../../types/formik-elements';
 
 const Input: FC<PropInput> = ({ label, name, ...rest }) => {
 	return (

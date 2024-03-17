@@ -1,7 +1,7 @@
 import { Fragment, FC } from 'react';
 import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
-import { PropElement, selectedField } from '../../types/formik-elements';
+import { PropElement, selectedField } from '../../../types/formik-elements';
 
 const CheckboxGroup: FC<PropElement> = ({ label, name, options, ...rest }) => {
 	return (

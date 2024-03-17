@@ -5,7 +5,7 @@ import Select from '../Select/Select';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';
 import DatePicker from '../DatePicker/DatePicker';
-import { PropFormikControl } from '../../types/formik-elements';
+import { PropFormikControl } from '../../../types/formik-elements';
 
 const FormikControl: FC<PropFormikControl> = ({ control, ...rest }) => {
 	switch (control) {

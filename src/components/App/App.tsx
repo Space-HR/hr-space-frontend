@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import './App.scss';
-import FormikContainer from '../FormikContainer/FormikContainer';
+import FormikContainer from '../FormElements/FormikContainer/FormikContainer';
 
 const App: FC = () => {
 	return (

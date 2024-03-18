@@ -3,7 +3,7 @@ import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
 import { PropElement } from '../../../types/formik-elements';
 
-const Input: FC<PropElement> = ({ label, name, options, ...rest }) => {
+const Select: FC<PropElement> = ({ label, name, options, ...rest }) => {
 	return (
 		<div className="form-control">
 			<label htmlFor={name}>{label}</label>
@@ -22,4 +22,4 @@ const Input: FC<PropElement> = ({ label, name, options, ...rest }) => {
 	);
 };
 
-export default Input;
+export default Select;

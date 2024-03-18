@@ -15,14 +15,14 @@ const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
 	const initialValues = {
 		vacancy: '',
 		jobTitle: '',
-		// date: undefined,
+		date: undefined,
 		// radioOptions: [],
 	};
 
 	const validationSchema = Yup.object({
 		vacancy: Yup.string(),
 		jobTitle: Yup.string(),
-		// date: Yup.date().nullable(),
+		date: Yup.date().nullable(),
 		// radioOptions: Yup.array(),
 	});
 
@@ -30,7 +30,7 @@ const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
 		vacancy: string;
 		jobTitle: string;
 		// radioOptions: string[];
-		// date: Date | undefined;
+		date: Date | undefined;
 	};
 
 	// eslint-disable-next-line consistent-return
@@ -61,20 +61,13 @@ const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
 								type="text"
 							/>
 							<FormikControl
-								control="select"
+								control="input-search"
 								label="Должность"
 								placeholder="Начните вводить и выберите должность из списка"
 								name="jobTitle"
-								type="text"
 								options={jobTitleServer}
 							/>
-							<FormikControl
-								control="input"
-								label="Должность"
-								placeholder="Начните вводить и выберите должность из списка"
-								name="jobTitle"
-								type="text"
-							/>
+							<FormikControl control="date" label="Укажите дату" name="date" />
 
 							<button type="submit">Сохранить и продолжить</button>
 						</Form>

@@ -5,6 +5,7 @@ import Select from '../Select/Select';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';
 import DatePicker from '../DatePicker/DatePicker';
+import InputWithSearch from '../InputWithSearch/InputWithSearch';
 import { PropFormikControl } from '../../../types/formik-elements';
 
 const FormikControl: FC<PropFormikControl> = ({ control, ...rest }) => {
@@ -21,6 +22,8 @@ const FormikControl: FC<PropFormikControl> = ({ control, ...rest }) => {
 			return <CheckboxGroup {...rest} />;
 		case 'date':
 			return <DatePicker {...rest} />;
+		case 'input-search':
+			return <InputWithSearch {...rest} />;
 		default:
 			return null;
 	}

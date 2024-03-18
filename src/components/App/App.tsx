@@ -11,6 +11,8 @@ import RecruiterRequirementFormPage from '../../pages/EmployeeSearchFormPage/Rec
 import PaymentFormPage from '../../pages/EmployeeSearchFormPage/PaymentFormPage/PaymentFormPage';
 import TariffFormPage from '../../pages/EmployeeSearchFormPage/TariffFormPage/TariffFormPage';
 
+import FormikContainer from '../FormElements/FormikContainer/FormikContainer';
+
 const App: FC = () => {
 	return (
 		<Routes>
@@ -23,6 +25,7 @@ const App: FC = () => {
 					<Route path="step-5" element={<RecruiterRequirementFormPage />} />
 					<Route path="step-6" element={<PaymentFormPage />} />
 				</Route>
+				<Route path="form-test" element={<FormikContainer />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 		</Routes>

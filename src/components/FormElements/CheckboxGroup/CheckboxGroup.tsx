@@ -13,17 +13,17 @@ const CheckboxGroup: FC<PropElement> = ({ label, name, options, ...rest }) => {
 						options &&
 						options.map((option) => {
 							return (
-								<Fragment key={option.key}>
+								<Fragment key={option.id}>
 									<input
 										type="checkbox"
-										id={option.key}
+										id={option.id}
 										{...field}
-										value={option.key}
+										value={option.id}
 										checked={
-											field.value ? field.value.includes(option.key) : false
+											field.value ? field.value.includes(option.id) : false
 										}
 									/>
-									<label htmlFor={option.key}>{option.value}</label>
+									<label htmlFor={option.id}>{option.value}</label>
 								</Fragment>
 							);
 						})

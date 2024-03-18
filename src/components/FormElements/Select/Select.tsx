@@ -11,7 +11,7 @@ const Input: FC<PropElement> = ({ label, name, options, ...rest }) => {
 				{options &&
 					options.map((option) => {
 						return (
-							<option key={option.key} value={option.key}>
+							<option key={option.id} value={option.id}>
 								{option.value}
 							</option>
 						);

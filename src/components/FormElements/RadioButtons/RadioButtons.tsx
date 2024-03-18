@@ -13,15 +13,15 @@ const RadioButtons: FC<PropElement> = ({ label, name, options, ...rest }) => {
 						options &&
 						options.map((option) => {
 							return (
-								<Fragment key={option.key}>
+								<Fragment key={option.id}>
 									<input
 										type="radio"
-										id={option.key}
+										id={option.id}
 										{...field}
-										value={option.key}
-										checked={field.value === option.key}
+										value={option.id}
+										checked={field.value === option.id}
 									/>
-									<label htmlFor={option.key}>{option.value}</label>
+									<label htmlFor={option.id}>{option.value}</label>
 								</Fragment>
 							);
 						})

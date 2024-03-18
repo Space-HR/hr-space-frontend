@@ -1,63 +1,44 @@
-import { FC } from 'react';
-import { Formik, Form } from 'formik';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import * as Yup from 'yup';
-import FormikControl from '../FormikControl/FormikControl';
+import { FC, useState } from 'react';
+import './FormikContainer.scss';
+// import { useMultistepForm } from '../../../hooks/useMultistepForm';
+import SpecialistTypeForm from '../../Form/SpecialistTypeForm/SpecialistTypeForm';
 
 const FormikContainer: FC = () => {
-	const initialValues = {
-		textT: '',
-		date: undefined,
-		radioOptions: [],
-	};
-
-	const validationSchema = Yup.object({
-		textT: Yup.string(),
-		date: Yup.date().nullable(),
-		radioOptions: Yup.array(),
-	});
-
-	type FormModel = {
-		textT: string;
-		radioOptions: string[];
-		date: Date | undefined;
-	};
-
-	const onSubmit = (values: FormModel) =>
-		console.log('Form data', JSON.parse(JSON.stringify(values)));
-
-	const radioOptions = [
-		{ key: '1', value: '11' },
-		{ key: '2', value: '22' },
-		{ key: '3', value: '33' },
+	const [step, setStep] = useState<number>(0);
+	const stepElement = [
+		<SpecialistTypeForm setStep={setStep} />,
+		<div>Два</div>,
+		<div>Три</div>,
 	];
 
+	// const { step, steps, currentStepIndex, isFirstStep, back, next, isLastStep } =
+	// 	useMultistepForm([<SpecialistTypeForm />, <div>Два</div>, <div>Три</div>]);
+
+	// const onSubmit = () => {
+	// 	// if (!isLastStep) return next();
+
+	// 	next();
+
+	// 	// console.log('Form data', JSON.parse(JSON.stringify(values)));
+	// };
+
 	return (
-		<Formik<FormModel>
-			initialValues={initialValues}
-			validationSchema={validationSchema}
-			onSubmit={onSubmit}
-		>
-			{/* {formik} */}
-			{() => (
-				<Form>
-					<FormikControl control="date" label="Date" name="date" />
-					<FormikControl
-						control="input"
-						label="Input"
-						name="textT"
-						type="text"
-					/>
-					<FormikControl
-						control="checkbox"
-						options={radioOptions}
-						label="Select checkbox"
-						name="radioOptions"
-					/>
-					<button type="submit">Нажми</button>
-				</Form>
+		<div className="form">
+			{stepElement[step]}
+
+			{/* <div>
+				{currentStepIndex + 1} / {steps.length}
+			</div>
+			{step}
+			{!isFirstStep && (
+				<button type="button" onClick={back}>
+					Назад
+				</button>
 			)}
-		</Formik>
+			<button type="submit" onClick={onSubmit}>
+				{isLastStep ? 'Оплатить' : 'Сохранить и продолжить'}
+			</button> */}
+		</div>
 	);
 };
 

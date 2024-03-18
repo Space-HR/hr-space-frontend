@@ -1,10 +1,10 @@
 export type PropOption = {
-	key: string;
+	id: string;
 	value: string;
 };
 
 export type PropOptions = {
-	key: string;
+	id: string;
 	value: string;
 }[];
 
@@ -14,6 +14,7 @@ export type PropFormikControl = {
 	name: string;
 	options?: PropOptions;
 	type?: string;
+	placeholder?: string;
 };
 
 export type PropElement = Omit<PropFormikControl, 'control'>;

@@ -2,9 +2,12 @@ import { FC, ChangeEvent, useState } from 'react';
 import './InputWithSearch.scss';
 import { Field, ErrorMessage, FieldProps } from 'formik';
 import TextError from '../TextError/TextError';
-import { TInputWithSearch, PropOptions } from '../../../types/formik-elements';
+import {
+	TElementWithOptions,
+	PropOptions,
+} from '../../../types/formik-elements';
 
-const InputWithSearch: FC<TInputWithSearch> = ({
+const InputWithSearch: FC<TElementWithOptions> = ({
 	label,
 	name,
 	options,

@@ -1,9 +1,17 @@
 import { Fragment, FC } from 'react';
 import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
-import { PropElement, selectedField } from '../../../types/formik-elements';
+import {
+	TElementWithOptions,
+	selectedField,
+} from '../../../types/formik-elements';
 
-const RadioButtons: FC<PropElement> = ({ label, name, options, ...rest }) => {
+const RadioButtons: FC<TElementWithOptions> = ({
+	label,
+	name,
+	options,
+	...rest
+}) => {
 	return (
 		<div className="form-control">
 			<label htmlFor={name}>{label}</label>

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type PropOption = {
 	id: string;
 	value: string;
@@ -5,25 +7,19 @@ export type PropOption = {
 
 export type PropOptions = PropOption[];
 
-export type PropFormikControl = {
-	control: string;
-	label: string;
-	name: string;
-	options?: PropOptions;
-	type?: string;
-	placeholder?: string;
-};
-
-export type TInputWithSearch = {
+export type TElementWithOptions = {
 	label: string;
 	name: string;
 	options: PropOptions;
 	placeholder?: string;
 };
 
-export type PropElement = Omit<PropFormikControl, 'control' | 'type'>;
-
-export type PropInput = Pick<PropFormikControl, 'name' | 'label'>;
+export type PropInput = {
+	label: string;
+	name: string;
+	placeholder: string;
+	type: string;
+};
 
 export type selectedField = {
 	field: {
@@ -32,7 +28,16 @@ export type selectedField = {
 	};
 };
 
+export type TDatePicker = {
+	label: string;
+	name: string;
+};
+
 export type PropDatePicker = {
 	form: any;
 	field: any;
+};
+
+export type PropTextError = {
+	children?: ReactNode;
 };

@@ -4,9 +4,9 @@ import DateView from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
-import { PropInput, PropDatePicker } from '../../../types/formik-elements';
+import { TDatePicker, PropDatePicker } from '../../../types/formik-elements';
 
-const DatePicker: FC<PropInput> = ({ label, name, ...rest }) => {
+const DatePicker: FC<TDatePicker> = ({ label, name, ...rest }) => {
 	return (
 		<div className="form-control">
 			<label htmlFor={name}>{label}</label>

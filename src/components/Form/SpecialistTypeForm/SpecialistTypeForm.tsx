@@ -3,44 +3,32 @@ import './SpecialistTypeForm.scss';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import FormikControl from '../../FormElements/FormikControl/FormikControl';
 import FormWrapper from '../FormWrapper/FormWrapper';
 import { jobTitleServer } from '../../../data/data-form';
+import Input from '../../FormElements/Input/Input';
+import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
 
-type SpecialistTypeFormProp = {
-	// eslint-disable-next-line no-unused-vars
-	setStep: (value: number) => any;
-};
-
-const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
+const SpecialistTypeForm: FC = () => {
 	const navigate = useNavigate();
 
 	const initialValues = {
 		vacancy: '',
 		jobTitle: '',
-		date: undefined,
-		// radioOptions: [],
 	};
 
 	const validationSchema = Yup.object({
-		vacancy: Yup.string(),
-		jobTitle: Yup.string(),
-		date: Yup.date().nullable(),
-		// radioOptions: Yup.array(),
+		vacancy: Yup.string().required('Поле обязателье для заполнения'),
+		jobTitle: Yup.string().required('Поле обязателье для заполнения'),
 	});
 
 	type FormModel = {
 		vacancy: string;
 		jobTitle: string;
-		// radioOptions: string[];
-		date: Date | undefined;
 	};
 
 	// eslint-disable-next-line consistent-return
 	const onSubmit = (values: FormModel) => {
-		// setStep(1);
 		navigate('/form/step-2', { replace: true });
-		// if (!isLastStep) return next();
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
@@ -57,21 +45,18 @@ const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
 				{() => (
 					<div className="form">
 						<Form>
-							<FormikControl
-								control="input"
+							<Input
 								label="Название вакансии"
 								placeholder="Например, контент–менеджер"
 								name="vacancy"
 								type="text"
 							/>
-							<FormikControl
-								control="input-search"
+							<InputWithSearch
 								label="Должность"
 								placeholder="Начните вводить и выберите должность из списка"
 								name="jobTitle"
 								options={jobTitleServer}
 							/>
-							{/* <FormikControl control="date" label="Укажите дату" name="date" /> */}
 
 							<button type="submit">Сохранить и продолжить</button>
 						</Form>

@@ -4,7 +4,7 @@
 	display: flex;
 	flex-direction: column;
 
-	&__conteiner {
+	&__conteiner-img-title {
 		display: flex;
 		align-items: center;
 	}
@@ -27,6 +27,5 @@
 		width: 4px;
 		background-color: gray;
 		margin-left: 21px;
-		@include text-normal-large-disabled;
 	}
 }

@@ -1,8 +1,10 @@
+@import '../../scss/variables.scss';
+
 .layuot {
 	width: 100%;
 	min-height: 100vh;
 	margin: 0 auto;
-	background: rgba(242, 243, 247, 1);
+	background: $main-white;
 	display: flex;
 	flex-direction: column;
 

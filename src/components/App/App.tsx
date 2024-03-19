@@ -18,7 +18,8 @@ const App: FC = () => {
 		<Routes>
 			<Route path="/" element={<Layuot />}>
 				<Route path="form" element={<EmployeeSearchFormPage />}>
-					<Route path="step-1" element={<SpecialistTypeFormPege />} />
+					{/* <Route path="step-1" element={<SpecialistTypeFormPege />} /> */}
+					<Route path="step-1" element={<FormikContainer />} />
 					<Route path="step-2" element={<WorkConditionsFormPage />} />
 					<Route path="step-3" element={<CandidateRequirementFormPage />} />
 					<Route path="step-4" element={<TariffFormPage />} />

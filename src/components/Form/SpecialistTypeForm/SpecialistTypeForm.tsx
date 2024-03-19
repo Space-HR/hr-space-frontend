@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import './SpecialistTypeForm.scss';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from '../../FormElements/FormikControl/FormikControl';
@@ -12,6 +13,8 @@ type SpecialistTypeFormProp = {
 };
 
 const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
+	const navigate = useNavigate();
+
 	const initialValues = {
 		vacancy: '',
 		jobTitle: '',
@@ -35,7 +38,8 @@ const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
 
 	// eslint-disable-next-line consistent-return
 	const onSubmit = (values: FormModel) => {
-		setStep(1);
+		// setStep(1);
+		navigate('/form/step-2', { replace: true });
 		// if (!isLastStep) return next();
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
@@ -67,7 +71,7 @@ const SpecialistTypeForm: FC<SpecialistTypeFormProp> = ({ setStep }) => {
 								name="jobTitle"
 								options={jobTitleServer}
 							/>
-							<FormikControl control="date" label="Укажите дату" name="date" />
+							{/* <FormikControl control="date" label="Укажите дату" name="date" /> */}
 
 							<button type="submit">Сохранить и продолжить</button>
 						</Form>

@@ -1,0 +1,50 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.button {
+	height: 44px;
+	padding: 11px 32px;
+	border-radius: 8px;
+
+	&_primary {
+		background-color: $blue-btn;
+		@include text-bold-large-white;
+
+		&:hover,
+		&:focus {
+			background-color: $blue-hover;
+		}
+
+		&:active {
+			background-color: $blue-hover;
+		}
+
+		&:disabled {
+			background-color: $blue-btn-disabled;
+			@include text-bold-large;
+			color: $blue-background;
+		}
+	}
+
+	&_secondary {
+		border: 1px solid $blue-btn;
+		@include text-bold-large-blue;
+
+		&:hover,
+		&:focus {
+			background-color: $blue-hover;
+			@include text-bold-large-white;
+		}
+
+		&:active {
+			background-color: $blue-hover;
+			@include text-bold-large-white;
+		}
+
+		&:disabled {
+			background-color: inherit;
+			border: 1px solid $blue-btn-disabled;
+			@include text-bold-large-disabled;
+		}
+	}
+}

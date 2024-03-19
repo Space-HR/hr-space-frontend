@@ -94,13 +94,27 @@
 }
 
 // text-bold-large
-@mixin text-bold-large-white {
-	// для номеров телефонов в футтере
-	@include text;
-	font-size: 14px;
-	font-weight: 700;
-	line-height: 140%;
+@mixin text-bold-large {
+	// для номеров телефонов в футтере и текста кнопок
 	color: $main-white;
+}
+
+@mixin text-bold-large-white {
+	// для номеров телефонов в футтере и текста кнопок
+	@include text-bold-large;
+	color: $main-white;
+}
+
+@mixin text-bold-large-blue {
+	// для  текста кнопок
+	@include text-bold-large;
+	color: $blue-btn;
+}
+
+@mixin text-bold-large-disabled {
+	// для  текста кнопок
+	@include text-bold-large;
+	color: $blue-btn-disabled;
 }
 
 // text-bold-medium

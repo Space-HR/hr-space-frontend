@@ -7,6 +7,7 @@ import FormWrapper from '../FormWrapper/FormWrapper';
 import { jobTitleServer } from '../../../data/data-form';
 import Input from '../../FormElements/Input/Input';
 import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
+import Button from '../../Buttons/Button/Button';
 
 const SpecialistTypeForm: FC = () => {
 	const navigate = useNavigate();
@@ -57,8 +58,18 @@ const SpecialistTypeForm: FC = () => {
 								name="jobTitle"
 								options={jobTitleServer}
 							/>
+							<Button
+								type="button"
+								styleType="secondary"
+								label="Назад"
+							/>
 
-							<button type="submit">Сохранить и продолжить</button>
+							<Button
+								type="submit"
+								styleType="primary"
+								label="Сохранить и продолжить"
+							/>
+							{/* <button type="submit">Сохранить и продолжить</button> */}
 						</Form>
 					</div>
 				)}

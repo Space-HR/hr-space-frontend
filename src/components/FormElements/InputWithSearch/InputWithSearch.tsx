@@ -14,15 +14,16 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 	placeholder,
 	...rest
 }) => {
+	const [input, setInput] = useState('');
 	const [activeList, setActiveList] = useState<boolean>(false);
-	const [activeOption, setActiveOption] = useState<PropOptions>(options);
+	const [activeOptions, setActiveOptions] = useState<PropOptions>(options);
 
 	const search = (e: ChangeEvent<HTMLInputElement>) => {
 		if (options?.length !== 0 && e.target.value.trim().length > 0) {
 			const filterValue = options?.filter((option) =>
 				option.value.toLowerCase().includes(e.target.value.trim().toLowerCase())
 			);
-			setActiveOption(filterValue);
+			setActiveOptions(filterValue);
 
 			setActiveList(true);
 		} else {
@@ -30,11 +31,10 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 		}
 	};
 
-	// const myClick = (value: string) => {
-	// 	setActiveOption(value);
-
-	// 	console.log(activeOption);
-	// };
+	const setTextInput = (value: string) => {
+		setInput(value);
+		setActiveList(false);
+	};
 
 	return (
 		<div className="form-control">
@@ -50,14 +50,22 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 								placeholder={placeholder}
 								onChange={(e) => {
 									field.onChange(e);
+									setInput(e.currentTarget.value);
 									search(e);
 								}}
+								value={input}
 							/>
 							<ul className={`options ${activeList ? 'options_active' : ''}`}>
-								{activeOption &&
-									activeOption.map((option) => {
+								{activeOptions &&
+									activeOptions.map((option) => {
 										return (
-											<li className="options__item" key={option.id}>
+											<li
+												className="options__item"
+												key={option.id}
+												onClick={() => setTextInput(option.value)}
+												onKeyDown={() => {}}
+												role="presentation"
+											>
 												{option.value}
 											</li>
 										);

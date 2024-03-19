@@ -9,6 +9,7 @@
 	&_primary {
 		background-color: $blue-btn;
 		@include text-bold-large-white;
+        border: none;
 
 		&:hover,
 		&:focus {
@@ -29,6 +30,7 @@
 	&_secondary {
 		border: 1px solid $blue-btn;
 		@include text-bold-large-blue;
+        background-color: inherit;
 
 		&:hover,
 		&:focus {

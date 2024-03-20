@@ -12,7 +12,7 @@ const Select: FC<TElementWithOptions> = ({ label, name, options, ...rest }) => {
 					options.map((option) => {
 						return (
 							<option key={option.id} value={option.id}>
-								{option.value}
+								{option.name}
 							</option>
 						);
 					})}

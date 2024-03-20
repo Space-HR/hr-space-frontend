@@ -24,12 +24,12 @@ const RadioButtons: FC<TElementWithOptions> = ({
 								<Fragment key={option.id}>
 									<input
 										type="radio"
-										id={option.id}
+										id={`${option.id}`}
 										{...field}
 										value={option.id}
-										checked={field.value === option.id}
+										checked={field.value === option.id.toString()}
 									/>
-									<label htmlFor={option.id}>{option.value}</label>
+									<label htmlFor={`${option.id}`}>{option.name}</label>
 								</Fragment>
 							);
 						})

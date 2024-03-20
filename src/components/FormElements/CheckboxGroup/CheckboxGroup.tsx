@@ -24,14 +24,16 @@ const CheckboxGroup: FC<TElementWithOptions> = ({
 								<Fragment key={option.id}>
 									<input
 										type="checkbox"
-										id={option.id}
+										id={`${option.id}`}
 										{...field}
 										value={option.id}
 										checked={
-											field.value ? field.value.includes(option.id) : false
+											field.value
+												? field.value.includes(option.id.toString())
+												: false
 										}
 									/>
-									<label htmlFor={option.id}>{option.value}</label>
+									<label htmlFor={`${option.id}`}>{option.name}</label>
 								</Fragment>
 							);
 						})

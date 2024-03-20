@@ -18,16 +18,30 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 	const [activeList, setActiveList] = useState<boolean>(false);
 	const [activeOptions, setActiveOptions] = useState<PropOptions>(options);
 
-	const search = (e: ChangeEvent<HTMLInputElement>) => {
-		if (options?.length !== 0 && e.target.value.trim().length > 0) {
-			const filterValue = options?.filter((option) =>
-				option.value.toLowerCase().includes(e.target.value.trim().toLowerCase())
-			);
-			setActiveOptions(filterValue);
+	const setFilterData = (e: ChangeEvent<HTMLInputElement>) => {
+		setActiveList(true);
 
-			setActiveList(true);
+		const filterValue = options?.filter((option) =>
+			option.name.toLowerCase().includes(e.target.value.trim().toLowerCase())
+		);
+
+		setActiveOptions(filterValue);
+
+		return filterValue;
+	};
+
+	const search = (e: ChangeEvent<HTMLInputElement>) => {
+		if (activeOptions?.length !== 0 && e.target.value.trim().length > 0) {
+			const filterValue = setFilterData(e);
+			if (filterValue?.length === 0) setActiveList(false);
+		} else if (
+			activeOptions?.length === 0 &&
+			e.target.value.trim().length > 0
+		) {
+			setFilterData(e);
 		} else {
 			setActiveList(false);
+			setActiveOptions(options);
 		}
 	};
 
@@ -38,13 +52,16 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 
 	return (
 		<div className="form-control">
-			<label htmlFor={name}>{label}</label>
+			<label className="form-control__title" htmlFor={name}>
+				{label}
+			</label>
 			<div className="form-control__container">
-				<Field name={name} className="form-control__input">
-					{({ field }: FieldProps) => (
+				<Field name={name}>
+					{({ field, form }: FieldProps) => (
 						<>
 							<input
 								type="text"
+								className={`form-control__input ${form.errors[name] && form.touched[name] ? 'form-control__error' : ''}`}
 								{...field}
 								{...rest}
 								placeholder={placeholder}
@@ -55,18 +72,21 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 								}}
 								value={input}
 							/>
-							<ul className={`options ${activeList ? 'options_active' : ''}`}>
+							<ul
+								className={`options ${activeList ? 'options_active' : ''}`}
+								id="style-2"
+							>
 								{activeOptions &&
 									activeOptions.map((option) => {
 										return (
 											<li
 												className="options__item"
 												key={option.id}
-												onClick={() => setTextInput(option.value)}
+												onClick={() => setTextInput(option.name)}
 												onKeyDown={() => {}}
 												role="presentation"
 											>
-												{option.value}
+												{option.name}
 											</li>
 										);
 									})}

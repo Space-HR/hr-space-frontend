@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 export type PropOption = {
-	id: string;
-	value: string;
+	id: number;
+	name: string;
 };
 
 export type PropOptions = PropOption[];

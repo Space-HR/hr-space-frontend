@@ -1,10 +1,14 @@
 import { FC } from 'react';
 import './RadioButtons.scss';
-import { Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage, FormikHelpers } from 'formik';
 import TextError from '../TextError/TextError';
 import { TElementWithOptions } from '../../../types/formik-elements';
 import Label from '../Label/Label';
 import RadioButton from './RadioButton/RadioButton';
+
+type TFormValues = {
+    scheduleId: number;
+};
 
 type TRadioSelectedField = {
 	field: {
@@ -14,7 +18,7 @@ type TRadioSelectedField = {
 };
 
 type TRadioButtonsProps = TElementWithOptions & {
-	setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
+	setFieldValue: FormikHelpers<TFormValues>['setFieldValue'];
   };
 
 const RadioButtons: FC<TRadioButtonsProps> = ({

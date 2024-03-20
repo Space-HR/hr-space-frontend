@@ -1,5 +1,11 @@
 import { FC } from 'react';
+import { FormikHelpers } from 'formik';
+
 import './RadioButton.scss';
+
+type TFormValues = {
+	scheduleId: number;
+};
 
 type TRadioButtonProps = {
 	field: {
@@ -8,14 +14,18 @@ type TRadioButtonProps = {
 	};
 	id: number;
 	label: string;
-	setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void; 
+	setFieldValue: FormikHelpers<TFormValues>['setFieldValue'];
 	name: string;
-
 };
 
-const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, setFieldValue, name }) => {
+const RadioButton: FC<TRadioButtonProps> = ({
+	field,
+	id,
+	label,
+	setFieldValue,
+	name,
+}) => {
 	const stringId = id.toString();
-	const stringValue = field.value.toString();
 
 	const handleChange = () => setFieldValue(name, id);
 
@@ -23,7 +33,7 @@ const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, setFieldValue, n
 		<label
 			htmlFor={stringId}
 			className={
-				stringId === stringValue
+				field.value === id
 					? 'rounded-input rounded-input_checked'
 					: 'rounded-input'
 			}
@@ -32,11 +42,10 @@ const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, setFieldValue, n
 			<input
 				type="radio"
 				id={stringId}
-				{...field}
 				value={id}
 				checked={field.value === id}
 				className="rounded-input__hidden-block"
-				onChange={handleChange} 
+				onChange={handleChange}
 			/>
 
 			{label}

@@ -31,14 +31,14 @@ const WorkConditionsForm: FC = () => {
 			.required('Обязательное поле'),
 	});
 
-	type FormModel = {
+	type TFormModel = {
 		minSalary: number | null;
 		maxSalary: number | null;
 		scheduleId: number;
 	};
 
 	// eslint-disable-next-line consistent-return
-	const onSubmit = (values: FormModel) => {
+	const onSubmit = (values: TFormModel) => {
 		navigate('/form/step-3');
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
@@ -51,7 +51,7 @@ const WorkConditionsForm: FC = () => {
 	];
 
 	return (
-		<Formik<FormModel>
+		<Formik<TFormModel>
 			initialValues={initialValues}
 			validationSchema={validationSchema}
 			onSubmit={onSubmit}

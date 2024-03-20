@@ -2,11 +2,12 @@
 @import '../../../scss/mixins.scss';
 
 .salary-input {
-	@include flex-coloumn;
+	@include input-conainer;
 	width: 410px;
 
 	&__comment {
-		@include text-placeholder;
+		@include text-normal-large;
+		color: $pop-up-background;
 	}
 
 	&__field-container {
@@ -33,4 +34,10 @@
 		align-items: center;
 		background-color: $main-white;
 	}
+}
+
+
+.salary-input__label-container {
+	display: flex;
+	column-gap: 8px;
 }

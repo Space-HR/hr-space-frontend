@@ -20,9 +20,9 @@ const RadioButtons: FC<TElementWithOptions> = ({
 	...rest
 }) => {
 	return (
-		<div className="rounded-input-conainer">
+		<div className="input-conainer">
 			<Label name={name} label={label} />
-			<div className="rounded-input-conainer__input-row">
+			<div className="rounded-input-row">
 				<Field name={name} {...rest}>
 					{({ field }: TRadioSelectedField) => {
 						return (

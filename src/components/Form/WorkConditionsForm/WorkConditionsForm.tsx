@@ -18,11 +18,11 @@ const scheduleOptions: PropOption[] = [
 	{ id: 0, name: 'Свободный' },
 	{ id: 1, name: 'Сменный' },
 	{ id: 2, name: 'Вахтовый' },
-	{ id: 3, name: 'Свободный' },
-	{ id: 4, name: 'Сменный' },
-	{ id: 5, name: 'Вахтовый' },
-	{ id: 6, name: 'Сменный' },
-	{ id: 7, name: 'Вахтовый' },
+	{ id: 3, name: '5/2 пн – пт' },
+	// { id: 4, name: 'Сменный' },
+	// { id: 5, name: 'Вахтовый' },
+	// { id: 6, name: 'Сменный' },
+	// { id: 7, name: 'Вахтовый' },
 ];
 
 const WorkConditionsForm: FC = () => {
@@ -64,13 +64,6 @@ const WorkConditionsForm: FC = () => {
 				<div className="form">
 					<Form>
 						<div className="input-container">
-							<SalaryInput />
-
-							<RadioButtons
-								label="График работы"
-								name="scheduleId"
-								options={scheduleOptions}
-							/>
 							<SalaryInput />
 
 							<RadioButtons

@@ -10,8 +10,10 @@ import Label from '../Label/Label';
 const SalaryInput: FC = () => {
 	return (
 		<div className="salary-input">
-			<Label name="salaryInput" label="Зарплата" />
-			<p className="salary-input__comment">Gross - до вычета НДФЛ</p>
+			<div className='salary-input__label-container'>
+				<Label name="salaryInput" label="Зарплата" />
+				<p className="salary-input__comment">Gross - до вычета НДФЛ</p>
+			</div>
 
 			<div className="salary-input__field-container">
 				<Field

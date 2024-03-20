@@ -213,15 +213,20 @@
 	}
 }
 
-// контейнер rounded-input в checkbox и redio button
+// контенер для ипута
+@mixin input-conainer {
+	display: flex;
+	flex-direction: column;
+	row-gap: $input-inside-gap;
+}
 
-@mixin rounded-input-conainer {
-	&__input-row {
+// для спика значений checkbox и radio button с округлыми краями элементов (border-radius: 40px)
+
+@mixin rounded-input-row {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 8px;
 	}
-}
 
 // инпут с закругленными углами
 @mixin rounded-input {

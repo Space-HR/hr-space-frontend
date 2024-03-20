@@ -1,5 +1,9 @@
 @import '../../../scss/mixins.scss';
 
-.rounded-input-conainer {
-	@include rounded-input-conainer; 
+.input-conainer {
+	@include input-conainer;
+}
+
+.rounded-input-row {
+	@include rounded-input-row;
 }

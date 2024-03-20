@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { useFormikContext } from 'formik';
-
 import './RadioButton.scss';
 import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
@@ -17,7 +16,7 @@ type TRadioButtonProps = {
 const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 	const { setFieldValue } = useFormikContext<TFormModel>();
 
-	const stringId = id.toString();
+	const stringId = `${name}-${id}`;
 	const handleChange = () => setFieldValue(name, id);
 
 	return (
@@ -28,7 +27,6 @@ const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 					? 'rounded-input rounded-input_checked'
 					: 'rounded-input'
 			}
-			key={id}
 		>
 			<input
 				type="radio"

@@ -4,3 +4,8 @@
 .radio-buttons {
 	@include flex-coloumn;
 }
+
+.chips-item-container {
+	display: flex;
+	flex-direction: row;
+}

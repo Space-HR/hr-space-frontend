@@ -14,7 +14,7 @@ const WorkConditionsForm: FC = () => {
 	const initialValues = {
 		minSalary: null,
 		maxSalary: null,
-		scheduleId: "0",
+		scheduleId: 0,
 	};
 
 	const validationSchema = Yup.object({
@@ -34,7 +34,7 @@ const WorkConditionsForm: FC = () => {
 	type FormModel = {
 		minSalary: number | null;
 		maxSalary: number | null;
-		scheduleId: string | null;
+		scheduleId: number;
 	};
 
 	// eslint-disable-next-line consistent-return
@@ -44,7 +44,11 @@ const WorkConditionsForm: FC = () => {
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 
-	const scheduleOptions: PropOption[] = [{ id: "0", value: 'Свободный' }, { id: "2", value: 'Сменный' }, { id: "3", value: 'Вахтовый' }];
+	const scheduleOptions: PropOption[] = [
+		{ id: 0, name: 'Свободный' },
+		{ id: 1, name: 'Сменный' },
+		{ id: 2, name: 'Вахтовый' },
+	];
 
 	return (
 		<Formik<FormModel>
@@ -52,7 +56,7 @@ const WorkConditionsForm: FC = () => {
 			validationSchema={validationSchema}
 			onSubmit={onSubmit}
 		>
-			{() => (
+			{(formikProps) => (
 				<div className="form">
 					<Form>
 						<div className="input-container">
@@ -62,6 +66,7 @@ const WorkConditionsForm: FC = () => {
 								label="График работы"
 								name="scheduleId"
 								options={scheduleOptions}
+								setFieldValue={formikProps.setFieldValue}
 							/>
 						</div>
 						<Button

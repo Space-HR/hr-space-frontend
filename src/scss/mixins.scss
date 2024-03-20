@@ -186,6 +186,7 @@
 
     &__input:focus-visible {
         outline: 1px solid $blue-hover;
+		border: 1px solid $blue-hover;
     }
 
 	&__error {

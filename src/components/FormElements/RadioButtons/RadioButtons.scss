@@ -1,0 +1,6 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.radio-buttons {
+	@include flex-coloumn;
+}

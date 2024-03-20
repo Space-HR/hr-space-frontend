@@ -1,10 +1,13 @@
-import { Fragment, FC } from 'react';
+import { FC } from 'react';
+import './RadioButtons.scss';
 import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
 import {
 	TElementWithOptions,
 	selectedField,
 } from '../../../types/formik-elements';
+import RadioChipsItem from './RadioChipsItem/RadioChipsItem';
+import Label from '../Label/Label';
 
 const RadioButtons: FC<TElementWithOptions> = ({
 	label,
@@ -13,24 +16,21 @@ const RadioButtons: FC<TElementWithOptions> = ({
 	...rest
 }) => {
 	return (
-		<div className="form-control">
-			<label htmlFor={name}>{label}</label>
-			<Field name={name} {...rest}>
+		<div className="radio-buttons">
+			<Label name={name} label={label}/>
+
+			<Field name={name} {...rest} className="radio-buttons__chips-item-container">
 				{({ field }: selectedField) => {
 					return (
 						options &&
 						options.map((option) => {
 							return (
-								<Fragment key={option.id}>
-									<input
-										type="radio"
-										id={option.id}
-										{...field}
-										value={option.id}
-										checked={field.value === option.id}
-									/>
-									<label htmlFor={option.id}>{option.value}</label>
-								</Fragment>
+								<RadioChipsItem
+									key={option.id}
+									id={option.id}
+									label={option.value}
+									field={field}
+								/>
 							);
 						})
 					);

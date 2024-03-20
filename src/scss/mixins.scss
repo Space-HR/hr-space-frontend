@@ -13,6 +13,12 @@
 	list-style-type: none;
 }
 
+// ------------FLEX------------
+@mixin flex-coloumn {
+	display: flex;
+	flex-direction: column;
+}
+
 //  -------------- FONTS -----------------
 @mixin text {
 	@include mp-null;

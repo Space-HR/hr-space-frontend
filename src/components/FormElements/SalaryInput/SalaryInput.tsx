@@ -3,15 +3,14 @@ import './SalaryInput.scss';
 import { ErrorMessage, Field } from 'formik';
 import currency from '../../../images/currency.svg';
 import TextError from '../TextError/TextError';
+import Label from '../Label/Label';
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 const SalaryInput: FC = () => {
 	return (
 		<div className="salary-input">
-			<label htmlFor="salaryInput" className="salary-input__label">
-				Зарплата
-			</label>
+			<Label name="salaryInput" label="Зарплата" />
 			<p className="salary-input__comment">Gross - до вычета НДФЛ</p>
 
 			<div className="salary-input__field-container">

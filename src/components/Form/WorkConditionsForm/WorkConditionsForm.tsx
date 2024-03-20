@@ -5,6 +5,8 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
+import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
+import { PropOption } from '../../../types/formik-elements';
 
 const WorkConditionsForm: FC = () => {
 	const navigate = useNavigate();
@@ -12,6 +14,7 @@ const WorkConditionsForm: FC = () => {
 	const initialValues = {
 		minSalary: null,
 		maxSalary: null,
+		scheduleId: "0",
 	};
 
 	const validationSchema = Yup.object({
@@ -31,6 +34,7 @@ const WorkConditionsForm: FC = () => {
 	type FormModel = {
 		minSalary: number | null;
 		maxSalary: number | null;
+		scheduleId: string | null;
 	};
 
 	// eslint-disable-next-line consistent-return
@@ -39,6 +43,8 @@ const WorkConditionsForm: FC = () => {
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
+
+	const scheduleOptions: PropOption[] = [{ id: "0", value: 'Свободный' }, { id: "2", value: 'Сменный' }, { id: "3", value: 'Вахтовый' }];
 
 	return (
 		<Formik<FormModel>
@@ -51,8 +57,19 @@ const WorkConditionsForm: FC = () => {
 					<Form>
 						<div className="input-container">
 							<SalaryInput />
+
+							<RadioButtons
+								label="График работы"
+								name="scheduleId"
+								options={scheduleOptions}
+							/>
 						</div>
-						<Button type="button" styleType="secondary" label="Назад" onClick={() => navigate('/form/step-1')}/>
+						<Button
+							type="button"
+							styleType="secondary"
+							label="Назад"
+							onClick={() => navigate('/form/step-1')}
+						/>
 
 						<Button
 							type="submit"

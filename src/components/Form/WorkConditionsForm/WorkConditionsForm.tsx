@@ -74,20 +74,21 @@ const WorkConditionsForm: FC = () => {
 								options={scheduleOptions}
 								currentValues={formikProps.values.scheduleId}
 							/>
-							
 						</div>
-						<Button
-							type="button"
-							styleType="secondary"
-							label="Назад"
-							onClick={() => navigate('/form/step-1')}
-						/>
+						<div className='two-btn-disposition'>
+							<Button
+								type="button"
+								styleType="secondary"
+								label="Назад"
+								onClick={() => navigate('/form/step-1')}
+							/>
 
-						<Button
-							type="submit"
-							styleType="primary"
-							label="Сохранить и продолжить"
-						/>
+							<Button
+								type="submit"
+								styleType="primary"
+								label="Сохранить и продолжить"
+							/>
+						</div>
 					</Form>
 				</div>
 			)}

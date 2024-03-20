@@ -62,6 +62,7 @@ const CandidateRequirementForm: FC = () => {
 								options={employeeEducation}
 							/>
 						</div>
+						<div className='two-btn-disposition'>
 						<Button
 							type="button"
 							styleType="secondary"
@@ -74,6 +75,7 @@ const CandidateRequirementForm: FC = () => {
 							styleType="primary"
 							label="Сохранить и продолжить"
 						/>
+						</div>
 					</Form>
 				</div>
 			)}

@@ -1,5 +1,8 @@
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
+
 .form-control {
-    display: flex;
+    @include input-style;
 
     &__container{
         position: relative;
@@ -9,32 +12,36 @@
 .options {
     display: none;
     position: absolute;
-    top: 24px;
+    top: 52px;
     right: 0;
     background-color: #fff;
-    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid $grey-input;
+    padding: $options-padding;
     margin: 0;
-    border-radius: 10px;
     list-style: none;
     width: 100%;
-    max-height: 160px;
+    max-width: $max-width-input;
+    max-height: $max-height-input;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-color: $grey-input #FFF; /* «цвет ползунка» «цвет полосы скроллбара» */
+    scrollbar-width: thin;  /* толщина */
 
     &__item {
-        padding: 10px;
+        @include text-input;
+        padding: 8px;
         margin: 0;
-        font-size: 14px;
     }
 
     &__item:hover {
-        color:blueviolet;
+        color: $blue-hover;
         cursor: pointer;
     }
 
     &_active {
         display: flex;
         flex-direction: column;
-        order: 99;
+        z-index: 99;
     }
 }

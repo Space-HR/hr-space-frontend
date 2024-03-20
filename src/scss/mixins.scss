@@ -223,10 +223,10 @@
 // для спика значений checkbox и radio button с округлыми краями элементов (border-radius: 40px)
 
 @mixin rounded-input-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-	}
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
 
 // инпут с закругленными углами
 @mixin rounded-input {

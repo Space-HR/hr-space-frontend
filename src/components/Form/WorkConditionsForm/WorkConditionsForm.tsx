@@ -5,13 +5,14 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
-import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
 import { PropOption } from '../../../types/formik-elements';
+import ScheduleRadioButtons from '../../FormElements/RadioButtons/ScheduleRadioButtons/ScheduleRadioButtons';
 
 export type TFormModel = {
 	minSalary: number | null;
 	maxSalary: number | null;
 	scheduleId: number | null;
+	scheduleComment: string;
 };
 
 const scheduleOptions: PropOption[] = [
@@ -32,6 +33,7 @@ const WorkConditionsForm: FC = () => {
 		minSalary: null,
 		maxSalary: null,
 		scheduleId: null,
+		scheduleComment: '',
 	};
 
 	const validationSchema = Yup.object({
@@ -60,17 +62,19 @@ const WorkConditionsForm: FC = () => {
 			validationSchema={validationSchema}
 			onSubmit={onSubmit}
 		>
-			{() => (
+			{(formikProps) => (
 				<div className="form">
 					<Form>
 						<div className="input-container">
 							<SalaryInput />
 
-							<RadioButtons
+							<ScheduleRadioButtons
 								label="График работы"
 								name="scheduleId"
 								options={scheduleOptions}
+								currentValues={formikProps.values.scheduleId}
 							/>
+							
 						</div>
 						<Button
 							type="button"

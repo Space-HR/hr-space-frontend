@@ -1,11 +1,14 @@
 import { FC } from 'react';
 import './WorkConditionsFormPage.scss';
+import FormWrapper from '../../../components/Form/FormWrapper/FormWrapper';
+import WorkConditionsForm from '../../../components/Form/WorkConditionsForm/WorkConditionsForm';
 
 const WorkConditionsFormPage: FC = () => {
 	return (
-		<section>
-			<p>Шаг 2</p>
-		</section>
+		<FormWrapper title="Что вы можете предложить специалисту?">
+			<WorkConditionsForm/>
+		</FormWrapper>
+	
 	);
 };
 

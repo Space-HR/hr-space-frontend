@@ -1,12 +1,20 @@
 @import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
 
 .form-page {
 	display: flex;
 	flex-grow: 1;
 	padding: 44px $padding-horizontal;
+	
 
 	&__form-container {
-		margin: 60px 80px;
+		padding: 60px 80px;
 		flex-grow: 1;
+		width: 848px;
 	}
+}
+
+.form-title {
+	@include mp-null;
+	@include text-section-title;
 }

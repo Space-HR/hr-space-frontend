@@ -15,7 +15,7 @@ const FormStep: FC<TFormStepsProps> = ({ title, isFilled, isFinalStep }) => {
 				isFilled ? 'form-step form-step_active' : 'form-step form-step_inactive'
 			}
 		>
-			<div className="form-step__conteiner">
+			<div className="form-step__conteiner-img-title">
 				<div className="form-step__img-conteiner" />
 				<p className="form-step__title">{title}</p>
 			</div>

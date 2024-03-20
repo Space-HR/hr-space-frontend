@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import './SpecialistTypeFormPage.scss';
+import FormWrapper from '../../../components/Form/FormWrapper/FormWrapper';
+import SpecialistTypeForm from '../../../components/Form/SpecialistTypeForm/SpecialistTypeForm';
 
 const SpecialistTypeFormPage: FC = () => {
 	return (
-		<>
-			<h2 className="form-title">Какого специалиста ищете?</h2>
-			<div />
-		</>
+		<FormWrapper title="Какого специалиста ищете?">
+			<SpecialistTypeForm />
+		</FormWrapper>
 	);
 };
 

@@ -7,8 +7,10 @@ import Footer from '../Footer/Footer';
 const Layuot: FC = () => {
 	return (
 		<div className="layuot">
-			<Header />
-			<Outlet />
+			<div className="layuot__container">
+				<Header />
+				<Outlet />
+			</div>
 			<Footer />
 		</div>
 	);

@@ -16,13 +16,13 @@ const ImageButton: FC<TImageButtonProps> = ({
 }) => {
 	return (
 		<button
-			className="button"
+			className="img-button"
 			onClick={onClick}
 			type="button"
 			disabled={disabled}
 		>
 			{children}
-			{isFilled && <div className="button__active" />}
+			{isFilled && <div className="img-button__active" />}
 		</button>
 	);
 };

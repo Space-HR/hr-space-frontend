@@ -2,23 +2,23 @@ import { FC } from 'react';
 import './Button.scss';
 
 type TButtonProps = {
-	className?: string;
-	onClick?: () => void;
+	label: string;
+	styleType: 'primary' | 'secondary';
 	type: 'button' | 'submit' | 'reset';
 	disabled?: boolean;
-	label: string;
+	onClick?: () => void;
 };
 
 const Button: FC<TButtonProps> = ({
-	className,
-	onClick,
+	label,
+	styleType,
 	type,
 	disabled,
-	label,
+	onClick,
 }) => {
 	return (
 		<button
-			className={`button ${className}`}
+			className={`button button_${styleType}`}
 			onClick={onClick}
 			type={type}
 			disabled={disabled}

@@ -1,0 +1,11 @@
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
+
+.form-wrapper {
+    // padding: 0 0 48px 0;
+
+    &__title {
+        @include text-section-title;
+        margin: 0 0 48px 0;
+    }
+}

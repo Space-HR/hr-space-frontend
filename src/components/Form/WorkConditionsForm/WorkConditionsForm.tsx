@@ -8,13 +8,30 @@ import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
 import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
 import { PropOption } from '../../../types/formik-elements';
 
+export type TFormModel = {
+	minSalary: number | null;
+	maxSalary: number | null;
+	scheduleId: number | null;
+};
+
+const scheduleOptions: PropOption[] = [
+	{ id: 0, name: 'Свободный' },
+	{ id: 1, name: 'Сменный' },
+	{ id: 2, name: 'Вахтовый' },
+	{ id: 3, name: 'Свободный' },
+	{ id: 4, name: 'Сменный' },
+	{ id: 5, name: 'Вахтовый' },
+	{ id: 6, name: 'Сменный' },
+	{ id: 7, name: 'Вахтовый' },
+];
+
 const WorkConditionsForm: FC = () => {
 	const navigate = useNavigate();
 
 	const initialValues = {
 		minSalary: null,
 		maxSalary: null,
-		scheduleId: 0,
+		scheduleId: null,
 	};
 
 	const validationSchema = Yup.object({
@@ -31,24 +48,11 @@ const WorkConditionsForm: FC = () => {
 			.required('Обязательное поле'),
 	});
 
-	type TFormModel = {
-		minSalary: number | null;
-		maxSalary: number | null;
-		scheduleId: number;
-	};
-
-	// eslint-disable-next-line consistent-return
 	const onSubmit = (values: TFormModel) => {
 		navigate('/form/step-3');
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
-
-	const scheduleOptions: PropOption[] = [
-		{ id: 0, name: 'Свободный' },
-		{ id: 1, name: 'Сменный' },
-		{ id: 2, name: 'Вахтовый' },
-	];
 
 	return (
 		<Formik<TFormModel>
@@ -56,7 +60,7 @@ const WorkConditionsForm: FC = () => {
 			validationSchema={validationSchema}
 			onSubmit={onSubmit}
 		>
-			{(formikProps) => (
+			{() => (
 				<div className="form">
 					<Form>
 						<div className="input-container">
@@ -66,7 +70,13 @@ const WorkConditionsForm: FC = () => {
 								label="График работы"
 								name="scheduleId"
 								options={scheduleOptions}
-								setFieldValue={formikProps.setFieldValue}
+							/>
+							<SalaryInput />
+
+							<RadioButtons
+								label="График работы"
+								name="scheduleId"
+								options={scheduleOptions}
 							/>
 						</div>
 						<Button

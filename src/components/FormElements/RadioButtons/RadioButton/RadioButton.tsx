@@ -1,11 +1,8 @@
 import { FC } from 'react';
-import { FormikHelpers } from 'formik';
+import { useFormikContext } from 'formik';
 
 import './RadioButton.scss';
-
-type TFormValues = {
-	scheduleId: number;
-};
+import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
 type TRadioButtonProps = {
 	field: {
@@ -14,19 +11,13 @@ type TRadioButtonProps = {
 	};
 	id: number;
 	label: string;
-	setFieldValue: FormikHelpers<TFormValues>['setFieldValue'];
 	name: string;
 };
 
-const RadioButton: FC<TRadioButtonProps> = ({
-	field,
-	id,
-	label,
-	setFieldValue,
-	name,
-}) => {
-	const stringId = id.toString();
+const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
+	const { setFieldValue } = useFormikContext<TFormModel>();
 
+	const stringId = id.toString();
 	const handleChange = () => setFieldValue(name, id);
 
 	return (

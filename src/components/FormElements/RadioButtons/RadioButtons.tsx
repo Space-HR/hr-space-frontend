@@ -1,14 +1,10 @@
 import { FC } from 'react';
 import './RadioButtons.scss';
-import { Field, ErrorMessage, FormikHelpers } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
 import { TElementWithOptions } from '../../../types/formik-elements';
 import Label from '../Label/Label';
 import RadioButton from './RadioButton/RadioButton';
-
-type TFormValues = {
-    scheduleId: number;
-};
 
 type TRadioSelectedField = {
 	field: {
@@ -17,21 +13,16 @@ type TRadioSelectedField = {
 	};
 };
 
-type TRadioButtonsProps = TElementWithOptions & {
-	setFieldValue: FormikHelpers<TFormValues>['setFieldValue'];
-  };
-
-const RadioButtons: FC<TRadioButtonsProps> = ({
+const RadioButtons: FC<TElementWithOptions> = ({
 	label,
 	name,
 	options,
-	setFieldValue,
 	...rest
 }) => {
 	return (
-		<div className="radio-buttons">
+		<div className="rounded-input-conainer">
 			<Label name={name} label={label} />
-			<div className="radio-buttons__row-comtainer">
+			<div className="rounded-input-conainer__input-row">
 				<Field name={name} {...rest}>
 					{({ field }: TRadioSelectedField) => {
 						return (
@@ -43,7 +34,6 @@ const RadioButtons: FC<TRadioButtonsProps> = ({
 										id={option.id}
 										label={option.name}
 										field={field}
-										setFieldValue={setFieldValue} 
 										name={name}
 									/>
 								);

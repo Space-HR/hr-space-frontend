@@ -202,7 +202,6 @@
 }
 
 @mixin form-style {
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -214,9 +213,17 @@
 	}
 }
 
+// контейнер rounded-input в checkbox и redio button
+
+@mixin rounded-input-conainer {
+	&__input-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+}
+
 // инпут с закругленными углами
-// $input-item-border-default: 1px solid ;
-// $input-item-border-active: 1px solid $blue-btn-disabled;
 @mixin rounded-input {
 	@include text-normal-large-black;
 	display: inline-block;

@@ -1,11 +1,5 @@
-@import '../../../scss/variables.scss';
 @import '../../../scss/mixins.scss';
 
-.radio-buttons {
-	@include flex-coloumn;
-}
-
-.chips-item-container {
-	display: flex;
-	flex-direction: row;
+.rounded-input-conainer {
+	@include rounded-input-conainer; 
 }

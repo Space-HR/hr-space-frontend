@@ -1,42 +1,41 @@
-import { Fragment, FC } from 'react';
-import { Field, ErrorMessage } from 'formik';
-import TextError from '../TextError/TextError';
-import {
-	TElementWithOptions,
-	selectedField,
-} from '../../../types/formik-elements';
+import { FC } from 'react';
+import './RadioButtons.scss';
+import { Field } from 'formik';
+import { TElementWithOptions } from '../../../types/formik-elements';
+import Label from '../Label/Label';
+import RadioButton from './RadioButton/RadioButton';
 
-const RadioButtons: FC<TElementWithOptions> = ({
-	label,
-	name,
-	options,
-	...rest
-}) => {
+type TRadioSelectedField = {
+	field: {
+		name: string;
+		value: number;
+	};
+};
+
+const RadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
 	return (
-		<div className="form-control">
-			<label htmlFor={name}>{label}</label>
-			<Field name={name} {...rest}>
-				{({ field }: selectedField) => {
-					return (
-						options &&
-						options.map((option) => {
-							return (
-								<Fragment key={option.id}>
-									<input
-										type="radio"
-										id={`${option.id}`}
-										{...field}
-										value={option.id}
-										checked={field.value === option.id.toString()}
+		<div className="input-conainer">
+			<Label name={name} label={label} />
+			<div className="rounded-input-row">
+				<Field name={name}>
+					{({ field }: TRadioSelectedField) => {
+						return (
+							options &&
+							options.map((option) => {
+								return (
+									<RadioButton
+										key={option.id}
+										id={option.id}
+										label={option.name}
+										field={field}
+										name={name}
 									/>
-									<label htmlFor={`${option.id}`}>{option.name}</label>
-								</Fragment>
-							);
-						})
-					);
-				}}
-			</Field>
-			<ErrorMessage name={name} component={TextError} />
+								);
+							})
+						);
+					}}
+				</Field>
+			</div>
 		</div>
 	);
 };

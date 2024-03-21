@@ -5,6 +5,11 @@ $main-gray: #6e7070;
 $blue-background: #f5f7fa;
 $blue-hover: #4b86f6;
 $blue-btn: #71a2ff;
+$blue-btn-default: #e3edff;
+$blue-btn-hover: #abc8ff;
+$blue-gray-light-btn: #ebf0f8;
+$blue-light-card: #f5f9ff;
+$pop-up-background: #959799;
 $blue-btn-disabled: #becee3;
 $grey-text-disabled: #838da7;
 $grey-input: #d4d7d9;
@@ -21,11 +26,14 @@ $font-family: Arial, sans-serif;
 
 // Отступы
 $padding-horizontal: 96px;
-$margin-between-elements: 33px;
+$inpyt-horizontal-gap: 32px;
+$input-inside-gap: 12px;
+$margin-between-elements: 32px;
 
 // Input
+
 $margin-bottom-input: 12px;
-$max-width-input: 656px;
+$max-width-input: 688px;
 $max-height-input: 165px;
 $inner-padding-input: 11px 14px 10px 15px;
 $text-size-input-placeholder: 16px;

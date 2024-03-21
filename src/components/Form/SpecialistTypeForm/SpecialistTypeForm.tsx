@@ -3,7 +3,6 @@ import './SpecialistTypeForm.scss';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import FormWrapper from '../FormWrapper/FormWrapper';
 import { jobTitleServer, sphereTitleServer } from '../../../data/data-form';
 import Input from '../../FormElements/Input/Input';
 import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
@@ -38,7 +37,7 @@ const SpecialistTypeForm: FC = () => {
 	};
 
 	return (
-		<FormWrapper title="Какого специалиста ищете?">
+		
 			<Formik<FormModel>
 				initialValues={initialValues}
 				validationSchema={validationSchema}
@@ -78,7 +77,6 @@ const SpecialistTypeForm: FC = () => {
 					</Form>
 				)}
 			</Formik>
-		</FormWrapper>
 	);
 };
 

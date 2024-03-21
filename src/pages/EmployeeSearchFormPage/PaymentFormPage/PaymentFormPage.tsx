@@ -1,11 +1,13 @@
 import { FC } from 'react';
 import './PaymentFormPage.scss';
+import PaymentForm from '../../../components/Form/PaymentForm/PaymentForm';
+import FormWrapper from '../../../components/Form/FormWrapper/FormWrapper';
 
 const PaymentFormPage: FC = () => {
 	return (
-		<section>
-			<p>Шаг 6</p>
-		</section>
+		<FormWrapper title="Публикация и оплата">
+			<PaymentForm />
+		</FormWrapper>
 	);
 };
 

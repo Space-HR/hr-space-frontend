@@ -15,7 +15,7 @@ export type TElementWithOptions = {
 };
 
 export type PropInput = {
-	label: string;
+	label?: string;
 	name: string;
 	placeholder: string;
 	type: string;

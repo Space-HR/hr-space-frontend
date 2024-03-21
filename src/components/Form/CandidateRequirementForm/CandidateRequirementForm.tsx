@@ -3,15 +3,38 @@ import './CandidateRequirementForm.scss';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import FormWrapper from '../FormWrapper/FormWrapper';
-import { city } from '../../../data/data-form';
-import InputWithChips from '../../FormElements/InputWithChips/InputWithChips';
 import Button from '../../Buttons/Button/Button';
+import { PropOption } from '../../../types/formik-elements';
+import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
+import InputWithChips from '../../FormElements/InputWithChips/InputWithChips';
+
+import { city } from '../../../data/data-form';
+
+export type TFormModel = {
+	employeeExperienceId: number | null;
+	employeeEducationId: number | null;
+	cityOrganization: string;
+};
+
+const employeeExperience: PropOption[] = [
+	{ id: 0, name: 'Без опыта' },
+	{ id: 1, name: 'От 1 года до 3 лет' },
+	{ id: 2, name: 'От 3 до 6 лет' },
+	{ id: 3, name: 'Более 6 лет' },
+];
+const employeeEducation: PropOption[] = [
+	{ id: 0, name: 'Высшее' },
+	{ id: 1, name: 'Незаконченное высшее' },
+	{ id: 2, name: 'Среднее' },
+	{ id: 3, name: 'Среднее специальное' },
+];
 
 const CandidateRequirementForm: FC = () => {
 	const navigate = useNavigate();
 
 	const initialValues = {
+		employeeExperienceId: null,
+		employeeEducationId: null,
 		cityOrganization: '',
 	};
 
@@ -21,36 +44,48 @@ const CandidateRequirementForm: FC = () => {
 		),
 	});
 
-	type FormModel = {
-		cityOrganization: string;
-	};
-
-	// eslint-disable-next-line consistent-return
-	const onSubmit = (values: FormModel) => {
-		navigate('/form/step-4', { replace: true });
+	const onSubmit = (values: TFormModel) => {
+		navigate('/form/step-4');
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 
 	return (
-		<FormWrapper title="Какого специалиста ищете?">
-			<Formik<FormModel>
-				initialValues={initialValues}
-				validationSchema={validationSchema}
-				onSubmit={onSubmit}
-			>
-				{() => (
-					<Form className="form">
-						<div className="form__elements">
-							<InputWithChips
-								label="Город организации"
-								placeholder="Начните вводить и выберите, где находится ваша организация"
-								name="cityOrganization"
-								options={city}
+		<Formik<TFormModel>
+			initialValues={initialValues}
+			validationSchema={validationSchema}
+			onSubmit={onSubmit}
+		>
+			{() => (
+				<div className="form">
+					<Form>
+						<div className="input-container">
+							<RadioButtons
+								label="Опыт работы"
+								name="employeeExperienceId"
+								options={employeeExperience}
 							/>
+							<RadioButtons
+								label="Образование"
+								name="employeeEducationId"
+								options={employeeEducation}
+							/>
+							<div className="form__elements">
+								<InputWithChips
+									label="Город организации"
+									placeholder="Начните вводить и выберите, где находится ваша организация"
+									name="cityOrganization"
+									options={city}
+								/>
+							</div>
 						</div>
-						<div className="form__buttons">
-							<Button type="button" styleType="secondary" label="Назад" />
+						<div className="two-btn-disposition">
+							<Button
+								type="button"
+								styleType="secondary"
+								label="Назад"
+								onClick={() => navigate('/form/step-2')}
+							/>
 
 							<Button
 								type="submit"
@@ -59,9 +94,9 @@ const CandidateRequirementForm: FC = () => {
 							/>
 						</div>
 					</Form>
-				)}
-			</Formik>
-		</FormWrapper>
+				</div>
+			)}
+		</Formik>
 	);
 };
 

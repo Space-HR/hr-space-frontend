@@ -15,7 +15,7 @@ type TRadioSelectedField = {
 };
 
 type TRadioButtonsProps = TElementWithOptions & {
-	currentValues: number | null;
+	currentValues: number | undefined;
 };
 
 const ScheduleRadioButtons: FC<TRadioButtonsProps> = ({
@@ -48,7 +48,7 @@ const ScheduleRadioButtons: FC<TRadioButtonsProps> = ({
 					}}
 				</Field>
 			</div>
-			{currentValues !== null && currentValues !== undefined && (
+			{currentValues !== undefined && (
 				<Input
 					placeholder="Дополнительный комментарий"
 					name="scheduleComment"

@@ -20,6 +20,7 @@
 	}
 
 	&__field {
+		@include remove-number-input-spinners;
 		border: none;
 		min-height: 24px;
 		width: 180px;
@@ -35,7 +36,6 @@
 		background-color: $main-white;
 	}
 }
-
 
 .salary-input__label-container {
 	display: flex;

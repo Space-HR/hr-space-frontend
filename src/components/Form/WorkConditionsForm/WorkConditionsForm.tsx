@@ -12,9 +12,9 @@ import ExtraConditionsInput from '../../FormElements/ExtraConditionsInput/ExtraC
 import EmployeeCategoriesInput from '../../FormElements/EmployeeCategoriesInput/EmployeeCategoriesInput';
 
 export type TFormModel = {
-	minSalary: number | null;
-	maxSalary: number | null;
-	scheduleId: number | null;
+	minSalary: number | undefined;
+	maxSalary: number | undefined;
+	scheduleId: number | undefined;
 	scheduleComment: string;
 	workFormats: number[];
 	workingConditions: string;
@@ -56,9 +56,9 @@ const WorkConditionsForm: FC = () => {
 	const navigate = useNavigate();
 
 	const initialValues = {
-		minSalary: null,
-		maxSalary: null,
-		scheduleId: null,
+		minSalary: undefined,
+		maxSalary: undefined,
+		scheduleId: undefined,
 		scheduleComment: '',
 		workFormats: [],
 		registerAsSet: [],
@@ -69,19 +69,53 @@ const WorkConditionsForm: FC = () => {
 		foreignCountries: [],
 	};
 
+	const validateMinOrMaxSalary = (value: Yup.AnyObject) => {
+		const { minSalary, maxSalary } = value || {};
+
+		if (minSalary && maxSalary && maxSalary < minSalary) {
+			return new Yup.ValidationError(
+			  'Максимальная зарплата не может быть меньше минимальной',
+			  value,
+			  'minSalary'
+			);
+		  }
+
+		if (minSalary || maxSalary) {
+			return true;
+		}
+		return new Yup.ValidationError(
+			'Укажите зарплату специалиста',
+			value,
+			'minSalary'
+		);
+	};
+
+	const validateRegisterAsSet = (value: Yup.AnyObject) => {
+		const { registerAsSet } = value || {};
+		if (registerAsSet && registerAsSet.length > 0) {
+			return true;
+		}
+		return new Yup.ValidationError(
+			'Выберите способ оформления сотрудников',
+			value,
+			'registerAsSet'
+		);
+	};
+
 	const validationSchema = Yup.object({
-		minSalary: Yup.number()
-			.nullable()
-			.min(0, 'Минимальная зарплата должна быть больше или равна 0')
-			.required('Обязательное поле'),
-		maxSalary: Yup.number()
-			.nullable()
-			.moreThan(
-				Yup.ref('minSalary'),
-				'Максимальная зарплата должна быть больше минимальной зарплаты'
-			)
-			.required('Обязательное поле'),
-	});
+		minSalary: Yup.number(),
+		maxSalary: Yup.number(),
+	})
+		.test(
+			'minOrMaxSalary-required',
+			'Укажите зарплату специалиста',
+			validateMinOrMaxSalary
+		)
+		.test(
+			'registerAsSet-required',
+			'Выберите способ оформления сотрудников',
+			validateRegisterAsSet
+		);
 
 	const onSubmit = (values: TFormModel) => {
 		// navigate('/form/step-3');
@@ -126,7 +160,7 @@ const WorkConditionsForm: FC = () => {
 							/>
 							<EmployeeCategoriesInput
 								label="Готовы рассмотреть"
-								name="registerAsSet"
+								name="employeeCategories"
 								options={employeeCategoriesOptions}
 								foreignCitizenName="foreignCitizen"
 							/>

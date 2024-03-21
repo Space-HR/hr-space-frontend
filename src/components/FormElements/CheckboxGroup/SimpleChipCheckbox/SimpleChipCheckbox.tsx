@@ -1,4 +1,4 @@
-import { Field } from 'formik';
+import { Field, useField } from 'formik';
 import { FC } from 'react';
 
 type TRadioButtonProps = {
@@ -7,8 +7,14 @@ type TRadioButtonProps = {
 };
 
 const SimpleChipCheckbox: FC<TRadioButtonProps> = ({ name, label }) => {
+	const [field] = useField(name);
 	return (
-		<label htmlFor={name} className='rounded-input'>
+		<label
+			htmlFor={name}
+			className={
+				field.value ? 'rounded-input rounded-input_checked' : 'rounded-input'
+			}
+		>
 			<Field
 				id={name}
 				type="checkbox"

@@ -6,7 +6,7 @@ import EmployeeSearchFormPage from '../../pages/EmployeeSearchFormPage/EmployeeS
 import SpecialistTypeFormPage from '../../pages/EmployeeSearchFormPage/SpecialistTypeFormPage/SpecialistTypeFormPage';
 import WorkConditionsFormPage from '../../pages/EmployeeSearchFormPage/WorkConditionsFormPage/WorkConditionsFormPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
-// import CandidateRequirementFormPage from '../../pages/EmployeeSearchFormPage/CandidateRequirementFormPage/CandidateRequirementFormPage';
+import CandidateRequirementFormPage from '../../pages/EmployeeSearchFormPage/CandidateRequirementFormPage/CandidateRequirementFormPage';
 import RecruiterRequirementFormPage from '../../pages/EmployeeSearchFormPage/RecruiterRequirementFormPage/RecruiterRequirementFormPage';
 import PaymentFormPage from '../../pages/EmployeeSearchFormPage/PaymentFormPage/PaymentFormPage';
 import TariffFormPage from '../../pages/EmployeeSearchFormPage/TariffFormPage/TariffFormPage';
@@ -18,7 +18,7 @@ const App: FC = () => {
 				<Route path="form" element={<EmployeeSearchFormPage />}>
 					<Route path="step-1" element={<SpecialistTypeFormPage />} />
 					<Route path="step-2" element={<WorkConditionsFormPage />} />
-					<Route path="step-3" element={<CandidateRequirementForm />} />
+					<Route path="step-3" element={<CandidateRequirementFormPage />} />
 					<Route path="step-4" element={<TariffFormPage />} />
 					<Route path="step-5" element={<RecruiterRequirementFormPage />} />
 					<Route path="step-6" element={<PaymentFormPage />} />

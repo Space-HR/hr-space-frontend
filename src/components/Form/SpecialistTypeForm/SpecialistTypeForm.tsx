@@ -44,7 +44,6 @@ const SpecialistTypeForm: FC = () => {
 				validationSchema={validationSchema}
 				onSubmit={onSubmit}
 			>
-				{/* {formik} */}
 				{() => (
 					<Form className="form">
 						<div className="form__elements">

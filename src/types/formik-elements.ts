@@ -39,5 +39,5 @@ export type PropDatePicker = {
 };
 
 export type PropTextError = {
-	children?: ReactNode;
+	children?: ReactNode | string;
 };

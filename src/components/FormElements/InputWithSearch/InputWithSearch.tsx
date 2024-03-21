@@ -72,10 +72,7 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 								}}
 								value={input}
 							/>
-							<ul
-								className={`options ${activeList ? 'options_active' : ''}`}
-								id="style-2"
-							>
+							<ul className={`options ${activeList ? 'options_active' : ''}`}>
 								{activeOptions &&
 									activeOptions.map((option) => {
 										return (

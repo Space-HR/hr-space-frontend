@@ -11,10 +11,15 @@ import InputWithTips from '../../FormElements/InputWithTips/InputWithTips';
 
 import { city } from '../../../data/data-form';
 
+const cityN = city.map((n) => ({
+	value: n.id,
+	label: n.name,
+}));
+
 export type TFormModel = {
 	employeeExperienceId: number | null;
 	employeeEducationId: number | null;
-	cityOrganization: number | null;
+	cityOrganization: number | number[] | null;
 };
 
 const employeeExperience: PropOption[] = [
@@ -84,7 +89,9 @@ const CandidateRequirementForm: FC = () => {
 									label="Город организации"
 									placeholder="Начните вводить и выберите, где находится ваша организация"
 									name="cityOrganization"
-									options={city}
+									options={cityN}
+									// eslint-disable-next-line react/jsx-boolean-value
+									isMulti={false}
 								/>
 							</div>
 						</div>

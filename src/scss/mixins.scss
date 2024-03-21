@@ -14,7 +14,7 @@
 }
 
 // ------------FLEX------------
-@mixin flex-coloumn {
+@mixin flex-column {
 	display: flex;
 	flex-direction: column;
 }
@@ -154,6 +154,15 @@
 	color: $main-black;
 }
 
+@mixin text-footer-title {
+	// footer title
+	@include text;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 150%;
+	color: $main-white;
+}
+
 // input text
 @mixin text-input {
 	// для лейбла инпута
@@ -167,7 +176,6 @@
 @mixin input-style {
 	display: flex;
 	flex-direction: column;
-	margin: 0 0 $margin-between-elements 0;
 
 	&__title {
 		@include text-input-label;
@@ -228,6 +236,46 @@
 	gap: 8px;
 }
 
+// стилиация checkbox с галочкой
+@mixin checkbox {
+	display: flex;
+	column-gap: 8px;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+
+	&__input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	&__сustom {
+		display: inline-block;
+		height: 20px;
+		width: 20px;
+		border: 1px solid $grey-input-placeholder;
+		border-radius: 4px;
+		position: relative;
+	}
+
+	&__input:checked + &__сustom {
+		border-color: $blue-hover;
+	}
+
+	&__input:checked + &__сustom::after {
+		content: '';
+		position: absolute;
+		left: 5px;
+		top: 1px;
+		width: 6px;
+		height: 11px;
+		border: solid $blue-hover;
+		border-width: 0 2px 2px 0;
+		transform: rotate(45deg);
+	}
+}
+
 // инпут с закругленными углами
 @mixin rounded-input {
 	@include text-normal-large-black;
@@ -257,37 +305,58 @@
 //стиль для выпадающего списка input
 @mixin options-style {
 	display: none;
-    position: absolute;
-    top: 52px;
-    right: 0;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid $grey-input;
-    padding: $options-padding;
-    margin: 0;
-    list-style: none;
-    width: 100%;
-    max-width: $max-width-input;
-    max-height: $max-height-input;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-color: $grey-input #FFF; /* «цвет ползунка» «цвет полосы скроллбара» */
-    scrollbar-width: thin;  /* толщина */
+	position: absolute;
+	top: 52px;
+	right: 0;
+	background-color: #fff;
+	border-radius: 8px;
+	border: 1px solid $grey-input;
+	padding: $options-padding;
+	margin: 0;
+	list-style: none;
+	width: 100%;
+	max-width: $max-width-input;
+	max-height: $max-height-input;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-color: $grey-input #fff; /* «цвет ползунка» «цвет полосы скроллбара» */
+	scrollbar-width: thin; /* толщина */
 
-    &__item {
-        @include text-input;
-        padding: 8px;
-        margin: 0;
-    }
+	&__item {
+		@include text-input;
+		padding: 8px;
+		margin: 0;
+	}
 
-    &__item:hover {
-        color: $blue-hover;
-        cursor: pointer;
-    }
+	&__item:hover {
+		color: $blue-hover;
+		cursor: pointer;
+	}
 
-    &_active {
-        display: flex;
-        flex-direction: column;
-        z-index: 99;
-    }
+	&_active {
+		display: flex;
+		flex-direction: column;
+		z-index: 99;
+	}
 }
+
+
+@mixin remove-number-input-spinners {
+	/* Для Webkit (Safari, Chrome и Opera) */
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+	}
+  
+	/* Для Firefox */
+	&[type="number"] {
+	  -moz-appearance: textfield;
+	}
+  
+	/* Для Internet Explorer 10+ */
+	&::-ms-clear,
+	&::-ms-reveal {
+	  display: none;
+	}
+  }

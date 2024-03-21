@@ -45,7 +45,7 @@ const SpecialistTypeForm: FC = () => {
 			>
 				{() => (
 					<Form className="form">
-						<div className="form__elements">
+						<div className=" input-container">
 							<Input
 								label="Название вакансии"
 								placeholder="Например, контент–менеджер"

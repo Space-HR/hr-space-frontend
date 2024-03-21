@@ -1,0 +1,7 @@
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
+
+.error {
+    @include text-normal-medium-error;
+    margin-top: 8px;
+}

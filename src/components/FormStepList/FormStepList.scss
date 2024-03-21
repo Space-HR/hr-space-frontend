@@ -1,0 +1,21 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.form-steps {
+	min-width: 400px;
+	padding: 56px 48px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 40px;
+	border-radius: 28px;
+	background-color: $blue-background;
+	overflow-wrap: break-word;
+
+	&__list {
+		@include mp-null-list;
+	}
+
+	&__title {
+		@include text-section-title;
+	}
+}

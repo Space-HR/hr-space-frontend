@@ -8,6 +8,7 @@ import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
 import { PropOption } from '../../../types/formik-elements';
 import ScheduleRadioButtons from '../../FormElements/RadioButtons/ScheduleRadioButtons/ScheduleRadioButtons';
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup';
+import ExtraConditionsInput from '../../FormElements/ExtraConditionsInput/ExtraConditionsInput';
 
 export type TFormModel = {
 	minSalary: number | null;
@@ -15,17 +16,16 @@ export type TFormModel = {
 	scheduleId: number | null;
 	scheduleComment: string;
 	workFormats: number[];
+	workingConditions: string;
+	vhl: boolean;
 };
 
 const scheduleOptions: PropOption[] = [
-	{ id: 0, name: 'Свободный' },
-	{ id: 1, name: 'Сменный' },
-	{ id: 2, name: 'Вахтовый' },
-	{ id: 3, name: '5/2 пн – пт' },
-	// { id: 4, name: 'Сменный' },
-	// { id: 5, name: 'Вахтовый' },
-	// { id: 6, name: 'Сменный' },
-	// { id: 7, name: 'Вахтовый' },
+	{ id: 0, name: '5/2 пн – пт' },
+	{ id: 1, name: 'Свободный' },
+	{ id: 2, name: 'Сменный' },
+	{ id: 3, name: 'Вахтовый' },
+	{ id: 4, name: 'Другой' },
 ];
 
 const workFormatsOptions: PropOption[] = [
@@ -41,6 +41,12 @@ const registerAsSetOptions: PropOption[] = [
 	{ id: 3, name: 'ГПХ' },
 ];
 
+// const employeeCategoriesOptions: PropOption[] = [
+// 	{ id: 0, name: 'Студентов' },
+// 	{ id: 1, name: 'От 14 лет' },
+// 	{ id: 2, name: 'От 16 лет' },
+// 	{ id: 3, name: 'С нарушением здоровья' },
+// ];
 
 const WorkConditionsForm: FC = () => {
 	const navigate = useNavigate();
@@ -51,7 +57,9 @@ const WorkConditionsForm: FC = () => {
 		scheduleId: null,
 		scheduleComment: '',
 		workFormats: [],
-		registerAsSet: []
+		registerAsSet: [],
+		workingConditions: '',
+		vhl: false,
 	};
 
 	const validationSchema = Yup.object({
@@ -69,7 +77,7 @@ const WorkConditionsForm: FC = () => {
 	});
 
 	const onSubmit = (values: TFormModel) => {
-		navigate('/form/step-3');
+		// navigate('/form/step-3');
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
@@ -93,14 +101,21 @@ const WorkConditionsForm: FC = () => {
 							/>
 
 							<CheckboxGroup
-							label='Формат работы'
-							name="workFormats"
-							options={workFormatsOptions}
+								label="Формат работы"
+								name="workFormats"
+								options={workFormatsOptions}
 							/>
 							<CheckboxGroup
-							label='Способ оформления'
-							name="registerAsSet"
-							options={registerAsSetOptions}
+								label="Способ оформления"
+								name="registerAsSet"
+								options={registerAsSetOptions}
+							/>
+							<ExtraConditionsInput
+								label="Дополнительные условия"
+								name="workingConditions"
+								checkboxName="vhl"
+								checkboxLabel="Наличие ДМС"
+								placeholder="Например, развитая корпоративная культура"
 							/>
 						</div>
 						<div className="two-btn-disposition">

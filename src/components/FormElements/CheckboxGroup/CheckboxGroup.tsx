@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
 import { TElementWithOptions } from '../../../types/formik-elements';
-import CheckboxInput from './CheckboxInput/CheckboxInput';
 import Label from '../Label/Label';
+import ChipCheckbox from './ChipCheckbox/ChipCheckbox';
 
 type TCheckboxGroupField = {
 	field: {
@@ -23,7 +23,7 @@ const CheckboxGroup: FC<TElementWithOptions> = ({ label, name, options }) => {
 							options &&
 							options.map((option) => {
 								return (
-									<CheckboxInput
+									<ChipCheckbox
 										key={option.id}
 										id={option.id}
 										label={option.name}

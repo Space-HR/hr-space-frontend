@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useFormikContext } from 'formik';
-import './CheckboxInput.scss';
+import './ChipCheckbox.scss';
 import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
 type TRadioButtonProps = {
@@ -13,7 +13,7 @@ type TRadioButtonProps = {
 	name: string;
 };
 
-const CheckboxInput: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
+const ChipCheckbox: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 	const { setFieldValue } = useFormikContext<TFormModel>();
 	const stringId = `${name}-${id}`;
 	const isChecked = field.value.includes(id);
@@ -47,4 +47,4 @@ const CheckboxInput: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 	);
 };
 
-export default CheckboxInput;
+export default ChipCheckbox;

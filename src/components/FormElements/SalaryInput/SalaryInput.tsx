@@ -5,7 +5,7 @@ import currency from '../../../images/currency.svg';
 import TextError from '../TextError/TextError';
 import Label from '../Label/Label';
 
-const c: FC = () => {
+const SalaryInput: FC = () => {
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		const allowedKeys = [
 			'Backspace',

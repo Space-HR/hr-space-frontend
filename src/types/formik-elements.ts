@@ -14,6 +14,21 @@ export type TElementWithOptions = {
 	placeholder?: string;
 };
 
+export type TOption = {
+	value: number;
+	label: string;
+};
+
+export type TOptions = TOption[];
+
+export type TElementWithSelect = {
+	label: string;
+	name: string;
+	options: TOptions;
+	placeholder?: string;
+	isMulti: boolean;
+};
+
 export type PropInput = {
 	label?: string;
 	name: string;

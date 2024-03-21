@@ -167,7 +167,6 @@
 @mixin input-style {
 	display: flex;
 	flex-direction: column;
-	margin: 0 0 $margin-between-elements 0;
 
 	&__title {
 		@include text-input-label;

@@ -7,12 +7,14 @@ import Button from '../../Buttons/Button/Button';
 import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
 import { PropOption } from '../../../types/formik-elements';
 import ScheduleRadioButtons from '../../FormElements/RadioButtons/ScheduleRadioButtons/ScheduleRadioButtons';
+import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup';
 
 export type TFormModel = {
 	minSalary: number | null;
 	maxSalary: number | null;
 	scheduleId: number | null;
 	scheduleComment: string;
+	workFormats: number[];
 };
 
 const scheduleOptions: PropOption[] = [
@@ -26,6 +28,20 @@ const scheduleOptions: PropOption[] = [
 	// { id: 7, name: 'Вахтовый' },
 ];
 
+const workFormatsOptions: PropOption[] = [
+	{ id: 0, name: 'В офисе' },
+	{ id: 1, name: 'Удаленно' },
+	{ id: 2, name: 'Гибрид' },
+];
+
+const registerAsSetOptions: PropOption[] = [
+	{ id: 0, name: 'ТК РФ' },
+	{ id: 1, name: 'Самозанятые' },
+	{ id: 2, name: 'ИП' },
+	{ id: 3, name: 'ГПХ' },
+];
+
+
 const WorkConditionsForm: FC = () => {
 	const navigate = useNavigate();
 
@@ -34,6 +50,8 @@ const WorkConditionsForm: FC = () => {
 		maxSalary: null,
 		scheduleId: null,
 		scheduleComment: '',
+		workFormats: [],
+		registerAsSet: []
 	};
 
 	const validationSchema = Yup.object({
@@ -67,12 +85,22 @@ const WorkConditionsForm: FC = () => {
 					<Form>
 						<div className="input-container">
 							<SalaryInput />
-
 							<ScheduleRadioButtons
 								label="График работы"
 								name="scheduleId"
 								options={scheduleOptions}
 								currentValues={formikProps.values.scheduleId}
+							/>
+
+							<CheckboxGroup
+							label='Формат работы'
+							name="workFormats"
+							options={workFormatsOptions}
+							/>
+							<CheckboxGroup
+							label='Способ оформления'
+							name="registerAsSet"
+							options={registerAsSetOptions}
 							/>
 						</div>
 						<div className="two-btn-disposition">

@@ -154,6 +154,15 @@
 	color: $main-black;
 }
 
+@mixin text-footer-title {
+	// footer title
+	@include text;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 150%;
+	color: $main-white;
+}
+
 // input text
 @mixin text-input {
 	// для лейбла инпута

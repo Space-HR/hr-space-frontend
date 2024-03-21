@@ -1,13 +1,14 @@
 import { FC, ChangeEvent, useState } from 'react';
-import './InputWithSearch.scss';
+import './InputWithChips.scss';
 import { Field, ErrorMessage, FieldProps } from 'formik';
 import TextError from '../TextError/TextError';
 import {
 	TElementWithOptions,
 	PropOptions,
+	PropOption,
 } from '../../../types/formik-elements';
 
-const InputWithSearch: FC<TElementWithOptions> = ({
+const InputWithChips: FC<TElementWithOptions> = ({
 	label,
 	name,
 	options,
@@ -17,6 +18,7 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 	const [input, setInput] = useState('');
 	const [activeList, setActiveList] = useState<boolean>(false);
 	const [activeOptions, setActiveOptions] = useState<PropOptions>(options);
+	const [selectedList, setSelectedList] = useState<PropOptions>([]);
 
 	const setFilterData = (e: ChangeEvent<HTMLInputElement>) => {
 		setActiveList(true);
@@ -45,9 +47,10 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 		}
 	};
 
-	const setTextInput = (value: string) => {
-		setInput(value);
+	const setTextInput = (option: PropOption) => {
+		setInput(option.name);
 		setActiveList(false);
+		setSelectedList([...selectedList, option]);
 	};
 
 	return (
@@ -59,6 +62,24 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 				<Field name={name}>
 					{({ field, form }: FieldProps) => (
 						<>
+							<ul
+								className={`options-selected ${selectedList ? 'options-selected_active' : ''}`}
+							>
+								{selectedList &&
+									selectedList.map((option) => {
+										return (
+											<li
+												className="options__item"
+												key={option.id}
+												onClick={() => setTextInput(option)}
+												onKeyDown={() => {}}
+												role="presentation"
+											>
+												{option.name}
+											</li>
+										);
+									})}
+							</ul>
 							<input
 								type="text"
 								className={`form-control__input ${form.errors[name] && form.touched[name] ? 'form-control__error' : ''}`}
@@ -79,7 +100,7 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 											<li
 												className="options__item"
 												key={option.id}
-												onClick={() => setTextInput(option.name)}
+												onClick={() => setTextInput(option)}
 												onKeyDown={() => {}}
 												role="presentation"
 											>
@@ -97,4 +118,4 @@ const InputWithSearch: FC<TElementWithOptions> = ({
 	);
 };
 
-export default InputWithSearch;
+export default InputWithChips;

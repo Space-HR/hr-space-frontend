@@ -10,38 +10,5 @@
 }
 
 .options {
-    display: none;
-    position: absolute;
-    top: 52px;
-    right: 0;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid $grey-input;
-    padding: $options-padding;
-    margin: 0;
-    list-style: none;
-    width: 100%;
-    max-width: $max-width-input;
-    max-height: $max-height-input;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-color: $grey-input #FFF; /* «цвет ползунка» «цвет полосы скроллбара» */
-    scrollbar-width: thin;  /* толщина */
-
-    &__item {
-        @include text-input;
-        padding: 8px;
-        margin: 0;
-    }
-
-    &__item:hover {
-        color: $blue-hover;
-        cursor: pointer;
-    }
-
-    &_active {
-        display: flex;
-        flex-direction: column;
-        z-index: 99;
-    }
+    @include options-style;
 }

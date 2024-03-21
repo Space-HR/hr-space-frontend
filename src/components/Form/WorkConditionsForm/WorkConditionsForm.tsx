@@ -75,7 +75,7 @@ const WorkConditionsForm: FC = () => {
 								currentValues={formikProps.values.scheduleId}
 							/>
 						</div>
-						<div className='two-btn-disposition'>
+						<div className="two-btn-disposition">
 							<Button
 								type="button"
 								styleType="secondary"

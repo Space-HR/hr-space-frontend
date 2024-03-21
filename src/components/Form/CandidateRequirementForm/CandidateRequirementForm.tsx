@@ -6,10 +6,15 @@ import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import { PropOption } from '../../../types/formik-elements';
 import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
+import InputWithTips from '../../FormElements/InputWithTips/InputWithTips';
+// import InputWithChips from '../../FormElements/InputWithChips/InputWithChips';
+
+import { city } from '../../../data/data-form';
 
 export type TFormModel = {
 	employeeExperienceId: number | null;
 	employeeEducationId: number | null;
+	cityOrganization: number | null;
 };
 
 const employeeExperience: PropOption[] = [
@@ -31,12 +36,17 @@ const CandidateRequirementForm: FC = () => {
 	const initialValues = {
 		employeeExperienceId: null,
 		employeeEducationId: null,
+		cityOrganization: null,
 	};
 
-	const validationSchema = Yup.object({});
+	const validationSchema = Yup.object({
+		cityOrganization: Yup.string().required(
+			'Укажите город, где находится организация'
+		),
+	});
 
 	const onSubmit = (values: TFormModel) => {
-		navigate('/form/step-4');
+		navigate('/form/step-4', { replace: true });
 
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
@@ -61,20 +71,36 @@ const CandidateRequirementForm: FC = () => {
 								name="employeeEducationId"
 								options={employeeEducation}
 							/>
+							{/* <div className="form__elements">
+								<InputWithChips
+									label="Город организации"
+									placeholder="Начните вводить и выберите, где находится ваша организация"
+									name="cityOrganization"
+									options={city}
+								/>
+							</div> */}
+							<div className="form__elements">
+								<InputWithTips
+									label="Город организации"
+									placeholder="Начните вводить и выберите, где находится ваша организация"
+									name="cityOrganization"
+									options={city}
+								/>
+							</div>
 						</div>
-						<div className='two-btn-disposition'>
-						<Button
-							type="button"
-							styleType="secondary"
-							label="Назад"
-							onClick={() => navigate('/form/step-2')}
-						/>
+						<div className="two-btn-disposition">
+							<Button
+								type="button"
+								styleType="secondary"
+								label="Назад"
+								onClick={() => navigate('/form/step-2')}
+							/>
 
-						<Button
-							type="submit"
-							styleType="primary"
-							label="Сохранить и продолжить"
-						/>
+							<Button
+								type="submit"
+								styleType="primary"
+								label="Сохранить и продолжить"
+							/>
 						</div>
 					</Form>
 				</div>

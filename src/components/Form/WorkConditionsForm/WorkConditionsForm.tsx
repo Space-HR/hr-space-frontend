@@ -9,6 +9,7 @@ import { PropOption } from '../../../types/formik-elements';
 import ScheduleRadioButtons from '../../FormElements/RadioButtons/ScheduleRadioButtons/ScheduleRadioButtons';
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup';
 import ExtraConditionsInput from '../../FormElements/ExtraConditionsInput/ExtraConditionsInput';
+import EmployeeCategoriesInput from '../../FormElements/EmployeeCategoriesInput/EmployeeCategoriesInput';
 
 export type TFormModel = {
 	minSalary: number | null;
@@ -18,6 +19,9 @@ export type TFormModel = {
 	workFormats: number[];
 	workingConditions: string;
 	vhl: boolean;
+	employeeCategories: number[];
+	foreignCitizen: boolean;
+	foreignCountries: number[];
 };
 
 const scheduleOptions: PropOption[] = [
@@ -41,12 +45,12 @@ const registerAsSetOptions: PropOption[] = [
 	{ id: 3, name: 'ГПХ' },
 ];
 
-// const employeeCategoriesOptions: PropOption[] = [
-// 	{ id: 0, name: 'Студентов' },
-// 	{ id: 1, name: 'От 14 лет' },
-// 	{ id: 2, name: 'От 16 лет' },
-// 	{ id: 3, name: 'С нарушением здоровья' },
-// ];
+const employeeCategoriesOptions: PropOption[] = [
+	{ id: 0, name: 'Студентов' },
+	{ id: 1, name: 'От 14 лет' },
+	{ id: 2, name: 'От 16 лет' },
+	{ id: 3, name: 'С нарушением здоровья' },
+];
 
 const WorkConditionsForm: FC = () => {
 	const navigate = useNavigate();
@@ -60,6 +64,9 @@ const WorkConditionsForm: FC = () => {
 		registerAsSet: [],
 		workingConditions: '',
 		vhl: false,
+		employeeCategories: [],
+		foreignCitizen: false,
+		foreignCountries: [],
 	};
 
 	const validationSchema = Yup.object({
@@ -116,6 +123,12 @@ const WorkConditionsForm: FC = () => {
 								checkboxName="vhl"
 								checkboxLabel="Наличие ДМС"
 								placeholder="Например, развитая корпоративная культура"
+							/>
+							<EmployeeCategoriesInput
+								label="Готовы рассмотреть"
+								name="registerAsSet"
+								options={employeeCategoriesOptions}
+								foreignCitizenName="foreignCitizen"
 							/>
 						</div>
 						<div className="two-btn-disposition">

@@ -5,15 +5,22 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import NumericInput from '../../FormElements/NumericInput/NumericInput';
+// import { calculateMediaSalary } from '../../../utils/calculateMediaSalary';
+// import FeeRadioButtons from '../../FormElements/FeeRadioButtons/FeeRadioButtons';
 
 export type TFormModel = {
 	qtyEmployees: number;
 	paymentForEmployee: number | undefined;
 	tariffId: number;
 	qtyRecruiters: number;
+	labelForChoose: number | undefined;
 };
 
-
+// type TOption = {
+// 	id: number;
+// 	name: string;
+// 	value: number | undefined;
+// };
 
 // type TtariffIdOption = PropOption & {
 // 	payment_for_employee_start_working: number;
@@ -48,6 +55,7 @@ export type TFormModel = {
 // 		units_of_measurement_warranty_period: 'month',
 // 	},
 // ];
+
 // const minSalary = 0;
 // const maxSalary = 200000;
 
@@ -57,6 +65,7 @@ const TariffForm: FC = () => {
 		paymentForEmployee: 'paymentForEmployee',
 		tariffId: 'tariffId',
 		qtyRecruiters: 'qtyRecruiters',
+		labelForChoose: 'labelForChoose',
 	};
 
 	const navigate = useNavigate();
@@ -66,7 +75,15 @@ const TariffForm: FC = () => {
 		paymentForEmployee: undefined,
 		tariffId: 0,
 		qtyRecruiters: 1,
+		labelForChoose: undefined,
 	};
+
+	// const medianSalary = calculateMediaSalary({ minSalary, maxSalary });
+	// const options: TOption[] = [
+	// 	{ id: 0, name: `${medianSalary * 1.5} ₽`, value: medianSalary * 1.5 },
+	// 	{ id: 1, name: `${medianSalary * 2} ₽`, value: medianSalary * 2 },
+	// 	{ id: 2, name: 'Назначить самостоятельно', value: undefined },
+	// ];
 
 	// const validateRegisterAsSet = (value: Yup.AnyObject) => {
 	// 	const { registerAsSet } = value || {};
@@ -106,6 +123,13 @@ const TariffForm: FC = () => {
 								label="Количество сотрудников"
 								name={fieldNames.qtyEmployees}
 							/>
+							{/* <FeeRadioButtons
+								label="Вознаграждение за сотрудника"
+								nameLabel="labelForChoose"
+								name={fieldNames.paymentForEmployee}
+								placeholder="Введите вознаграждение в рублях"
+								medianSalary={medianSalary}
+							/> */}
 						</div>
 						<div className="two-btn-disposition">
 							<Button

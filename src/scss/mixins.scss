@@ -196,11 +196,10 @@
 }
 
 @mixin textarea-input {
-	outline: 1px solid $grey-input;
+	border: 1px solid $grey-input;
 	transition: border-color 0.3s ease;
-	border: none;
+	outline: none;
 	padding: $inner-padding-input;
-	border-radius: 8px;
 	display: flex;
 	align-items: center;
 
@@ -209,13 +208,13 @@
 	}
 	&:hover,
 	&:focus {
-		outline-color: $blue-hover;
+		border-color: $blue-hover;
 	}
 	&:focus {
 		box-shadow: inset 0 0 0 50px #fff;
 	}
-
 }
+
 
 
 

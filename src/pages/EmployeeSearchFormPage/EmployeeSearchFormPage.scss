@@ -5,11 +5,9 @@
 	display: flex;
 	flex-grow: 1;
 	padding: 44px $padding-horizontal;
-	
 
 	&__form-container {
-		padding: 60px 80px;
-		flex-grow: 1;
+		padding: $form-section-y-padding 80px;
 		width: 848px;
 	}
 }

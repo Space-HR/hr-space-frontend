@@ -17,6 +17,7 @@ export type TFormModel = {
 	scheduleId: number | undefined;
 	scheduleComment: string;
 	workFormats: number[];
+	registerAsSet: number[];
 	workingConditions: string;
 	vhl: boolean;
 	employeeCategories: number[];
@@ -53,6 +54,20 @@ const employeeCategoriesOptions: PropOption[] = [
 ];
 
 const WorkConditionsForm: FC = () => {
+	const fieldNames = {
+		minSalary: 'minSalary',
+		maxSalary: 'maxSalary',
+		scheduleId: 'scheduleId',
+		scheduleComment: 'scheduleComment',
+		workFormats: 'workFormats',
+		registerAsSet: 'registerAsSet',
+		workingConditions: 'workingConditions',
+		vhl: 'vhl',
+		employeeCategories: 'employeeCategories',
+		foreignCitizen: 'foreignCitizen',
+		foreignCountries: 'foreignCountries',
+	};
+
 	const navigate = useNavigate();
 
 	const initialValues = {
@@ -74,11 +89,11 @@ const WorkConditionsForm: FC = () => {
 
 		if (minSalary && maxSalary && maxSalary < minSalary) {
 			return new Yup.ValidationError(
-			  'Максимальная зарплата не может быть меньше минимальной',
-			  value,
-			  'minSalary'
+				'Максимальная зарплата не может быть меньше минимальной',
+				value,
+				fieldNames.minSalary
 			);
-		  }
+		}
 
 		if (minSalary || maxSalary) {
 			return true;
@@ -86,7 +101,7 @@ const WorkConditionsForm: FC = () => {
 		return new Yup.ValidationError(
 			'Укажите зарплату специалиста',
 			value,
-			'minSalary'
+			fieldNames.minSalary
 		);
 	};
 
@@ -98,14 +113,11 @@ const WorkConditionsForm: FC = () => {
 		return new Yup.ValidationError(
 			'Выберите способ оформления сотрудников',
 			value,
-			'registerAsSet'
+			fieldNames.registerAsSet
 		);
 	};
 
-	const validationSchema = Yup.object({
-		minSalary: Yup.number(),
-		maxSalary: Yup.number(),
-	})
+	const validationSchema = Yup.object()
 		.test(
 			'minOrMaxSalary-required',
 			'Укажите зарплату специалиста',
@@ -118,8 +130,7 @@ const WorkConditionsForm: FC = () => {
 		);
 
 	const onSubmit = (values: TFormModel) => {
-		// navigate('/form/step-3');
-
+		navigate('/form/step-3');
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 
@@ -136,31 +147,31 @@ const WorkConditionsForm: FC = () => {
 							<SalaryInput />
 							<ScheduleRadioButtons
 								label="График работы"
-								name="scheduleId"
+								name={fieldNames.scheduleId}
 								options={scheduleOptions}
 								currentValues={formikProps.values.scheduleId}
 							/>
 
 							<CheckboxGroup
 								label="Формат работы"
-								name="workFormats"
+								name={fieldNames.workFormats}
 								options={workFormatsOptions}
 							/>
 							<CheckboxGroup
 								label="Способ оформления"
-								name="registerAsSet"
+								name={fieldNames.registerAsSet}
 								options={registerAsSetOptions}
 							/>
 							<ExtraConditionsInput
 								label="Дополнительные условия"
-								name="workingConditions"
-								checkboxName="vhl"
+								name={fieldNames.workingConditions}
+								checkboxName={fieldNames.vhl}
 								checkboxLabel="Наличие ДМС"
 								placeholder="Например, развитая корпоративная культура"
 							/>
 							<EmployeeCategoriesInput
 								label="Готовы рассмотреть"
-								name="employeeCategories"
+								name={fieldNames.employeeCategories}
 								options={employeeCategoriesOptions}
 								foreignCitizenName="foreignCitizen"
 							/>

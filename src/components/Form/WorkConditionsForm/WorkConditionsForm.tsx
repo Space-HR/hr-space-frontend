@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
 import { PropOption } from '../../../types/formik-elements';
-import ScheduleRadioButtons from '../../FormElements/RadioButtons/ScheduleRadioButtons/ScheduleRadioButtons';
+import ScheduleRadioButtons from '../../FormElements/ScheduleRadioButtons/ScheduleRadioButtons';
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup';
 import ExtraConditionsInput from '../../FormElements/ExtraConditionsInput/ExtraConditionsInput';
 import EmployeeCategoriesInput from '../../FormElements/EmployeeCategoriesInput/EmployeeCategoriesInput';

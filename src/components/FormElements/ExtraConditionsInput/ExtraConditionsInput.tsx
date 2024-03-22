@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import './ExtraConditionsInput.scss';
 
-import Input from '../Input/Input';
 import Label from '../Label/Label';
 import Checkbox from '../CheckboxGroup/Checkbox/Checkbox';
+import MultiLineInput from '../MultiLineInput/MultiLineInput';
 
 type TExtraConditionsInputProps = {
 	label: string;
@@ -24,7 +24,7 @@ const ExtraConditionsInput: FC<TExtraConditionsInputProps> = ({
 		<div className="input-conainer">
 			<Label name={name} label={label} />
 			<Checkbox name={checkboxName} label={checkboxLabel} />
-			<Input placeholder={placeholder} name={name} type="text"  />
+			<MultiLineInput name={name} placeholder={placeholder} />
 		</div>
 	);
 };

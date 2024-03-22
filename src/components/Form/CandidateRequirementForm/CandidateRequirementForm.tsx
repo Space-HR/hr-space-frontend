@@ -6,20 +6,14 @@ import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import { PropOption } from '../../../types/formik-elements';
 import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
-// import InputWithTips from '../../FormElements/InputWithTips/InputWithTips';
-import FormikSelectWithSearch from '../../FormElements/InputWithSearch_/FormikSelectWithSearch';
-
-import { city } from '../../../data/data-form';
-
-// const cityN = city.map((n) => ({
-// 	value: n.id,
-// 	label: n.name,
-// }));
+import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 
 export type TFormModel = {
-	employeeExperienceId: number | null;
-	employeeEducationId: number | null;
-	cityOrganization: number | number[] | null;
+	employeeExperienceId: number | undefined;
+	employeeEducationId: number | undefined;
+	employeeSkills: number[];
+	employeeAddSkills: string[];
+	responsibilitiesEmployee: string;
 };
 
 const employeeExperience: PropOption[] = [
@@ -36,23 +30,47 @@ const employeeEducation: PropOption[] = [
 ];
 
 const CandidateRequirementForm: FC = () => {
+	const fieldNames = {
+		employeeExperienceId: 'employeeExperienceId',
+		employeeEducationId: 'employeeEducationId',
+		employeeSkills: 'employeeSkills',
+		employeeAddSkills: 'employeeAddSkills',
+		responsibilitiesEmployee: 'responsibilitiesEmployee',
+	};
+
 	const navigate = useNavigate();
 
 	const initialValues = {
-		employeeExperienceId: null,
-		employeeEducationId: null,
-		cityOrganization: null,
+		employeeExperienceId: undefined,
+		employeeEducationId: undefined,
+		employeeSkills: [],
+		employeeAddSkills: [],
+		responsibilitiesEmployee: '',
+	};
+
+	const validateResponsibilitiesEmployee = (value: Yup.AnyObject) => {
+		const { responsibilitiesEmployee } = value || {};
+		if (responsibilitiesEmployee) {
+			return true;
+		}
+		return new Yup.ValidationError(
+			'Укажите обязанности',
+			value,
+			fieldNames.responsibilitiesEmployee
+		);
 	};
 
 	const validationSchema = Yup.object({
-		// cityOrganization: Yup.string().required(
-		// 	'Укажите город, где находится организация'
-		// ),
-	});
+		minSalary: Yup.number(),
+		maxSalary: Yup.number(),
+	}).test(
+		'responsibilitiesEmployee-required',
+		'Укажите обязанности',
+		validateResponsibilitiesEmployee
+	);
 
 	const onSubmit = (values: TFormModel) => {
 		navigate('/form/step-4', { replace: true });
-
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 
@@ -68,47 +86,20 @@ const CandidateRequirementForm: FC = () => {
 						<div className="input-container">
 							<RadioButtons
 								label="Опыт работы"
-								name="employeeExperienceId"
+								name={fieldNames.employeeExperienceId}
 								options={employeeExperience}
 							/>
 							<RadioButtons
 								label="Образование"
-								name="employeeEducationId"
+								name={fieldNames.employeeEducationId}
 								options={employeeEducation}
 							/>
-							{/* <FormikSelectWithSearch
-								options={city}
-								label="Город организации"
-								name="cityOrganization"
-								placeholder="Начните вводить и выберите, где находится ваша организация"
-								isMulti={false}
-							/> */}
-							<FormikSelectWithSearch
-								options={city}
-								label="Город организации"
-								name="cityOrganization"
-								placeholder="Начните вводить и выберите, где находится ваша организация"
-								// eslint-disable-next-line react/jsx-boolean-value
-								isMulti={false}
+							<MultiLineInput
+								label="Обязанности"
+								name={fieldNames.responsibilitiesEmployee}
+								placeholder="Введите обязанности сотрудника"
+								isLabel
 							/>
-							{/* <div className="form__elements">
-								<InputWithChips
-									label="Город организации"
-									placeholder="Начните вводить и выберите, где находится ваша организация"
-									name="cityOrganization"
-									options={city}
-								/>
-							</div> */}
-							{/* <div className="form__elements">
-								<InputWithTips
-									label="Город организации"
-									placeholder="Начните вводить и выберите, где находится ваша организация"
-									name="cityOrganization"
-									options={cityN}
-									// eslint-disable-next-line react/jsx-boolean-value
-									isMulti={false}
-								/>
-							</div> */}
 						</div>
 						<div className="two-btn-disposition">
 							<Button

@@ -1,0 +1,19 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.textarea-input {
+    box-sizing: border-box;
+	overflow-y: scroll;
+	@include scrollbar;
+
+	@include textarea-input;
+	resize: none;
+	width: 100%;
+	height: 128px;
+	border-radius: 8px;
+}
+
+.error {
+	border-color: $red-error;
+	margin: 0;
+}

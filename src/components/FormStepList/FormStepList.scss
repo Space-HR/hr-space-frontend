@@ -3,7 +3,7 @@
 
 .form-steps {
 	min-width: 400px;
-	padding: 56px 48px;
+	padding: $form-section-y-padding 48px;
 	display: flex;
 	flex-direction: column;
 	row-gap: 40px;

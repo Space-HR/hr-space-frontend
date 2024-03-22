@@ -14,7 +14,7 @@
 }
 
 // ------------FLEX------------
-@mixin flex-coloumn {
+@mixin flex-column {
 	display: flex;
 	flex-direction: column;
 }
@@ -154,6 +154,181 @@
 	color: $main-black;
 }
 
+@mixin text-footer-title {
+	// footer title
+	@include text;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 150%;
+	color: $main-white;
+}
+
+//  -------------- SCROLLBAR -----------------
+@mixin scrollbar {
+	/* Цвет полосы прокрутки */
+	scrollbar-color: $grey-input $main-white;
+
+	/* Стили для полосы прокрутки */
+	&::-webkit-scrollbar {
+		width: 16px;
+		height: 100%;
+	}
+
+	/* Стили для трека скроллбара */
+	&::-webkit-scrollbar-track {
+		background-color: $main-white;
+	}
+
+	/* Стили для ползунка скроллбара */
+	&::-webkit-scrollbar-thumb {
+		background-color: $grey-input;
+		border-radius: 13px;
+		margin: 10px 8px 8px 0;
+	}
+}
+
+//  -------------- INPUTS -----------------
+// контенер для ипута
+@mixin input-conainer {
+	display: flex;
+	flex-direction: column;
+	row-gap: $input-inside-gap;
+}
+
+@mixin textarea-input {
+	border: 1px solid $grey-input;
+	transition: border-color 0.3s ease;
+	outline: none;
+	padding: $inner-padding-input;
+	display: flex;
+	align-items: center;
+
+	&::placeholder {
+		@include text-placeholder;
+	}
+	&:hover,
+	&:focus {
+		border-color: $blue-hover;
+	}
+	&:focus {
+		box-shadow: inset 0 0 0 50px #fff;
+	}
+}
+
+
+
+
+// для спика значений checkbox и radio button с округлыми краями элементов (border-radius: 40px
+@mixin rounded-input-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+// стилиация checkbox с галочкой
+@mixin checkbox {
+	display: flex;
+	column-gap: 8px;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+
+	&__input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	&__сustom {
+		display: inline-block;
+		height: 20px;
+		width: 20px;
+		border: 1px solid $grey-input-placeholder;
+		border-radius: 4px;
+		position: relative;
+	}
+
+	&__input:checked + &__сustom {
+		border-color: $blue-hover;
+	}
+
+	&__input:checked + &__сustom::after {
+		content: '';
+		position: absolute;
+		left: 5px;
+		top: 1px;
+		width: 6px;
+		height: 11px;
+		border: solid $blue-hover;
+		border-width: 0 2px 2px 0;
+		transform: rotate(45deg);
+	}
+}
+
+// инпут с закругленными углами
+@mixin rounded-input {
+	@include text-normal-large-black;
+	display: inline-block;
+	padding: 7px 14px;
+	background-color: $main-white;
+	border: 1px solid $grey-input;
+	border-radius: 40px;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		background-color: $blue-gray-light-btn;
+		border: 1px solid $blue-btn-disabled;
+	}
+
+	&_checked {
+		background-color: $blue-gray-light-btn;
+		border: 1px solid $blue-btn-disabled;
+	}
+
+	&__hidden-block {
+		display: none;
+	}
+}
+
+//стиль для выпадающего списка input
+@mixin options-style {
+	display: none;
+	position: absolute;
+	top: 52px;
+	right: 0;
+	background-color: #fff;
+	border-radius: 8px;
+	border: 1px solid $grey-input;
+	padding: $options-padding;
+	margin: 0;
+	list-style: none;
+	width: 100%;
+	max-width: $max-width-input;
+	max-height: $max-height-input;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-color: $grey-input #fff; /* «цвет ползунка» «цвет полосы скроллбара» */
+	scrollbar-width: thin; /* толщина */
+
+	&__item {
+		@include text-input;
+		padding: 8px;
+		margin: 0;
+	}
+
+	&__item:hover {
+		color: $blue-hover;
+		cursor: pointer;
+	}
+
+	&_active {
+		display: flex;
+		flex-direction: column;
+		z-index: 99;
+	}
+}
+
 // input text
 @mixin text-input {
 	// для лейбла инпута
@@ -165,9 +340,7 @@
 }
 
 @mixin input-style {
-	display: flex;
-	flex-direction: column;
-	margin: 0 0 $margin-between-elements 0;
+	@include flex-column;
 
 	&__title {
 		@include text-input-label;
@@ -202,8 +375,7 @@
 }
 
 @mixin form-style {
-	display: flex;
-	flex-direction: column;
+	@include flex-column;
 	max-width: 100%;
 	justify-content: space-between;
 
@@ -213,81 +385,22 @@
 	}
 }
 
-// контенер для ипута
-@mixin input-conainer {
-	display: flex;
-	flex-direction: column;
-	row-gap: $input-inside-gap;
-}
-
-// для спика значений checkbox и radio button с округлыми краями элементов (border-radius: 40px)
-
-@mixin rounded-input-row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-}
-
-// инпут с закругленными углами
-@mixin rounded-input {
-	@include text-normal-large-black;
-	display: inline-block;
-	padding: 7px 14px;
-	background-color: $main-white;
-	border: 1px solid $grey-input;
-	border-radius: 40px;
-	cursor: pointer;
-
-	&:hover,
-	&:focus {
-		background-color: $blue-gray-light-btn;
-		border: 1px solid $blue-btn-disabled;
+@mixin remove-number-input-spinners {
+	/* Для Webkit (Safari, Chrome и Opera) */
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
 	}
 
-	&_checked {
-		background-color: $blue-gray-light-btn;
-		border: 1px solid $blue-btn-disabled;
+	/* Для Firefox */
+	&[type='number'] {
+		-moz-appearance: textfield;
 	}
 
-	&__hidden-block {
+	/* Для Internet Explorer 10+ */
+	&::-ms-clear,
+	&::-ms-reveal {
 		display: none;
 	}
-}
-
-//стиль для выпадающего списка input
-@mixin options-style {
-	display: none;
-    position: absolute;
-    top: 52px;
-    right: 0;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid $grey-input;
-    padding: $options-padding;
-    margin: 0;
-    list-style: none;
-    width: 100%;
-    max-width: $max-width-input;
-    max-height: $max-height-input;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-color: $grey-input #FFF; /* «цвет ползунка» «цвет полосы скроллбара» */
-    scrollbar-width: thin;  /* толщина */
-
-    &__item {
-        @include text-input;
-        padding: 8px;
-        margin: 0;
-    }
-
-    &__item:hover {
-        color: $blue-hover;
-        cursor: pointer;
-    }
-
-    &_active {
-        display: flex;
-        flex-direction: column;
-        z-index: 99;
-    }
 }

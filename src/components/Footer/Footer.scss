@@ -5,4 +5,38 @@
 	padding: 20px $padding-horizontal;
 	height: 130px;
 	background-color: $main-black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__question {
+		@include text-normal-large-white;
+	}
+
+	&__link {
+		@include text-normal-large-white;
+	}
+
+	&__copyright {
+		@include text-normal-small-gray;
+	}
+
+	&__contact {
+		@include mp-null-list;
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+	}
+
+	&__contact-title {
+		@include text-footer-title;
+	}
+
+	&__contact-value {
+		@include text-normal-medium-white;
+	}
+
+	&__contact-number {
+		@include text-bold-medium-white;
+	}
 }

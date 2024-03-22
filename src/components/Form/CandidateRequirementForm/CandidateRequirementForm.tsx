@@ -6,15 +6,15 @@ import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import { PropOption } from '../../../types/formik-elements';
 import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
-import InputWithTips from '../../FormElements/InputWithTips/InputWithTips';
-// import InputWithChips from '../../FormElements/InputWithChips/InputWithChips';
+// import InputWithTips from '../../FormElements/InputWithTips/InputWithTips';
+import FormikSelectWithSearch from '../../FormElements/InputWithSearch_/FormikSelectWithSearch';
 
 import { city } from '../../../data/data-form';
 
-const cityN = city.map((n) => ({
-	value: n.id,
-	label: n.name,
-}));
+// const cityN = city.map((n) => ({
+// 	value: n.id,
+// 	label: n.name,
+// }));
 
 export type TFormModel = {
 	employeeExperienceId: number | null;
@@ -45,9 +45,9 @@ const CandidateRequirementForm: FC = () => {
 	};
 
 	const validationSchema = Yup.object({
-		cityOrganization: Yup.string().required(
-			'Укажите город, где находится организация'
-		),
+		// cityOrganization: Yup.string().required(
+		// 	'Укажите город, где находится организация'
+		// ),
 	});
 
 	const onSubmit = (values: TFormModel) => {
@@ -76,6 +76,21 @@ const CandidateRequirementForm: FC = () => {
 								name="employeeEducationId"
 								options={employeeEducation}
 							/>
+							{/* <FormikSelectWithSearch
+								options={city}
+								label="Город организации"
+								name="cityOrganization"
+								placeholder="Начните вводить и выберите, где находится ваша организация"
+								isMulti={false}
+							/> */}
+							<FormikSelectWithSearch
+								options={city}
+								label="Город организации"
+								name="cityOrganization"
+								placeholder="Начните вводить и выберите, где находится ваша организация"
+								// eslint-disable-next-line react/jsx-boolean-value
+								isMulti={false}
+							/>
 							{/* <div className="form__elements">
 								<InputWithChips
 									label="Город организации"
@@ -84,7 +99,7 @@ const CandidateRequirementForm: FC = () => {
 									options={city}
 								/>
 							</div> */}
-							<div className="form__elements">
+							{/* <div className="form__elements">
 								<InputWithTips
 									label="Город организации"
 									placeholder="Начните вводить и выберите, где находится ваша организация"
@@ -93,7 +108,7 @@ const CandidateRequirementForm: FC = () => {
 									// eslint-disable-next-line react/jsx-boolean-value
 									isMulti={false}
 								/>
-							</div>
+							</div> */}
 						</div>
 						<div className="two-btn-disposition">
 							<Button

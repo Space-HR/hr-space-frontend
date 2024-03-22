@@ -14,19 +14,22 @@ export type TElementWithOptions = {
 	placeholder?: string;
 };
 
-export type TOption = {
-	value: number;
-	label: string;
-};
-
-export type TOptions = TOption[];
-
 export type TElementWithSelect = {
 	label: string;
 	name: string;
-	options: TOptions;
+	options: PropOptions;
 	placeholder?: string;
 	isMulti: boolean;
+};
+
+export type SelectProps = {
+	options: PropOptions;
+	value?: PropOption;
+	name: string;
+	placeholder?: string;
+	isMulti?: boolean;
+	// eslint-disable-next-line no-unused-vars
+	onChange: (value: PropOption | PropOptions | undefined) => void;
 };
 
 export type PropInput = {

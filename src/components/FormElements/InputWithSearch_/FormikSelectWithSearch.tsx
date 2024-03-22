@@ -1,12 +1,11 @@
 import { FC } from 'react';
-import './InputWithTips.scss';
 import { Field, ErrorMessage } from 'formik';
-import CustomSelect from './CustomSelect/CustomSelect';
+import ContainerSelectWithSearch from './ContainerSelectWithSearch';
 import TextError from '../TextError/TextError';
 
 import { TElementWithSelect } from '../../../types/formik-elements';
 
-const InputWithTips: FC<TElementWithSelect> = ({
+const FormikSelectWithSearch: FC<TElementWithSelect> = ({
 	label,
 	name,
 	options,
@@ -23,7 +22,7 @@ const InputWithTips: FC<TElementWithSelect> = ({
 				className="custom-select"
 				name={name}
 				options={options}
-				component={CustomSelect}
+				component={ContainerSelectWithSearch}
 				{...rest}
 				placeholder={placeholder}
 				isMulti={isMulti}
@@ -33,4 +32,4 @@ const InputWithTips: FC<TElementWithSelect> = ({
 	);
 };
 
-export default InputWithTips;
+export default FormikSelectWithSearch;

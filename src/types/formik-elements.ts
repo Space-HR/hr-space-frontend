@@ -27,6 +27,8 @@ export type TElementWithSelect = {
 	options: TOptions;
 	placeholder?: string;
 	isMulti: boolean;
+	isTips: boolean;
+	countTips?: number;
 };
 
 export type PropInput = {

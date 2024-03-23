@@ -1,0 +1,120 @@
+@import "../../../../scss/variables.scss";
+@import "../../../../scss/mixins.scss";
+
+.form-control {
+    @include input-style;
+
+    &__container{
+        position: relative;
+    }
+}
+
+.options {
+	// display: flex;
+    // flex-direction: column;
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid $grey-input;
+    padding: $options-padding;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+    max-width: $max-width-input;
+    max-height: $max-height-input;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: $grey-input #FFF; /* «цвет ползунка» «цвет полосы скроллбара» */
+    scrollbar-width: thin;  /* толщина */
+
+    &__item {
+        @include text-input;
+        padding: 8px;
+        margin: 0;
+    }
+
+    &__item:hover {
+        color: $blue-hover;
+        cursor: pointer;
+    }
+
+    &__item-selected {
+        color: $blue-hover;
+        cursor: default;
+    }
+
+    &__item-none {
+        color: $main-gray;
+        cursor: default;
+    }
+
+    &__item-none:hover {
+        color: $main-gray;
+        cursor: default;
+    }
+
+    &_active {
+        display: flex;
+        flex-direction: column;
+        z-index: 99;
+    }
+    
+    &_tips {
+        top: 52px;
+    }
+
+
+}
+
+.selectedOptions {
+    margin: 0 0 9px 0;
+
+    &__button {
+        outline: none; /* Для синий ободки */
+        border: 0;
+        border-radius: 8px;
+        background: $blue-gray-light-btn;
+        padding: 10px 35px 10px 12px;
+        cursor: pointer;
+        margin: 0 8px 0 0;
+        background-image: url(../../../../images/trash-icon.svg);
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+    }
+
+    &__button:last-child {
+        margin: 0;
+    }
+
+    &__button:hover {
+        background-color: $blue-btn-hover;
+    }
+}
+
+.tips {
+    display: flex;
+    padding: 0;
+    margin: 8px 0 0 0;
+    list-style: none;
+    width: 100%;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    // max-width: $max-width-input;
+    // max-height: $max-height-input;
+
+    &__item {
+        @include text-input;
+        cursor: pointer;
+        padding: 8px 12px;
+        margin: 0 8px 0 0;
+        border-radius: 8px;
+        background-color: $blue-gray-light-btn;
+    }
+
+    &__item:hover {
+        background-color: $blue-btn-default;
+    }
+}

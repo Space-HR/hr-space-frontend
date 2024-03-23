@@ -10,6 +10,9 @@ import ScheduleRadioButtons from '../../FormElements/ScheduleRadioButtons/Schedu
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup';
 import ExtraConditionsInput from '../../FormElements/ExtraConditionsInput/ExtraConditionsInput';
 import EmployeeCategoriesInput from '../../FormElements/EmployeeCategoriesInput/EmployeeCategoriesInput';
+import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
+
+import { city } from '../../../data/data-form';
 
 export type TFormModel = {
 	minSalary: number | undefined;
@@ -23,6 +26,7 @@ export type TFormModel = {
 	employeeCategories: number[];
 	foreignCitizen: boolean;
 	foreignCountries: number[];
+	cityOrganization: number | number[] | undefined;
 };
 
 const scheduleOptions: PropOption[] = [
@@ -66,6 +70,7 @@ const WorkConditionsForm: FC = () => {
 		employeeCategories: 'employeeCategories',
 		foreignCitizen: 'foreignCitizen',
 		foreignCountries: 'foreignCountries',
+		cityOrganization: 'cityOrganization',
 	};
 
 	const navigate = useNavigate();
@@ -82,6 +87,7 @@ const WorkConditionsForm: FC = () => {
 		employeeCategories: [],
 		foreignCitizen: false,
 		foreignCountries: [],
+		cityOrganization: undefined,
 	};
 
 	const validateMinOrMaxSalary = (value: Yup.AnyObject) => {
@@ -161,6 +167,17 @@ const WorkConditionsForm: FC = () => {
 								label="Способ оформления"
 								name={fieldNames.registerAsSet}
 								options={registerAsSetOptions}
+							/>
+							<InputWithSearch
+								label="Город организации"
+								name={fieldNames.cityOrganization}
+								options={city}
+								placeholder="Начните вводить и выберите, где находится ваша организация"
+								// eslint-disable-next-line react/jsx-boolean-value
+								isMulti={true}
+								// eslint-disable-next-line react/jsx-boolean-value
+								isTips={true}
+								countTips={4}
 							/>
 							<ExtraConditionsInput
 								label="Дополнительные условия"

@@ -7,7 +7,9 @@ import { PropOption, PropOptions } from '../../../types/formik-elements';
 interface CustomSelectProps extends FieldProps {
 	options: PropOptions;
 	isMulti?: boolean;
+	isTips?: boolean;
 	placeholder?: string;
+	countTips?: number;
 }
 
 const ContainerSelectWithSearch = ({
@@ -16,6 +18,8 @@ const ContainerSelectWithSearch = ({
 	form,
 	options,
 	isMulti,
+	isTips,
+	countTips,
 }: CustomSelectProps) => {
 	const onChange = (option: PropOption | PropOptions | undefined) => {
 		form.setFieldValue(
@@ -42,6 +46,8 @@ const ContainerSelectWithSearch = ({
 			placeholder={placeholder}
 			options={options}
 			isMulti={isMulti}
+			isTips={isTips}
+			countTips={countTips}
 		/>
 	);
 };

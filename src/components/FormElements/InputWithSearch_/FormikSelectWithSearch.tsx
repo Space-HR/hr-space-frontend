@@ -11,6 +11,8 @@ const FormikSelectWithSearch: FC<TElementWithSelect> = ({
 	options,
 	placeholder,
 	isMulti,
+	isTips,
+	countTips,
 	...rest
 }) => {
 	return (
@@ -26,6 +28,8 @@ const FormikSelectWithSearch: FC<TElementWithSelect> = ({
 				{...rest}
 				placeholder={placeholder}
 				isMulti={isMulti}
+				isTips={isTips}
+				countTips={countTips}
 			/>
 			<ErrorMessage name={name} component={TextError} />
 		</div>

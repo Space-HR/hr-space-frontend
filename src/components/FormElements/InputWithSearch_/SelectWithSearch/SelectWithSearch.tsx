@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useState } from 'react';
+import { FC, ChangeEvent, useState, useEffect } from 'react';
 import './SelectWithSearch.scss';
 import {
 	// SelectProps,
@@ -25,6 +25,8 @@ type SelectProps = {
 	options: PropOptions;
 	name: string;
 	placeholder?: string;
+	isTips?: boolean;
+	countTips?: number;
 } & (MultiSelectProps | SingleSelectProps);
 
 const SelectWithSearch: FC<SelectProps> = ({
@@ -33,11 +35,28 @@ const SelectWithSearch: FC<SelectProps> = ({
 	name,
 	placeholder,
 	isMulti,
+	isTips,
+	countTips,
 	onChange,
 }) => {
 	const [valueInput, setValueInput] = useState(isMulti ? '' : value?.name);
 	const [openOptions, setOpenOptions] = useState(false);
 	const [filterOptions, setFilterOptions] = useState(options);
+	const [countTipsNew, setCountTipsNew] = useState<number | undefined>(
+		countTips
+	);
+
+	useEffect(() => {
+		if (!countTips && isTips) {
+			setCountTipsNew(4);
+		}
+
+		if (Number(countTips) < 0 && countTips !== 0 && isTips) {
+			setCountTipsNew(4);
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	function selectOption(option: PropOption) {
 		if (isMulti) {
@@ -105,23 +124,16 @@ const SelectWithSearch: FC<SelectProps> = ({
 				{isMulti ? (
 					<div className="selectedOptions">
 						{value.map((v) => (
-							<>
-								<button
-									className="selectedOptions__button"
-									key={v.name}
-									onClick={(e) => {
-										e.stopPropagation();
-										selectOption(v);
-									}}
-								>
-									{v.name}
-								</button>
-								{/* <img
-									className="selectedOptions__img"
-									src={deleteIcon}
-									alt="Кнопка удалить"
-								/> */}
-							</>
+							<button
+								className="selectedOptions__button"
+								key={v.name}
+								onClick={(e) => {
+									e.stopPropagation();
+									selectOption(v);
+								}}
+							>
+								{v.name}
+							</button>
 						))}
 					</div>
 				) : (
@@ -139,7 +151,28 @@ const SelectWithSearch: FC<SelectProps> = ({
 					onBlur={handleBlur}
 					value={valueInput}
 				/>
-				<ul className={`options ${openOptions ? 'options_active' : ''}`}>
+				{isTips ? (
+					<ul className="tips">
+						{options.slice(0, countTipsNew).map((option) => (
+							<li
+								className={`tips__item ${isOptionSelected(option) ? 'tips__item-selected' : ''}`}
+								key={option.id}
+								onClick={(e) => {
+									e.stopPropagation();
+									selectOption(option);
+									setOpenOptions(false);
+								}}
+								onKeyDown={() => {}}
+								role="presentation"
+							>
+								{option.name}
+							</li>
+						))}
+					</ul>
+				) : null}
+				<ul
+					className={`options ${openOptions ? 'options_active' : ''} ${isTips ? 'options_tips' : ''}`}
+				>
 					{filterOptions.length === 0 ? (
 						<li className="options__item options__item-none" key="none">
 							Нет доступной опции. Введите другое значение.

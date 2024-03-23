@@ -61,6 +61,10 @@
         flex-direction: column;
         z-index: 99;
     }
+    
+    &_tips {
+        top: 52px;
+    }
 
 
 }
@@ -87,5 +91,30 @@
 
     &__button:hover {
         background-color: $blue-btn-hover;
+    }
+}
+
+.tips {
+    display: flex;
+    padding: 0;
+    margin: 8px 0 0 0;
+    list-style: none;
+    width: 100%;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    // max-width: $max-width-input;
+    // max-height: $max-height-input;
+
+    &__item {
+        @include text-input;
+        cursor: pointer;
+        padding: 8px 12px;
+        margin: 0 8px 0 0;
+        border-radius: 8px;
+        background-color: $blue-gray-light-btn;
+    }
+
+    &__item:hover {
+        background-color: $blue-btn-default;
     }
 }

@@ -7,6 +7,9 @@ import Button from '../../Buttons/Button/Button';
 import { PropOption } from '../../../types/formik-elements';
 import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
+import FormikSelectWithSearch from '../../FormElements/InputWithSearch_/FormikSelectWithSearch';
+
+import { city } from '../../../data/data-form';
 
 export type TFormModel = {
 	employeeExperienceId: number | undefined;
@@ -36,6 +39,7 @@ const CandidateRequirementForm: FC = () => {
 		employeeSkills: 'employeeSkills',
 		employeeAddSkills: 'employeeAddSkills',
 		responsibilitiesEmployee: 'responsibilitiesEmployee',
+		cityOrganization: 'cityOrganization',
 	};
 
 	const navigate = useNavigate();
@@ -46,6 +50,7 @@ const CandidateRequirementForm: FC = () => {
 		employeeSkills: [],
 		employeeAddSkills: [],
 		responsibilitiesEmployee: '',
+		cityOrganization: '',
 	};
 
 	const validateResponsibilitiesEmployee = (value: Yup.AnyObject) => {
@@ -99,6 +104,17 @@ const CandidateRequirementForm: FC = () => {
 								name={fieldNames.responsibilitiesEmployee}
 								placeholder="Введите обязанности сотрудника"
 								isLabel
+							/>
+							<FormikSelectWithSearch
+								label="Город организации"
+								name={fieldNames.cityOrganization}
+								options={city}
+								placeholder="Начните вводить и выберите, где находится ваша организация"
+								// eslint-disable-next-line react/jsx-boolean-value
+								isMulti={false}
+								// eslint-disable-next-line react/jsx-boolean-value
+								isTips={false}
+								// countTips={0}
 							/>
 						</div>
 						<div className="two-btn-disposition">

@@ -70,26 +70,3 @@ export const city: PropOptions = [
 	{ id: 19, name: 'Тольятти' },
 	{ id: 20, name: 'Барнаул' },
 ];
-
-// export const cityNn: TOptions = [
-// 	{ value: 1, label: 'Москва' },
-// 	{ value: 2, label: 'Санкт-Петербург' },
-// 	{ value: 3, label: 'Новосибирск' },
-// 	{ value: 4, label: 'Екатеринбург' },
-// 	{ value: 5, label: 'Казань' },
-// 	{ value: 6, label: 'Нижний Новгород' },
-// 	{ value: 7, label: 'Красноярск' },
-// 	{ value: 8, label: 'Челябинск' },
-// 	{ value: 9, label: 'Самара' },
-// 	{ value: 10, label: 'Уфа' },
-// 	{ value: 11, label: 'Ростов-на-Дону' },
-// 	{ value: 12, label: 'Краснодар' },
-// 	{ value: 13, label: 'Омск' },
-// 	{ value: 14, label: 'Воронеж' },
-// 	{ value: 15, label: 'Пермь' },
-// 	{ value: 16, label: 'Волгоград' },
-// 	{ value: 17, label: 'Саратов' },
-// 	{ value: 18, label: 'Тюмень' },
-// 	{ value: 19, label: 'Тольятти' },
-// 	{ value: 20, label: 'Барнаул' },
-// ];

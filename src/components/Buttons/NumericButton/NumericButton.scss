@@ -1,0 +1,38 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.numeric-button {
+	height: 48px;
+	width: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $blue-background;
+	border-radius: 8px;
+	border: 1px solid $grey-input;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $blue-btn-default;
+	}
+
+	&:disabled {
+		background-color: $main-white;
+	}
+
+	&:hover path {
+		fill: $blue-hover;
+	}
+
+	&:disabled path {
+		fill: $grey-input;
+	}
+
+	&_right {
+		border-radius: 8px 0 0 8px;
+	}
+
+	&_left {
+		border-radius: 0 8px 8px 0;
+	}
+}

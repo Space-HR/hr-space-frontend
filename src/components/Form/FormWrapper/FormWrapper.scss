@@ -2,8 +2,7 @@
 @import "../../../scss/mixins.scss";
 
 .form-wrapper {
-   display: flex;
-   flex-direction: column;
+    @include flex-column;
    max-width: 688px;
 
     &__title {

@@ -19,6 +19,17 @@
 	flex-direction: column;
 }
 
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin flex-column-center {
+	@include flex-column;
+	align-items: center;
+	justify-content: center;
+}
 //  -------------- FONTS -----------------
 @mixin text {
 	@include mp-null;
@@ -200,8 +211,7 @@
 	transition: border-color 0.3s ease;
 	outline: none;
 	padding: $inner-padding-input;
-	display: flex;
-	align-items: center;
+
 
 	&::placeholder {
 		@include text-placeholder;
@@ -354,7 +364,7 @@
 		width: 100%;
 		border-radius: 8px;
 		border: 1px solid $grey-input;
-		-webkit-box-shadow: inset 0 0 0 50px #fff;
+		box-shadow: inset 0 0 0 50px #fff;
 	}
 
 	&__input::placeholder {
@@ -395,7 +405,7 @@
 
 	/* Для Firefox */
 	&[type='number'] {
-		-moz-appearance: textfield;
+		appearance: textfield;
 	}
 
 	/* Для Internet Explorer 10+ */

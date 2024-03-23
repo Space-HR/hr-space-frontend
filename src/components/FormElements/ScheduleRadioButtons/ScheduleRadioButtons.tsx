@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import './ScheduleRadioButtons.scss';
 import { Field, ErrorMessage } from 'formik';
-import TextError from '../../TextError/TextError';
-import { TElementWithOptions } from '../../../../types/formik-elements';
-import Label from '../../Label/Label';
-import RadioButton from '../RadioButton/RadioButton';
-import Input from '../../Input/Input';
+import TextError from '../TextError/TextError';
+import { TElementWithOptions } from '../../../types/formik-elements';
+import Label from '../Label/Label';
+import RadioButton from '../RadioButtons/RadioButton/RadioButton';
+import Input from '../Input/Input';
 
 type TRadioSelectedField = {
 	field: {

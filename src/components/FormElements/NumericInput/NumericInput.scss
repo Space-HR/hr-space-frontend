@@ -1,0 +1,14 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.numeric-input {
+	display: flex;
+
+	&__field {
+		@include remove-number-input-spinners;
+		@include textarea-input;
+		height: 48px;
+		width: 56px;
+		text-align: center;
+	}
+}

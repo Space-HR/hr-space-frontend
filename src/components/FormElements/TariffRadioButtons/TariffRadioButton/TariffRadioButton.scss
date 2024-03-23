@@ -1,0 +1,48 @@
+@import '../../../../scss//mixins.scss';
+.tariff-input {
+	@include text-input-label;
+	display: flex;
+	flex-direction: column-reverse;
+	width: 224px;
+	height: 220px;
+	padding: 16px;
+	row-gap: 16px;
+	background-color: $main-white;
+	border: 1px solid $grey-input;
+	border-radius: 12px;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		background-color: $blue-light-card;
+		border: 1px solid $blue-btn-disabled;
+	}
+
+	&_checked {
+		background-color: $blue-light-card;
+		border: 1px solid $blue-btn-disabled;
+	}
+
+	&__hidden-block {
+		display: none;
+	}
+
+	&__line {
+		border-top: 1px solid $grey-input;
+
+		&_checked {
+			border-top: 1px solid $blue-btn-disabled;
+		}
+
+		&:hover,
+		&:focus {
+			border-top: 1px solid $blue-btn-disabled;
+		}
+	}
+
+	&__description {
+		height: 107px;
+		@include text-normal-medium-gray;
+		padding-top: 16px;
+	}
+}

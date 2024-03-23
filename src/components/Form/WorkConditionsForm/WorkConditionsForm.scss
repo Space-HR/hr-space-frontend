@@ -1,6 +1,7 @@
+@import '../../../scss/mixins.scss';
+
 .input-container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     row-gap: 32px;
     padding-top: 48px;
     padding-bottom: 68px;

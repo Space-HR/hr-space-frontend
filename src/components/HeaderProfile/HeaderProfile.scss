@@ -12,9 +12,7 @@
 		border-radius: 50%;
 		border: 1px $orange solid;
 		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		@include flex-center;
 	}
 
 	&__info {

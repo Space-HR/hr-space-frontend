@@ -1,8 +1,7 @@
 @import '../../scss/mixins.scss';
 
 .form-step {
-	display: flex;
-	flex-direction: column;
+	@include flex-column;
 
 	&__conteiner-img-title {
 		display: flex;

@@ -7,7 +7,7 @@ import Button from '../../Buttons/Button/Button';
 import { PropOption } from '../../../types/formik-elements';
 import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
-import FormikSelectWithSearch from '../../FormElements/InputWithSearch_/FormikSelectWithSearch';
+import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
 
 import { city } from '../../../data/data-form';
 
@@ -17,6 +17,7 @@ export type TFormModel = {
 	employeeSkills: number[];
 	employeeAddSkills: string[];
 	responsibilitiesEmployee: string;
+	cityOrganization: number | number[] | undefined;
 };
 
 const employeeExperience: PropOption[] = [
@@ -50,7 +51,7 @@ const CandidateRequirementForm: FC = () => {
 		employeeSkills: [],
 		employeeAddSkills: [],
 		responsibilitiesEmployee: '',
-		cityOrganization: '',
+		cityOrganization: undefined,
 	};
 
 	const validateResponsibilitiesEmployee = (value: Yup.AnyObject) => {
@@ -105,7 +106,7 @@ const CandidateRequirementForm: FC = () => {
 								placeholder="Введите обязанности сотрудника"
 								isLabel
 							/>
-							<FormikSelectWithSearch
+							<InputWithSearch
 								label="Город организации"
 								name={fieldNames.cityOrganization}
 								options={city}

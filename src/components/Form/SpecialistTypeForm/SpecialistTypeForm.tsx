@@ -37,46 +37,53 @@ const SpecialistTypeForm: FC = () => {
 	};
 
 	return (
-		
-			<Formik<FormModel>
-				initialValues={initialValues}
-				validationSchema={validationSchema}
-				onSubmit={onSubmit}
-			>
-				{() => (
-					<Form className="form">
-						<div className=" input-container">
-							<Input
-								label="Название вакансии"
-								placeholder="Например, контент–менеджер"
-								name="vacancy"
-								type="text"
-							/>
-							<InputWithSearch
-								label="Должность"
-								placeholder="Начните вводить и выберите должность из списка"
-								name="jobTitle"
-								options={jobTitleServer}
-							/>
-							<InputWithSearch
-								label="Сфера деятельности"
-								placeholder="Например, маркетинг"
-								name="sphere"
-								options={sphereTitleServer}
-							/>
-						</div>
-						<div className="form__buttons">
-							{/* <Button type="button" styleType="secondary" label="Назад" /> */}
+		<Formik<FormModel>
+			initialValues={initialValues}
+			validationSchema={validationSchema}
+			onSubmit={onSubmit}
+		>
+			{() => (
+				<Form className="form">
+					<div className=" input-container">
+						<Input
+							label="Название вакансии"
+							placeholder="Например, контент–менеджер"
+							name="vacancy"
+							type="text"
+						/>
+						<InputWithSearch
+							label="Должность"
+							name="jobTitle"
+							options={jobTitleServer}
+							placeholder="Начните вводить и выберите должность из списка"
+							// eslint-disable-next-line react/jsx-boolean-value
+							isMulti={false}
+							// eslint-disable-next-line react/jsx-boolean-value
+							isTips={false}
+						/>
+						<InputWithSearch
+							label="Сфера деятельности"
+							name="sphere"
+							options={sphereTitleServer}
+							placeholder="Например, маркетинг"
+							// eslint-disable-next-line react/jsx-boolean-value
+							isMulti={false}
+							// eslint-disable-next-line react/jsx-boolean-value
+							isTips={false}
+						/>
+					</div>
+					<div className="form__buttons">
+						{/* <Button type="button" styleType="secondary" label="Назад" /> */}
 
-							<Button
-								type="submit"
-								styleType="primary"
-								label="Сохранить и продолжить"
-							/>
-						</div>
-					</Form>
-				)}
-			</Formik>
+						<Button
+							type="submit"
+							styleType="primary"
+							label="Сохранить и продолжить"
+						/>
+					</div>
+				</Form>
+			)}
+		</Formik>
 	);
 };
 

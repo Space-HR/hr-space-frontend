@@ -1,18 +1,26 @@
 import { FC } from 'react';
-import './RadioButtons.scss';
+import './QtyRecruitersRadioButtons.scss';
 import { Field } from 'formik';
-import { TElementWithOptions } from '../../../types/formik-elements';
 import Label from '../Label/Label';
-import RadioButton from './RadioButton/RadioButton';
+import QtyRecruitersRadioButton from './QtyRecruitersRadioButton/QtyRecruitersRadioButton';
 
 type TRadioSelectedField = {
 	field: {
-		name: string;
 		value: number;
 	};
 };
 
-const RadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
+type TElementWithOptions = {
+    label: string;
+    name: string;
+    options: number[];
+}
+
+
+const QtyRecruitersRadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
+
+	
+
 	return (
 		<div className="input-conainer">
 			<Label name={name} label={label} />
@@ -23,10 +31,10 @@ const RadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
 							options &&
 							options.map((option) => {
 								return (
-									<RadioButton
-										key={option.id}
-										id={option.id}
-										label={option.name}
+									<QtyRecruitersRadioButton
+										key={option}
+										id={option}
+										label={option.toString()}
 										field={field}
 										name={name}
 									/>
@@ -40,4 +48,4 @@ const RadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
 	);
 };
 
-export default RadioButtons;
+export default QtyRecruitersRadioButtons;

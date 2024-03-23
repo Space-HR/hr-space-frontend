@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import NumericInput from '../../FormElements/NumericInput/NumericInput';
 import TariffRadioButtons from '../../FormElements/TariffRadioButtons/TariffRadioButtons';
+import QtyRecruitersRadioButtons from '../../FormElements/QtyRecruitersRadioButtons/QtyRecruitersRadioButtons';
 // import { calculateMediaSalary } from '../../../utils/calculateMediaSalary';
 // import FeeRadioButtons from '../../FormElements/FeeRadioButtons/FeeRadioButtons';
 
@@ -60,6 +61,8 @@ const tariffIdOptions: TtariffIdOption[] = [
 			'Это 1 месяц после выхода сотрудника. Доступен выбор одного рекрутера.',
 	},
 ];
+
+const options=[1, 2, 3]
 
 // const minSalary = 0;
 // const maxSalary = 200000;
@@ -140,6 +143,8 @@ const TariffForm: FC = () => {
 								name={fieldNames.tariffId}
 								options={tariffIdOptions}
 							/>
+							<QtyRecruitersRadioButtons label='Количество рекрутеров' name={fieldNames.qtyRecruiters}
+							options={options}/>
 						</div>
 						<div className="two-btn-disposition">
 							<Button

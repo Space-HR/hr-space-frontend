@@ -1,19 +1,18 @@
 import { FC } from 'react';
 import { useFormikContext } from 'formik';
-import './RadioButton.scss';
+import './QtyRecruitersRadioButton.scss';
 import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
 type TRadioButtonProps = {
 	field: {
 		value: number;
-		name: string;
 	};
 	id: number;
 	label: string;
 	name: string;
 };
 
-const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
+const QtyRecruitersRadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 	const { setFieldValue } = useFormikContext<TFormModel>();
 
 	const stringId = `${name}-${id}`;
@@ -24,8 +23,8 @@ const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 			htmlFor={stringId}
 			className={
 				field.value === id
-					? 'rounded-input rounded-input_checked'
-					: 'rounded-input'
+					? 'qty-recruiters-input qty-recruiters-input_checked'
+					: 'qty-recruiters-input'
 			}
 		>
 			<input
@@ -33,7 +32,7 @@ const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 				id={stringId}
 				value={id}
 				checked={field.value === id}
-				className="rounded-input__hidden-block"
+				className="qty-recruiters-input__hidden-block"
 				onChange={handleChange}
 			/>
 
@@ -42,4 +41,4 @@ const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 	);
 };
 
-export default RadioButton;
+export default QtyRecruitersRadioButton;

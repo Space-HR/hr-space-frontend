@@ -1,25 +1,47 @@
 import { FC } from 'react';
+import { Field, useFormikContext } from 'formik';
 import './Checkbox.scss';
-import { Field } from 'formik';
+import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
-type TRadioButtonProps = {
+type TCheckboxProps = {
+	field: {
+		value: number[];
+		name: string;
+	};
+	id: number;
 	label: string;
 	name: string;
 };
 
-const Checkbox: FC<TRadioButtonProps> = ({ label, name }) => {
+const Checkbox: FC<TCheckboxProps> = ({ field, id, label, name }) => {
+	const { setFieldValue } = useFormikContext<TFormModel>();
+	const stringId = `${name}-${id}`;
+	const isChecked = field.value.includes(id);
+
+	const handleChange = () => {
+		const newValue = isChecked
+			? field.value.filter((valueId) => valueId !== id)
+			: [...field.value, id];
+
+		setFieldValue(name, newValue);
+	};
+
 	return (
-		<label className="checkbox" htmlFor={name}>
-			{label}
+		<label htmlFor={stringId} className="checkbox">
 			<Field
-				id={name}
 				type="checkbox"
-				name={name}
+				id={stringId}
+				value={id}
+				checked={isChecked}
 				className="checkbox__input"
+				onChange={handleChange}
 			/>
 			<span className="checkbox__сustom" />
+			{label}
 		</label>
 	);
 };
 
 export default Checkbox;
+
+

@@ -12,8 +12,15 @@
 		width: 46px;
 		height: 46px;
 		border-radius: 50%;
-		background-color: gray;
+		background-color: $blue-btn-disabled;
 		flex-shrink: 0;
+	}
+
+	&__img {
+		width: 23px;
+		height: 46px;
+		display: block;
+		margin: 0 auto; 
 	}
 
 	&__title {
@@ -22,9 +29,13 @@
 	}
 
 	&__line {
-		height: 40px;
+		height: 30px;
 		width: 4px;
-		background-color: gray;
+		background-color: $blue-btn-disabled;
 		margin-left: 21px;
+	}
+
+	&__img-conteiner_active, &__line_active {
+		background-color: $blue-btn;
 	}
 }

@@ -3,8 +3,13 @@
 
 .form-control {
     @include input-style;
+    width: 100%;
 
     &__container{
+        position: relative;
+    }
+
+    &__search {
         position: relative;
     }
 }
@@ -71,6 +76,9 @@
 
 .selectedOptions {
     margin: 0 0 9px 0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
 
     &__button {
         outline: none; /* Для синий ободки */

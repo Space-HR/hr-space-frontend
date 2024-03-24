@@ -7,6 +7,9 @@ import Button from '../../Buttons/Button/Button';
 import { PropOption } from '../../../types/formik-elements';
 import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
+import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
+
+import { requirements } from '../../../data/data-form';
 
 export type TFormModel = {
 	employeeExperienceId: number | undefined;
@@ -14,6 +17,7 @@ export type TFormModel = {
 	employeeSkills: number[];
 	employeeAddSkills: string[];
 	responsibilitiesEmployee: string;
+	requirements: number | number[] | undefined;
 };
 
 const employeeExperience: PropOption[] = [
@@ -36,6 +40,7 @@ const CandidateRequirementForm: FC = () => {
 		employeeSkills: 'employeeSkills',
 		employeeAddSkills: 'employeeAddSkills',
 		responsibilitiesEmployee: 'responsibilitiesEmployee',
+		requirements: 'requirements',
 	};
 
 	const navigate = useNavigate();
@@ -46,6 +51,7 @@ const CandidateRequirementForm: FC = () => {
 		employeeSkills: [],
 		employeeAddSkills: [],
 		responsibilitiesEmployee: '',
+		requirements: undefined,
 	};
 
 	const validateResponsibilitiesEmployee = (value: Yup.AnyObject) => {
@@ -93,6 +99,17 @@ const CandidateRequirementForm: FC = () => {
 								label="Образование"
 								name={fieldNames.employeeEducationId}
 								options={employeeEducation}
+							/>
+							<InputWithSearch
+								label="Требования"
+								name={fieldNames.requirements}
+								options={requirements}
+								placeholder="Начните вводить и выберите требования"
+								// eslint-disable-next-line react/jsx-boolean-value
+								isMulti={true}
+								// eslint-disable-next-line react/jsx-boolean-value
+								isTips={false}
+								// countTips={4}
 							/>
 							<MultiLineInput
 								label="Обязанности"

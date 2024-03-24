@@ -139,18 +139,45 @@ const SelectWithSearch: FC<SelectProps> = ({
 				) : (
 					''
 				)}
-				<input
-					type="text"
-					name={name}
-					className="form-control__input"
-					placeholder={placeholder}
-					onChange={(e) => {
-						setValueInput(e.target.value);
-						filterData(e);
-					}}
-					onBlur={handleBlur}
-					value={valueInput}
-				/>
+				<div className="form-control__search">
+					<input
+						type="text"
+						name={name}
+						className="form-control__input"
+						placeholder={placeholder}
+						onChange={(e) => {
+							setValueInput(e.target.value);
+							filterData(e);
+						}}
+						onBlur={handleBlur}
+						value={valueInput}
+					/>
+					<ul
+						className={`options ${openOptions ? 'options_active' : ''} ${isTips ? 'options_tips' : ''}`}
+					>
+						{filterOptions.length === 0 ? (
+							<li className="options__item options__item-none" key="none">
+								Нет доступной опции. Введите другое значение.
+							</li>
+						) : (
+							filterOptions.map((option) => (
+								<li
+									className={`options__item ${isOptionSelected(option) ? 'options__item-selected' : ''}`}
+									key={option.id}
+									onClick={(e) => {
+										e.stopPropagation();
+										selectOption(option);
+										setOpenOptions(false);
+									}}
+									onKeyDown={() => {}}
+									role="presentation"
+								>
+									{option.name}
+								</li>
+							))
+						)}
+					</ul>
+				</div>
 				{isTips ? (
 					<ul className="tips">
 						{options.slice(0, countTipsNew).map((option) => (
@@ -170,31 +197,6 @@ const SelectWithSearch: FC<SelectProps> = ({
 						))}
 					</ul>
 				) : null}
-				<ul
-					className={`options ${openOptions ? 'options_active' : ''} ${isTips ? 'options_tips' : ''}`}
-				>
-					{filterOptions.length === 0 ? (
-						<li className="options__item options__item-none" key="none">
-							Нет доступной опции. Введите другое значение.
-						</li>
-					) : (
-						filterOptions.map((option) => (
-							<li
-								className={`options__item ${isOptionSelected(option) ? 'options__item-selected' : ''}`}
-								key={option.id}
-								onClick={(e) => {
-									e.stopPropagation();
-									selectOption(option);
-									setOpenOptions(false);
-								}}
-								onKeyDown={() => {}}
-								role="presentation"
-							>
-								{option.name}
-							</li>
-						))
-					)}
-				</ul>
 			</div>
 		</div>
 	);

@@ -2,33 +2,35 @@
 @import '../../../scss/mixins.scss';
 
 .date-picker {
-	@include textarea-input;
 	@include text-normal-large-black;
-	height: 48px;
-	width: 272px;
-	padding: 16px;
+	height: 24px;
+	width: 180px;
+
 	text-align: center;
-	border-radius: 8px;
+	border: none;
 
-	
+	&:hover,
+	&:focus-visible {
+		border: none;
+		outline: none;
+	}
+
+	&__wrapper {
+		@include textarea-input;
+		width: 272px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		position: relative;
+		border-radius: 8px;
+		height: 48px;
+	}
 }
-
-.date-picker__wrapper {
-    max-width: 272px;
-    position: relative;
-}
-
-.date-picker__image {
-    position: absolute;  
-    &_right {
-        top: 5px;
-    }
-}
-
 
 .react-datepicker {
 	&-wrapper {
-		width: 272px;
+		width: 180px;
+		// position: relative;
 	}
 
 	border-color: $grey-input;

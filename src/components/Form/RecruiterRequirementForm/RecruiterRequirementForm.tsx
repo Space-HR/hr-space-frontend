@@ -5,6 +5,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import DatePicker from '../../FormElements/DatePicker/DatePicker';
+import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 
 export type TFormModel = {
 	employeeWillGoToWorkAt:  Date | null;
@@ -59,6 +60,18 @@ const RecruiterRequirementForm: FC = () => {
 								name={fieldNames.employeeWillGoToWorkAt}
 								label="Желаемая дата выхода сотрудника"
 								
+							/>
+							<MultiLineInput
+								label="Требования"
+								name={fieldNames.skillsRecruiter}
+								placeholder="Введите требования к рекрутеру"
+								isLabel
+							/>
+							<MultiLineInput
+								label="Стоп-лист сотрудников"
+								name={fieldNames.stopList}
+								placeholder="Укажите, если есть, перечень компаний или сотрудников, которых вы не готовы рассматривать"
+								isLabel
 							/>
 						</div>
 						<div className="two-btn-disposition">

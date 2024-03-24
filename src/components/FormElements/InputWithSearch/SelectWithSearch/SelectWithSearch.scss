@@ -7,6 +7,10 @@
     &__container{
         position: relative;
     }
+
+    &__search {
+        position: relative;
+    }
 }
 
 .options {
@@ -71,6 +75,9 @@
 
 .selectedOptions {
     margin: 0 0 9px 0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
 
     &__button {
         outline: none; /* Для синий ободки */

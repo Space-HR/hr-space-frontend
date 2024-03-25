@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import DatePicker from '../../FormElements/DatePicker/DatePicker';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
+import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup/CheckboxGroup';
+import { PropOption } from '../../../types/formik-elements';
 import Popup from '../../Popup/Popup';
 
 export type TFormModel = {
@@ -15,6 +17,21 @@ export type TFormModel = {
 	skillsRecruiter: string;
 	stopList: string;
 };
+
+const recruiterTasksOptions: PropOption[] = [
+	{ id: 0, name: 'Поиск и предоставление релевантных резюме' },
+	{
+		id: 1,
+		name: 'Организация собеседований с заказчиком, синхронизация по времени соискателя и заказчика',
+	},
+	{ id: 2, name: 'Запрос рекомендаций с предыдущих мест работы' },
+	{ id: 3, name: 'Отправка кандидату тестового задания' },
+	{
+		id: 4,
+		name: 'Отправка кандидату анкеты службы безопасности вашей компании',
+	},
+	{ id: 5, name: 'Отправка финалисту приглашения на работу' },
+];
 
 const RecruiterRequirementForm: FC = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);

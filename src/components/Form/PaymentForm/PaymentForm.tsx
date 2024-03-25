@@ -1,40 +1,33 @@
 import { FC } from 'react';
 import './PaymentForm.scss';
 
-
-
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
-import { PropOption } from '../../../types/formik-elements';
 
 export type TFormModel = {
-	employeeWillGoToWorkAt: Date | null;
-	recruiterTasks: number[];
-	resumeAfterInterview: boolean;
-	skillsRecruiter: string;
-	stopList: string;
+	isDelayedPublication: boolean;
+	publicationDate: Date | null;
+	publicationTime: Date | null;
+	paymentMethod: number;
 };
 
-
 const PaymentForm: FC = () => {
-	const fieldNames = {
-		employeeWillGoToWorkAt: 'employeeWillGoToWorkAt',
-		recruiterTasks: 'recruiterTasks',
-		resumeAfterInterview: 'resumeAfterInterview',
-		skillsRecruiter: 'skillsRecruiter',
-		stopList: 'stopList',
-	};
+	// const fieldNames = {
+	// 	isDelayedPublication: 'isDelayedPublication',
+	// 	publicationDate: 'publicationDate',
+	// 	publicationTime: 'publicationTime',
+	// 	paymentMethod: 'paymentMethod',
+	// };
 
 	const navigate = useNavigate();
 
 	const initialValues = {
-		employeeWillGoToWorkAt: null,
-		recruiterTasks: [],
-		resumeAfterInterview: false,
-		skillsRecruiter: '',
-		stopList: '',
+		isDelayedPublication: false,
+		publicationDate: null,
+		publicationTime: null,
+		paymentMethod: 1,
 	};
 
 	const validationSchema = Yup.object();
@@ -58,9 +51,7 @@ const PaymentForm: FC = () => {
 			{() => (
 				<div className="form">
 					<Form>
-						<div className="input-container">
-							
-						</div>
+						<div className="input-container"/>
 						<div className="two-btn-disposition">
 							<Button
 								type="button"

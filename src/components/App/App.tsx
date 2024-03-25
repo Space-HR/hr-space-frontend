@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import './App.scss';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layuot from '../Layuot/Layuot';
 import EmployeeSearchFormPage from '../../pages/EmployeeSearchFormPage/EmployeeSearchFormPage';
 import SpecialistTypeFormPage from '../../pages/EmployeeSearchFormPage/SpecialistTypeFormPage/SpecialistTypeFormPage';
@@ -19,6 +19,8 @@ const App: FC = () => {
 			<Route path="/" element={<Layuot />}>
 				<Route path="/" element={<MainPage />} />
 				<Route path="form" element={<EmployeeSearchFormPage />}>
+					<Route index element={<Navigate replace to="step-1" />} />
+
 					<Route path="step-1" element={<SpecialistTypeFormPage />} />
 					<Route path="step-2" element={<WorkConditionsFormPage />} />
 					<Route path="step-3" element={<CandidateRequirementFormPage />} />
@@ -26,7 +28,7 @@ const App: FC = () => {
 					<Route path="step-5" element={<RecruiterRequirementFormPage />} />
 					<Route path="step-6" element={<PaymentFormPage />} />
 				</Route>
-				<Route path="success-sent" element={<SuccessSentPage />}></Route>
+				<Route path="success-sent" element={<SuccessSentPage />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 		</Routes>

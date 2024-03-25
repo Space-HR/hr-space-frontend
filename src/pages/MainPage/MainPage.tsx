@@ -14,7 +14,7 @@ const MainPage: FC = () => {
 				type="button"
 				styleType="primary"
 				label="Создать заявку"
-				onClick={() => navigate("/form/step-1")}
+				onClick={() => navigate("/form")}
 			/>
 		</main>
 	);

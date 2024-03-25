@@ -1,0 +1,21 @@
+@import '../../scss/mixins.scss';
+
+.success-sent-form {
+	@include flex-column-center;
+	flex-grow: 1;
+
+	&__title {
+		@include text-section-title;
+	}
+
+	&__text {
+		@include text-normal-large-black;
+		padding-top: 20px;
+		padding-bottom: 48px;
+		text-align: center;
+	}
+
+	&__img {
+		padding-bottom: 48px;
+	}
+}

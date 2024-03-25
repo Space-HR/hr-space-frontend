@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './RecruiterRequirementForm.scss';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
@@ -8,6 +8,7 @@ import DatePicker from '../../FormElements/DatePicker/DatePicker';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup/CheckboxGroup';
 import { PropOption } from '../../../types/formik-elements';
+import Popup from '../../Popup/Popup';
 
 export type TFormModel = {
 	employeeWillGoToWorkAt: Date | null;
@@ -33,6 +34,8 @@ const recruiterTasksOptions: PropOption[] = [
 ];
 
 const RecruiterRequirementForm: FC = () => {
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
+
 	const fieldNames = {
 		employeeWillGoToWorkAt: 'employeeWillGoToWorkAt',
 		recruiterTasks: 'recruiterTasks',
@@ -59,60 +62,64 @@ const RecruiterRequirementForm: FC = () => {
 	// 	);
 
 	const onSubmit = (values: TFormModel) => {
-		navigate('/form/step-5');
+		// navigate('/form/step-5');
+		setIsPopupOpen(true);
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 
 	return (
-		<Formik<TFormModel>
-			initialValues={initialValues}
-			validationSchema={validationSchema}
-			onSubmit={onSubmit}
-		>
-			{() => (
-				<div className="form">
-					<Form>
-						<div className="input-container">
-							<DatePicker
-								name={fieldNames.employeeWillGoToWorkAt}
-								label="Желаемая дата выхода сотрудника"
-							/>
-							<CheckboxGroup
-								label="Способ оформления"
-								name={fieldNames.recruiterTasks}
-								options={recruiterTasksOptions}
-							/>
-							<MultiLineInput
-								label="Требования"
-								name={fieldNames.skillsRecruiter}
-								placeholder="Введите требования к рекрутеру"
-								isLabel
-							/>
-							<MultiLineInput
-								label="Стоп-лист сотрудников"
-								name={fieldNames.stopList}
-								placeholder="Укажите, если есть, перечень компаний или сотрудников, которых вы не готовы рассматривать"
-								isLabel
-							/>
-						</div>
-						<div className="two-btn-disposition">
-							<Button
-								type="button"
-								styleType="secondary"
-								label="Назад"
-								onClick={() => navigate('/form/step-3')}
-							/>
+		<>
+			<Formik<TFormModel>
+				initialValues={initialValues}
+				validationSchema={validationSchema}
+				onSubmit={onSubmit}
+			>
+				{() => (
+					<div className="form">
+						<Form>
+							<div className="input-container">
+								<DatePicker
+									name={fieldNames.employeeWillGoToWorkAt}
+									label="Желаемая дата выхода сотрудника"
+								/>
+								<CheckboxGroup
+									label="Что входит в работу рекрутера?"
+									name={fieldNames.recruiterTasks}
+									options={recruiterTasksOptions}
+								/>
+								<MultiLineInput
+									label="Требования"
+									name={fieldNames.skillsRecruiter}
+									placeholder="Введите требования к рекрутеру"
+									isLabel
+								/>
+								<MultiLineInput
+									label="Стоп-лист сотрудников"
+									name={fieldNames.stopList}
+									placeholder="Укажите, если есть, перечень компаний или сотрудников, которых вы не готовы рассматривать"
+									isLabel
+								/>
+							</div>
+							<div className="two-btn-disposition">
+								<Button
+									type="button"
+									styleType="secondary"
+									label="Назад"
+									onClick={() => navigate('/form/step-3')}
+								/>
 
-							<Button
-								type="submit"
-								styleType="primary"
-								label="Сохранить и продолжить"
-							/>
-						</div>
-					</Form>
-				</div>
-			)}
-		</Formik>
+								<Button
+									type="submit"
+									styleType="primary"
+									label="Сохранить и просмотреть заявку"
+								/>
+							</div>
+						</Form>
+					</div>
+				)}
+			</Formik>
+			<Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+		</>
 	);
 };
 

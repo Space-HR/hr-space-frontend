@@ -9,11 +9,12 @@ import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup/CheckboxGroup';
 import { PropOption } from '../../../types/formik-elements';
 import Popup from '../../Popup/Popup';
+import RadioButtonGroup from '../../FormElements/RadioButtons/RadioButtonGroup/RadioButtonGroup';
 
-export type TFormModel = {
+export type TRadioFormModel = {
 	employeeWillGoToWorkAt: Date | null;
 	recruiterTasks: number[];
-	resumeAfterInterview: boolean;
+	resumeAfterInterview: boolean | undefined;
 	skillsRecruiter: string;
 	stopList: string;
 };
@@ -33,11 +34,25 @@ const recruiterTasksOptions: PropOption[] = [
 	{ id: 5, name: 'Отправка финалисту приглашения на работу' },
 ];
 
-const resumeAfterInterviewOptions = [
-	{id: 0, name: false},
-	{id: 1, name: true}
-]
+type TPropRadioOption = {
+	id: number;
+	booleanValue: boolean;
+	label: string;
+};
 
+const resumeAfterInterviewOptions: TPropRadioOption[] = [
+	{
+		id: 0,
+		booleanValue: false,
+		label: 'Резюме без предварительного собеседования',
+	},
+	{
+		id: 1,
+		booleanValue: true,
+		label:
+			'Резюме кандидатов, с которыми проведено интервью, с комментариями по кандидату',
+	},
+];
 
 const RecruiterRequirementForm: FC = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -55,27 +70,26 @@ const RecruiterRequirementForm: FC = () => {
 	const initialValues = {
 		employeeWillGoToWorkAt: null,
 		recruiterTasks: [],
-		resumeAfterInterview: false,
+		resumeAfterInterview: undefined,
 		skillsRecruiter: '',
 		stopList: '',
 	};
 
-	const validationSchema = Yup.object();
-	// 	.test(
-	// 		'registerAsSet-required',
-	// 		'Выберите способ оформления сотрудников',
-	// 		validateRegisterAsSet
-	// 	);
+	const validationSchema = Yup.object({
+		recruiterTasks: Yup.array()
+			.of(Yup.number())
+			.min(1, 'Отметьте, что входит в обязанности рекрутера'),
+		resumeAfterInterview: Yup.boolean().required('Выберите один из вариантов'),
+	});
 
-	const onSubmit = (values: TFormModel) => {
-		// navigate('/form/step-5');
+	const onSubmit = (values: TRadioFormModel) => {
 		setIsPopupOpen(true);
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 
 	return (
 		<>
-			<Formik<TFormModel>
+			<Formik<TRadioFormModel>
 				initialValues={initialValues}
 				validationSchema={validationSchema}
 				onSubmit={onSubmit}
@@ -92,6 +106,11 @@ const RecruiterRequirementForm: FC = () => {
 									label="Что входит в работу рекрутера?"
 									name={fieldNames.recruiterTasks}
 									options={recruiterTasksOptions}
+								/>
+								<RadioButtonGroup
+									label="В каком виде нужно предоставить резюме кандидатов?"
+									name={fieldNames.resumeAfterInterview}
+									options={resumeAfterInterviewOptions}
 								/>
 								<MultiLineInput
 									label="Требования"

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import '../ChipRadioButtonGroup/ChipRadioButtonGroup.scss';
+import './ChipRadioButtonGroup.scss';
 import { Field } from 'formik';
 import { TElementWithOptions } from '../../../../types/formik-elements';
 import Label from '../../Label/Label';

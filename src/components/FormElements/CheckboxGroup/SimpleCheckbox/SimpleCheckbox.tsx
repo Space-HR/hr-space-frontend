@@ -17,7 +17,7 @@ const SimpleCheckbox: FC<TRadioButtonProps> = ({ label, name }) => {
 				name={name}
 				className="checkbox__input"
 			/>
-			<span className="checkbox__сustom" />
+			<span className="checkbox__custom" />
 		</label>
 	);
 };

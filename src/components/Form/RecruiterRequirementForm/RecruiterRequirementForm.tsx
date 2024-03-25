@@ -82,6 +82,11 @@ const RecruiterRequirementForm: FC = () => {
 									name={fieldNames.employeeWillGoToWorkAt}
 									label="Желаемая дата выхода сотрудника"
 								/>
+								<CheckboxGroup
+									label="Что входит в работу рекрутера?"
+									name={fieldNames.recruiterTasks}
+									options={recruiterTasksOptions}
+								/>
 								<MultiLineInput
 									label="Требования"
 									name={fieldNames.skillsRecruiter}

@@ -1,6 +1,8 @@
 import './Popup.scss';
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as IconClose } from '../../images/close.svg';
 import IconPrint from '../../images/print.svg';
+import Button from '../Buttons/Button/Button';
 
 type TPopup = {
 	isOpen: boolean;
@@ -8,6 +10,7 @@ type TPopup = {
 };
 
 function Popup({ isOpen, onClose }: TPopup) {
+	const navigate = useNavigate();
 	return (
 		// eslint-disable-next-line react/jsx-no-useless-fragment
 		<>
@@ -214,6 +217,21 @@ function Popup({ isOpen, onClose }: TPopup) {
 									Желаемая дата выхода сотрудника на работу
 								</h4>
 								<p className="description-job__text text">30 марта 2024 г.</p>
+							</div>
+							<div className="buttons">
+								<Button
+									type="button"
+									styleType="secondary"
+									label="Назад"
+									onClick={onClose}
+								/>
+
+								<Button
+									type="button"
+									styleType="primary"
+									label="Сохранить и продолжить"
+									onClick={() => navigate('/form/step-6')}
+								/>
 							</div>
 						</div>
 					</div>

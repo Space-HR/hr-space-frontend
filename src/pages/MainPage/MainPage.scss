@@ -1,0 +1,16 @@
+@import '../../scss/mixins.scss';
+
+.main-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	flex-grow: 1;
+
+	&__title {
+		@include text-section-title;
+		padding: 48px;
+	}
+
+
+}

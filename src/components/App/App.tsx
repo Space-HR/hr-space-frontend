@@ -10,11 +10,14 @@ import CandidateRequirementFormPage from '../../pages/EmployeeSearchFormPage/Can
 import RecruiterRequirementFormPage from '../../pages/EmployeeSearchFormPage/RecruiterRequirementFormPage/RecruiterRequirementFormPage';
 import PaymentFormPage from '../../pages/EmployeeSearchFormPage/PaymentFormPage/PaymentFormPage';
 import TariffFormPage from '../../pages/EmployeeSearchFormPage/TariffFormPage/TariffFormPage';
+import MainPage from '../../pages/MainPage/MainPage';
+import SuccessSentPage from '../../pages/SuccessSentPage/SuccessSentPage';
 
 const App: FC = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Layuot />}>
+				<Route path="/" element={<MainPage />} />
 				<Route path="form" element={<EmployeeSearchFormPage />}>
 					<Route path="step-1" element={<SpecialistTypeFormPage />} />
 					<Route path="step-2" element={<WorkConditionsFormPage />} />
@@ -23,6 +26,7 @@ const App: FC = () => {
 					<Route path="step-5" element={<RecruiterRequirementFormPage />} />
 					<Route path="step-6" element={<PaymentFormPage />} />
 				</Route>
+				<Route path="success-sent" element={<SuccessSentPage />}></Route>
 				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 		</Routes>

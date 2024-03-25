@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# HRSpase  🌌
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## О проекте 🚀
 
-## Available Scripts
+Проект HR Space представляет разработку микросервиса билдера заявок для поиска рекрутеров. Инструмент помогает работодателям сделать процесс подачи заявок более простым и интуитивно понятным. А мультишаговаяя форма обеспечивает прозрачность каждого этапа заявки и и четко определяет модели оплаты.
 
-In the project directory, you can run:
+## Проект доступен по сслыке 🔗
 
-### `npm start`
+https://hrspace.hopto.org/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Команда 👥
+⭐️ [Лера](https://github.com/RubyVine01)  ⭐️ [Катя](https://github.com/kateroshh)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Что реализовано ✅
 
-### `npm test`
+- Верстка интерфейса в соотвествии с [макетами](https://www.figma.com/file/Oh9LF7n8drtK161Jph1PDy/%F0%9F%94%B4-%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0-%E2%84%965-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-HRspace?type=design&t=rxgQ4ZharGvJndos-6)
+- Настройка роутов 🚦
+- Подготовлена инфраструктура для подключения Redux Toolkit 🛠
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## To do 📝
 
-### `npm run build`
+- [ ] Настроить сторибук для всех компонентов 📚
+- [ ] Закончить интеграцию с бекендом  🔄
+- [ ] Создать защищенные роуты 🔒
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Стэк технологий 🛠
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,typescript,react,redux,scss,docker,)](https://skillicons.dev)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Библиотеки 📚
 
-### `npm run eject`
+- [Formik](https://formik.org) 📝
+- [Yup](https://www.npmjs.com/package/yup) ✔️
+- [Storybook](https://storybook.js.org) 📚
+- [ReactRouter](https://reactrouter.com) 🚏
+- [React Datepicker](https://www.npmjs.com/package/react-datepicker) 📅
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Дополнительные ссылки  🔍
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [Инструкция по запуске проекта с помощью Докера](https://github.com/Space-HR/docker_wrapper) 🐳
+- [Репозиторий с backend частью приложения](https://github.com/Space-HR/hr-space-backend) 
+- [Макет дизайна в Figma](https://www.figma.com/file/Oh9LF7n8drtK161Jph1PDy/%F0%9F%94%B4-%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0-%E2%84%965-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82-HRspace?type=design&t=rxgQ4ZharGvJndos-6)  🖥
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

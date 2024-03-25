@@ -32,6 +32,7 @@ const FeeRadioButton: FC<TRadioButtonProps> = ({
 		<label className="rounded-input">
 			<input
 				type="radio"
+				id={`${id}`}
 				name={feeName}
 				value={id}
 				checked={field.value === id}

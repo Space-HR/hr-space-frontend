@@ -10,6 +10,7 @@ import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup/Checkb
 import { PropOption } from '../../../types/formik-elements';
 import Popup from '../../Popup/Popup';
 import RadioButtonGroup from '../../FormElements/RadioButtons/RadioButtonGroup/RadioButtonGroup';
+import SimpleCheckbox from '../../FormElements/CheckboxGroup/SimpleCheckbox/SimpleCheckbox';
 
 export type TRadioFormModel = {
 	employeeWillGoToWorkAt: Date | null;
@@ -17,6 +18,7 @@ export type TRadioFormModel = {
 	resumeAfterInterview: boolean | undefined;
 	skillsRecruiter: string;
 	stopList: string;
+	notPrivatePerson: boolean;
 };
 
 const recruiterTasksOptions: PropOption[] = [
@@ -63,6 +65,7 @@ const RecruiterRequirementForm: FC = () => {
 		resumeAfterInterview: 'resumeAfterInterview',
 		skillsRecruiter: 'skillsRecruiter',
 		stopList: 'stopList',
+		notPrivatePerson: 'notPrivatePerson',
 	};
 
 	const navigate = useNavigate();
@@ -73,6 +76,7 @@ const RecruiterRequirementForm: FC = () => {
 		resumeAfterInterview: undefined,
 		skillsRecruiter: '',
 		stopList: '',
+		notPrivatePerson: false,
 	};
 
 	const validationSchema = Yup.object({
@@ -123,6 +127,11 @@ const RecruiterRequirementForm: FC = () => {
 									name={fieldNames.stopList}
 									placeholder="Укажите, если есть, перечень компаний или сотрудников, которых вы не готовы рассматривать"
 									isLabel
+								/>
+								<SimpleCheckbox
+									name={fieldNames.notPrivatePerson}
+									label="Я принимаю условия «Оферты назаключение договора о использовании   веб-сервиса HR-Space»"
+									labelPosition="left"
 								/>
 							</div>
 							<div className="two-btn-disposition">

@@ -5,11 +5,13 @@ import { Field } from 'formik';
 type TRadioButtonProps = {
 	label: string;
 	name: string;
+	labelPosition?: 'left' | 'right';
+
 };
 
-const SimpleCheckbox: FC<TRadioButtonProps> = ({ label, name }) => {
+const SimpleCheckbox: FC<TRadioButtonProps> = ({ label, name, labelPosition = 'right'}) => {
 	return (
-		<label className="checkbox" htmlFor={name}>
+		<label className={labelPosition === 'right' ? "checkbox" : "checkbox  checkbox_reverse"} htmlFor={label}>
 			{label}
 			<Field
 				id={name}

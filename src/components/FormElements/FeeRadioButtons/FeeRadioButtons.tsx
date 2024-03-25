@@ -1,4 +1,4 @@
-import  { FC } from 'react';
+import { FC } from 'react';
 import './FeeRadioButtons.scss';
 import { ErrorMessage, Field, useFormikContext } from 'formik';
 import TextError from '../TextError/TextError';
@@ -34,14 +34,13 @@ const FeeRadioButtons: FC<TFeeRadioButtonsProps> = ({
 
 	const idFee = values[feeName];
 
-	
-
 	return (
 		<div className="input-conainer">
 			<Label name={name} label={label} />
 			<div className="rounded-input-row">
 				{options.map((option) => (
 					<FeeRadioButton
+						key={option.id}
 						label={option.name}
 						name={name}
 						id={option.id}
@@ -56,6 +55,7 @@ const FeeRadioButtons: FC<TFeeRadioButtonsProps> = ({
 						name={name}
 						type="number"
 						min={0}
+						max={10000000000}
 						step="1"
 						className="input-self-fee"
 						onKeyDown={handleKeyDown}

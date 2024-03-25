@@ -74,7 +74,17 @@
 				}
 			],
 			"react/require-default-props": "off",
-			"arrow-body-style": "off"
+			"arrow-body-style": "off",
+			"no-param-reassign": [
+				"error",
+				{
+					"props": true,
+					"ignorePropertyModificationsFor": [
+						"state",
+						"draftState"
+					]
+				}
+			]
 		},
 		"overrides": [
 			{

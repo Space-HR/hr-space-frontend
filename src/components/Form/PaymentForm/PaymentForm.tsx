@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
+import RadioButtonGroup from '../../FormElements/RadioButtons/RadioButtonGroup/RadioButtonGroup';
 
 export type TFormModel = {
 	isDelayedPublication: boolean;
@@ -13,13 +14,33 @@ export type TFormModel = {
 	paymentMethod: number;
 };
 
+type TPropRadioOption = {
+	id: number;
+	booleanValue: boolean;
+	label: string;
+};
+
+const isDelayedPublicationOptions: TPropRadioOption[] = [
+	{
+		id: 0,
+		booleanValue: false,
+		label: 'Опубликовать сейчас',
+	},
+	{
+		id: 1,
+		booleanValue: true,
+		label:
+			'Опубликовать по расписанию',
+	},
+];
+
 const PaymentForm: FC = () => {
-	// const fieldNames = {
-	// 	isDelayedPublication: 'isDelayedPublication',
-	// 	publicationDate: 'publicationDate',
-	// 	publicationTime: 'publicationTime',
-	// 	paymentMethod: 'paymentMethod',
-	// };
+	const fieldNames = {
+		isDelayedPublication: 'isDelayedPublication',
+		publicationDate: 'publicationDate',
+		publicationTime: 'publicationTime',
+		paymentMethod: 'paymentMethod',
+	};
 
 	const navigate = useNavigate();
 
@@ -51,7 +72,13 @@ const PaymentForm: FC = () => {
 			{() => (
 				<div className="form">
 					<Form>
-						<div className="input-container"/>
+						<div className="input-container">
+						<RadioButtonGroup
+									label="Когда вы хотите опубликовать вашу заявку?"
+									name={fieldNames.isDelayedPublication}
+									options={isDelayedPublicationOptions}
+								/>
+						</div>
 						<div className="two-btn-disposition">
 							<Button
 								type="button"

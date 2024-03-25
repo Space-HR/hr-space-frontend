@@ -5,15 +5,14 @@ import FormWrapper from '../../../components/Form/FormWrapper/FormWrapper';
 import SpecialistTypeForm from '../../../components/Form/SpecialistTypeForm/SpecialistTypeForm';
 import { fetchJobVacancy } from '../../../services/thunks/dictionaryThunk';
 import { AppDispatch } from '../../../services/store';
-import { errorMessageJobVacancySelector, jobVacancySelector } from '../../../services/selectors/dictionarySelector';
+// import { errorMessageJobVacancySelector, jobVacancySelector } from '../../../services/selectors/dictionarySelector';
 
 
 const SpecialistTypeFormPage: FC = () => {
 	const dispatch = useDispatch<AppDispatch>();
-    const jobVacancy = useSelector(jobVacancySelector)
-	const errorMessageJobVacancy = useSelector(errorMessageJobVacancySelector)
-	console.log(jobVacancy);
-	console.log(errorMessageJobVacancy);
+    // const jobVacancy = useSelector(jobVacancySelector)
+	// const errorMessageJobVacancy = useSelector(errorMessageJobVacancySelector)
+	
 	useEffect(() => {
 		dispatch(fetchJobVacancy());
 

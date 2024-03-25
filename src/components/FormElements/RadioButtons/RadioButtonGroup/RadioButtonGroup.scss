@@ -4,6 +4,7 @@
 	@include input-conainer;
 }
 
-.rounded-input-row {
-	@include rounded-input-row;
+.flex-column {
+	@include flex-column;
+	row-gap: 12px;
 }

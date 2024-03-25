@@ -27,7 +27,7 @@ const RadioButtonGroup: FC<TElementWithOptions> = ({
 		<div className="input-conainer">
 			<Label name={name} label={label} />
 			
-			<div className="rounded-input-row">
+			<div className="flex-column">
 				{options.map((option) => (
 				<RadioButton
 					key={option.id}

@@ -7,12 +7,12 @@ import Button from '../../Buttons/Button/Button';
 import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
 import { PropOption } from '../../../types/formik-elements';
 import ScheduleRadioButtons from '../../FormElements/ScheduleRadioButtons/ScheduleRadioButtons';
-import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup';
 import ExtraConditionsInput from '../../FormElements/ExtraConditionsInput/ExtraConditionsInput';
 import EmployeeCategoriesInput from '../../FormElements/EmployeeCategoriesInput/EmployeeCategoriesInput';
 import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
 
 import { city } from '../../../data/data-form';
+import ChipCheckboxGroup from '../../FormElements/CheckboxGroup/ChipCheckboxGroup/ChipCheckboxGroup';
 
 export type TFormModel = {
 	minSalary: number | undefined;
@@ -158,12 +158,12 @@ const WorkConditionsForm: FC = () => {
 								currentValues={formikProps.values.scheduleId}
 							/>
 
-							<CheckboxGroup
+							<ChipCheckboxGroup
 								label="Формат работы"
 								name={fieldNames.workFormats}
 								options={workFormatsOptions}
 							/>
-							<CheckboxGroup
+							<ChipCheckboxGroup
 								label="Способ оформления"
 								name={fieldNames.registerAsSet}
 								options={registerAsSetOptions}

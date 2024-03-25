@@ -212,7 +212,6 @@
 	outline: none;
 	padding: $inner-padding-input;
 
-
 	&::placeholder {
 		@include text-placeholder;
 	}
@@ -225,9 +224,6 @@
 	}
 }
 
-
-
-
 // для спика значений checkbox и radio button с округлыми краями элементов (border-radius: 40px
 @mixin rounded-input-row {
 	display: flex;
@@ -237,9 +233,10 @@
 
 // стилиация checkbox с галочкой
 @mixin checkbox {
+	@include text-normal-large-black;
 	display: flex;
 	column-gap: 8px;
-	align-items: center;
+	align-items: flex-start;
 	position: relative;
 	cursor: pointer;
 
@@ -252,7 +249,7 @@
 	&__сustom {
 		display: inline-block;
 		height: 20px;
-		width: 20px;
+		min-width: 20px;
 		border: 1px solid $grey-input-placeholder;
 		border-radius: 4px;
 		position: relative;

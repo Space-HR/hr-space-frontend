@@ -6,14 +6,31 @@ import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import DatePicker from '../../FormElements/DatePicker/DatePicker';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
+import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup/CheckboxGroup';
+import { PropOption } from '../../../types/formik-elements';
 
 export type TFormModel = {
-	employeeWillGoToWorkAt:  Date | null;
+	employeeWillGoToWorkAt: Date | null;
 	recruiterTasks: number[];
 	resumeAfterInterview: boolean;
 	skillsRecruiter: string;
 	stopList: string;
 };
+
+const recruiterTasksOptions: PropOption[] = [
+	{ id: 0, name: 'Поиск и предоставление релевантных резюме' },
+	{
+		id: 1,
+		name: 'Организация собеседований с заказчиком, синхронизация по времени соискателя и заказчика',
+	},
+	{ id: 2, name: 'Запрос рекомендаций с предыдущих мест работы' },
+	{ id: 3, name: 'Отправка кандидату тестового задания' },
+	{
+		id: 4,
+		name: 'Отправка кандидату анкеты службы безопасности вашей компании',
+	},
+	{ id: 5, name: 'Отправка финалисту приглашения на работу' },
+];
 
 const RecruiterRequirementForm: FC = () => {
 	const fieldNames = {
@@ -59,7 +76,11 @@ const RecruiterRequirementForm: FC = () => {
 							<DatePicker
 								name={fieldNames.employeeWillGoToWorkAt}
 								label="Желаемая дата выхода сотрудника"
-								
+							/>
+							<CheckboxGroup
+								label="Способ оформления"
+								name={fieldNames.recruiterTasks}
+								options={recruiterTasksOptions}
 							/>
 							<MultiLineInput
 								label="Требования"

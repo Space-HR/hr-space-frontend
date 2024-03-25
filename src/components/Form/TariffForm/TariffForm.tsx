@@ -7,19 +7,19 @@ import Button from '../../Buttons/Button/Button';
 import NumericInput from '../../FormElements/NumericInput/NumericInput';
 import TariffRadioButtons from '../../FormElements/TariffRadioButtons/TariffRadioButtons';
 import QtyRecruitersRadioButtons from '../../FormElements/QtyRecruitersRadioButtons/QtyRecruitersRadioButtons';
-// import { calculateMediaSalary } from '../../../utils/calculateMediaSalary';
-// import FeeRadioButtons from '../../FormElements/FeeRadioButtons/FeeRadioButtons';
+import FeeRadioButtons from '../../FormElements/FeeRadioButtons/FeeRadioButtons';
+import { calculateMediaSalary } from '../../../utils/calculateMediaSalary';
 
 export type TFormModel = {
 	qtyEmployees: number;
 	paymentForEmployee: number | undefined;
-	tariffId: number;
+	tariffId: number | undefined;
 	qtyRecruiters: number;
 	labelForChoose: number | undefined;
+	feeName: number | undefined;
 };
 
-
-type TtariffIdOption =  {
+type TtariffIdOption = {
 	id: number;
 	name: string;
 	payment_for_employee_start_working: number;
@@ -62,10 +62,10 @@ const tariffIdOptions: TtariffIdOption[] = [
 	},
 ];
 
-const options=[1, 2, 3]
+const options = [1, 2, 3];
 
-// const minSalary = 0;
-// const maxSalary = 200000;
+const minSalary = 0;
+const maxSalary = 200000;
 
 const TariffForm: FC = () => {
 	const fieldNames = {
@@ -74,6 +74,7 @@ const TariffForm: FC = () => {
 		tariffId: 'tariffId',
 		qtyRecruiters: 'qtyRecruiters',
 		labelForChoose: 'labelForChoose',
+		feeName: "feeName",
 	};
 
 	const navigate = useNavigate();
@@ -84,26 +85,23 @@ const TariffForm: FC = () => {
 		tariffId: 0,
 		qtyRecruiters: 1,
 		labelForChoose: undefined,
+		feeName: undefined,
 	};
 
-	// const medianSalary = calculateMediaSalary({ minSalary, maxSalary });
-	// const options: TOption[] = [
-	// 	{ id: 0, name: `${medianSalary * 1.5} ₽`, value: medianSalary * 1.5 },
-	// 	{ id: 1, name: `${medianSalary * 2} ₽`, value: medianSalary * 2 },
-	// 	{ id: 2, name: 'Назначить самостоятельно', value: undefined },
-	// ];
+	const medianSalary = calculateMediaSalary({ minSalary, maxSalary });
 
-	// const validateRegisterAsSet = (value: Yup.AnyObject) => {
-	// 	const { registerAsSet } = value || {};
-	// 	if (registerAsSet && registerAsSet.length > 0) {
-	// 		return true;
-	// 	}
-	// 	return new Yup.ValidationError(
-	// 		'Выберите способ оформления сотрудников',
-	// 		value,
-	// 		fieldNames.registerAsSet
-	// 	);
-	// };
+	type TFeeOption = {
+		id: number;
+		name: string;
+		fee: number | undefined
+	}
+
+	const feeOptions: TFeeOption[] = [
+		{ id: 0, name: `${medianSalary * 1.5} ₽`, fee: medianSalary * 1.5 },
+		{ id: 1, name: `${medianSalary * 2} ₽`, fee: medianSalary * 2 },
+		{ id: 2, name: 'Назначить самостоятельно', fee: undefined },
+	];
+
 
 	const validationSchema = Yup.object();
 	// 	.test(
@@ -131,20 +129,23 @@ const TariffForm: FC = () => {
 								label="Количество сотрудников"
 								name={fieldNames.qtyEmployees}
 							/>
-							{/* <FeeRadioButtons
+							<FeeRadioButtons
 								label="Вознаграждение за сотрудника"
-								nameLabel="labelForChoose"
 								name={fieldNames.paymentForEmployee}
+								options={feeOptions}
 								placeholder="Введите вознаграждение в рублях"
-								medianSalary={medianSalary}
-							/> */}
+								feeName={fieldNames.feeName}
+							/>
 							<TariffRadioButtons
 								label="Модель оплаты"
 								name={fieldNames.tariffId}
 								options={tariffIdOptions}
 							/>
-							<QtyRecruitersRadioButtons label='Количество рекрутеров' name={fieldNames.qtyRecruiters}
-							options={options}/>
+							<QtyRecruitersRadioButtons
+								label="Количество рекрутеров"
+								name={fieldNames.qtyRecruiters}
+								options={options}
+							/>
 						</div>
 						<div className="two-btn-disposition">
 							<Button

@@ -1,9 +1,9 @@
 @import '../../../scss/mixins.scss';
 
-.input-conainer {
-	@include input-conainer;
-}
-
-.rounded-input-row {
-	@include rounded-input-row;
+.input-self-fee {
+	@include remove-number-input-spinners;
+	@include textarea-input;
+	height: 48px;
+	width: 100%;
+	border-radius: 8px ;
 }

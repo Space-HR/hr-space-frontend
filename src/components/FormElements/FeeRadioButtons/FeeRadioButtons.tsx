@@ -1,61 +1,67 @@
-import { FC } from 'react';
+import  { FC } from 'react';
 import './FeeRadioButtons.scss';
-import { ErrorMessage, useFormikContext } from 'formik';
+import { ErrorMessage, Field, useFormikContext } from 'formik';
 import TextError from '../TextError/TextError';
 import Label from '../Label/Label';
-import Input from '../Input/Input';
-// import FeeRadioButton from './FeeRadioButton/FeeRadioButton';
+import FeeRadioButton from './FeeRadioButton/FeeRadioButton';
+import { handleKeyDown } from '../../../utils/inputsRestrictions';
 
-// type TRadioSelectedField = {
-// 	field: {
-// 		name: string;
-// 		value: number;
-// 	};
-// };
+// import Input from '../Input/Input';
 
-// type TOption = {
-// 	id: number;
-// 	name: string;
-// 	value: number | undefined;
-// }[];
-
-type TRadioButtonsProps = {
-	label: string;
-	nameLabel: string;
+type TFeeOption = {
+	id: number;
 	name: string;
-	medianSalary: number;
-	placeholder?: string;
+	fee: number | undefined;
+};
+type TFeeRadioButtonsProps = {
+	label: string;
+	name: string;
+	options: TFeeOption[];
+	placeholder: string;
+	feeName: string;
 };
 
-type TFormValues = {
-	[key: string]: number;
-};
+type TFormValues = { [key: string]: number };
 
-const FeeRadioButtons: FC<TRadioButtonsProps> = ({
+const FeeRadioButtons: FC<TFeeRadioButtonsProps> = ({
 	label,
 	name,
-	nameLabel,
-	// medianSalary,
-	// ...rest
+	options,
+	placeholder,
+	feeName,
 }) => {
 	const { values } = useFormikContext<TFormValues>();
-	console.log(values);
 
-	const SelectId = values[nameLabel];
+	const idFee = values[feeName];
+
+	
 
 	return (
 		<div className="input-conainer">
 			<Label name={name} label={label} />
 			<div className="rounded-input-row">
-				{/* <FeeRadioButton label={`${medianSalary * 1.5} ₽` }/> */}
+				{options.map((option) => (
+					<FeeRadioButton
+						label={option.name}
+						name={name}
+						id={option.id}
+						fee={option.fee}
+						feeName={feeName}
+					/>
+				))}
+				{idFee === 2 && (
+					<Field
+						placeholder={placeholder}
+						id={name}
+						name={name}
+						type="number"
+						min={0}
+						step="1"
+						className="input-self-fee"
+						onKeyDown={handleKeyDown}
+					/>
+				)}
 			</div>
-			{SelectId === 2 && (
-				<Input
-					placeholder="Дополнительный комментарий"
-					name="scheduleComment"
-					type="text"
-				/>
-			)}
 			<ErrorMessage name={name} component={TextError} />
 		</div>
 	);

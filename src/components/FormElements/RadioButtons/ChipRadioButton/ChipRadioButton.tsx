@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useFormikContext } from 'formik';
-import './RadioButton.scss';
+import './ChipRadioButton.scss';
 import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
 type TRadioButtonProps = {
@@ -13,7 +13,7 @@ type TRadioButtonProps = {
 	name: string;
 };
 
-const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
+const ChipRadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 	const { setFieldValue } = useFormikContext<TFormModel>();
 
 	const stringId = `${name}-${id}`;
@@ -42,4 +42,4 @@ const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
 	);
 };
 
-export default RadioButton;
+export default ChipRadioButton;

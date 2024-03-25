@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import { PropOption } from '../../../types/formik-elements';
-import RadioButtons from '../../FormElements/RadioButtons/RadioButtons';
+import ChipRadioButtonGroup from '../../FormElements/RadioButtons/ChipRadioButtonGroup/ChipRadioButtonGroup';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
 
@@ -90,12 +90,12 @@ const CandidateRequirementForm: FC = () => {
 				<div className="form">
 					<Form>
 						<div className="input-container">
-							<RadioButtons
+							<ChipRadioButtonGroup
 								label="Опыт работы"
 								name={fieldNames.employeeExperienceId}
 								options={employeeExperience}
 							/>
-							<RadioButtons
+							<ChipRadioButtonGroup
 								label="Образование"
 								name={fieldNames.employeeEducationId}
 								options={employeeEducation}

@@ -33,6 +33,12 @@ const recruiterTasksOptions: PropOption[] = [
 	{ id: 5, name: 'Отправка финалисту приглашения на работу' },
 ];
 
+const resumeAfterInterviewOptions = [
+	{id: 0, name: false},
+	{id: 1, name: true}
+]
+
+
 const RecruiterRequirementForm: FC = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 

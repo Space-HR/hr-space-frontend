@@ -28,7 +28,7 @@ const DatePicker: FC<TDatePicker> = ({ label, name, ...rest }) => {
 					{(props: PropDatePicker) => {
 						const { setFieldValue } = props.form;
 						const { value } = props.field;
-						console.log(props);
+						// console.log(props);
 						return (
 							<DateView
 								locale="ru"

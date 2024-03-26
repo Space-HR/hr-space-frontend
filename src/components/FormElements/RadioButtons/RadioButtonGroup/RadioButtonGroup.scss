@@ -1,0 +1,10 @@
+@import '../../../../scss/mixins.scss';
+
+.input-conainer {
+	@include input-conainer;
+}
+
+.flex-column {
+	@include flex-column;
+	row-gap: 12px;
+}

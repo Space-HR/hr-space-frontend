@@ -1,0 +1,9 @@
+@import '../../../../scss//mixins.scss';
+
+.checkbox {
+	@include checkbox;
+    
+	&_reverse {
+		flex-direction: row-reverse;
+	}
+}

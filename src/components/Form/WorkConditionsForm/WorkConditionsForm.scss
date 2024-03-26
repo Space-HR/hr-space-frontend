@@ -1,0 +1,14 @@
+@import '../../../scss/mixins.scss';
+
+.input-container {
+    @include flex-column;
+    row-gap: 32px;
+    padding-top: 48px;
+    padding-bottom: 68px;
+
+}
+
+.two-btn-disposition {
+    display: flex;
+    justify-content: space-between;
+}

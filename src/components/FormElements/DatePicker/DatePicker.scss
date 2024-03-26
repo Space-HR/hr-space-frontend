@@ -1,0 +1,124 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.date-picker {
+	@include textarea-input;
+	@include text-normal-large-black;
+	height: 48px;
+	width: 272px;
+	padding: 16px;
+	text-align: center;
+	border-radius: 8px;
+}
+
+.react-datepicker {
+	&-wrapper {
+		width: 272px;
+	}
+
+	border-color: $grey-input;
+
+	&__month-container {
+		width: 272px;
+		height: 320px;
+		padding: 8px;
+	}
+
+	&__header {
+		background-color: $main-white;
+		border: none;
+	}
+
+	&__current-month {
+		height: 52px;
+		@include flex-center;
+		text-transform: capitalize;
+		@include text-normal-large-black;
+	}
+
+	&__day-names {
+		height: 32px;
+		padding: 0 16px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__day-name {
+		text-transform: uppercase;
+		@include text-normal-small-gray;
+		color: $grey-input-placeholder;
+	}
+
+	&__month {
+		padding: 0 16px;
+		margin: 0;
+		height: 192px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+
+	&__week {
+		display: flex;
+		align-items: center;
+		&:first-child {
+			justify-content: flex-end;
+		}
+
+		&:last-child {
+			justify-content: flex-start;
+		}
+	}
+
+	&__day {
+		@include text-normal-medium;
+		@include flex-center;
+		color: $main-black;
+		height: 32px;
+		width: 32px;
+
+		&:hover {
+			border-radius: 4px;
+			background-color: $blue-btn-default;
+		}
+
+		&--keyboard-selected {
+			background-color: inherit;
+		}
+
+		&--selected {
+			border-radius: 4px;
+			background-color: $blue-btn-default;
+		}
+		&--today {
+			font-weight: 700;
+		}
+
+		&--outside-month {
+			color: $grey-input;
+		}
+	}
+
+	&__navigation {
+		top: 24px;
+
+		&--previous {
+			left: 20px;
+		}
+		&--next {
+			right: 20px;
+		}
+
+		&-icon {
+			&::before {
+				border-color: $main-black;
+				border-width: 1px 1px 0 0;
+			}
+		}
+	}
+
+	&__triangle {
+		display: none;
+	}
+}

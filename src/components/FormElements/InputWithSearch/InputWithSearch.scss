@@ -1,0 +1,14 @@
+@import "../../../scss/variables.scss";
+@import "../../../scss/mixins.scss";
+
+.form-control {
+    @include input-style;
+
+    &__container{
+        position: relative;
+    }
+}
+
+.options {
+    @include options-style;
+}

@@ -1,0 +1,17 @@
+@import '../../scss/mixins.scss';
+
+.not-found-page {
+	@include flex-column-center;
+	flex-grow: 1;
+
+	&__title {
+		@include text-section-title;
+		padding-top: 48px;
+	}
+
+	&__text {
+		@include text-normal-large-black;
+		padding-top: 20px;
+		padding-bottom: 48px;
+	}
+}

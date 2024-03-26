@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import './RadioButtons.scss';
+import './ChipRadioButtonGroup.scss';
 import { Field } from 'formik';
-import { TElementWithOptions } from '../../../types/formik-elements';
-import Label from '../Label/Label';
-import RadioButton from './RadioButton/RadioButton';
+import { TElementWithOptions } from '../../../../types/formik-elements';
+import Label from '../../Label/Label';
+import ChipRadioButton from '../ChipRadioButton/ChipRadioButton';
 
 type TRadioSelectedField = {
 	field: {
@@ -12,7 +12,7 @@ type TRadioSelectedField = {
 	};
 };
 
-const RadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
+const ChipRadioButtonGroup: FC<TElementWithOptions> = ({ label, name, options }) => {
 	return (
 		<div className="input-conainer">
 			<Label name={name} label={label} />
@@ -23,7 +23,7 @@ const RadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
 							options &&
 							options.map((option) => {
 								return (
-									<RadioButton
+									<ChipRadioButton
 										key={option.id}
 										id={option.id}
 										label={option.name}
@@ -40,4 +40,4 @@ const RadioButtons: FC<TElementWithOptions> = ({ label, name, options }) => {
 	);
 };
 
-export default RadioButtons;
+export default ChipRadioButtonGroup;

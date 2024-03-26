@@ -1,42 +1,44 @@
 import { FC } from 'react';
-import { useFormikContext } from 'formik';
+import { useField, useFormikContext } from 'formik';
 import './FeeRadioButton.scss';
 import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
 type TRadioButtonProps = {
-	field: {
-		value: number;
-		name: string;
-	};
 	id: number;
 	label: string;
 	name: string;
+	fee: number | undefined;
+	feeName: string;
 };
 
-const FeeRadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
+const FeeRadioButton: FC<TRadioButtonProps> = ({
+	id,
+	label,
+	name,
+	fee,
+	feeName,
+}) => {
+	const [field] = useField(name);
 	const { setFieldValue } = useFormikContext<TFormModel>();
 
-	const stringId = `${name}-${id}`;
-	const handleChange = () => setFieldValue(name, id);
+	const handleChange = () => {
+		setFieldValue(name, fee);
+		setFieldValue(feeName, id);
+
+	};
 
 	return (
-		<label
-			htmlFor={stringId}
-			className={
-				field.value === id
-					? 'rounded-input rounded-input_checked'
-					: 'rounded-input'
-			}
-		>
+		// eslint-disable-next-line jsx-a11y/label-has-associated-control
+		<label className="rounded-input">
 			<input
 				type="radio"
-				id={stringId}
+				id={`${id}`}
+				name={feeName}
 				value={id}
 				checked={field.value === id}
 				className="rounded-input__hidden-block"
 				onChange={handleChange}
 			/>
-
 			{label}
 		</label>
 	);

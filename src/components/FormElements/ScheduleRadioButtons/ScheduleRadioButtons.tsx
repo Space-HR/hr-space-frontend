@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from 'formik';
 import TextError from '../TextError/TextError';
 import { TElementWithOptions } from '../../../types/formik-elements';
 import Label from '../Label/Label';
-import RadioButton from '../RadioButtons/RadioButton/RadioButton';
+import RadioButton from '../RadioButtons/ChipRadioButton/ChipRadioButton';
 import Input from '../Input/Input';
 
 type TRadioSelectedField = {

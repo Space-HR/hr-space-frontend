@@ -1,42 +1,34 @@
 import { FC } from 'react';
-import { useFormikContext } from 'formik';
+import { useField, useFormikContext } from 'formik';
 import './RadioButton.scss';
-import { TFormModel } from '../../../Form/WorkConditionsForm/WorkConditionsForm';
 
 type TRadioButtonProps = {
-	field: {
-		value: number;
-		name: string;
-	};
-	id: number;
-	label: string;
 	name: string;
+	label: string;
+	booleanValue: boolean;
 };
 
-const RadioButton: FC<TRadioButtonProps> = ({ field, id, label, name }) => {
-	const { setFieldValue } = useFormikContext<TFormModel>();
+const RadioButton: FC<TRadioButtonProps> = ({ name, label, booleanValue }) => {
+	const [field] = useField(name);
+	const { setFieldValue } = useFormikContext();
 
-	const stringId = `${name}-${id}`;
-	const handleChange = () => setFieldValue(name, id);
+	const handleChange = () => {
+		setFieldValue(name, booleanValue);
+	};
 
 	return (
-		<label
-			htmlFor={stringId}
-			className={
-				field.value === id
-					? 'rounded-input rounded-input_checked'
-					: 'rounded-input'
-			}
-		>
+		// eslint-disable-next-line jsx-a11y/label-has-associated-control
+		<label className="radio">
 			<input
 				type="radio"
-				id={stringId}
-				value={id}
-				checked={field.value === id}
-				className="rounded-input__hidden-block"
+				{...field}
+				value={booleanValue.toString()}
+				checked={field.value === booleanValue}
+				className="radio__input"
 				onChange={handleChange}
 			/>
 
+			<span className="radio__custom" />
 			{label}
 		</label>
 	);

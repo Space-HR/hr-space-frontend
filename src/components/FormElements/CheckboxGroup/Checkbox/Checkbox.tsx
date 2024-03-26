@@ -36,7 +36,7 @@ const Checkbox: FC<TCheckboxProps> = ({ field, id, label, name }) => {
 				className="checkbox__input"
 				onChange={handleChange}
 			/>
-			<span className="checkbox__сustom" />
+			<span className="checkbox__custom" />
 			{label}
 		</label>
 	);

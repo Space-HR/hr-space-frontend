@@ -7,69 +7,61 @@ import Button from '../../Buttons/Button/Button';
 import DatePicker from '../../FormElements/DatePicker/DatePicker';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup/CheckboxGroup';
-import { PropOption } from '../../../types/formik-elements';
 import Popup from '../../Popup/Popup';
+import RadioButtonGroup from '../../FormElements/RadioButtons/RadioButtonGroup/RadioButtonGroup';
+import SimpleCheckbox from '../../FormElements/CheckboxGroup/SimpleCheckbox/SimpleCheckbox';
+import {
+	recruiterTasksOptions,
+	resumeAfterInterviewOptions,
+} from '../../../utils/fakeData';
 
-export type TFormModel = {
+export type TRadioFormModel = {
 	employeeWillGoToWorkAt: Date | null;
 	recruiterTasks: number[];
-	resumeAfterInterview: boolean;
+	resumeAfterInterview: boolean | undefined;
 	skillsRecruiter: string;
 	stopList: string;
+	notPrivatePerson: boolean;
 };
 
-const recruiterTasksOptions: PropOption[] = [
-	{ id: 0, name: 'Поиск и предоставление релевантных резюме' },
-	{
-		id: 1,
-		name: 'Организация собеседований с заказчиком, синхронизация по времени соискателя и заказчика',
-	},
-	{ id: 2, name: 'Запрос рекомендаций с предыдущих мест работы' },
-	{ id: 3, name: 'Отправка кандидату тестового задания' },
-	{
-		id: 4,
-		name: 'Отправка кандидату анкеты службы безопасности вашей компании',
-	},
-	{ id: 5, name: 'Отправка финалисту приглашения на работу' },
-];
+const fieldNames = {
+	employeeWillGoToWorkAt: 'employeeWillGoToWorkAt',
+	recruiterTasks: 'recruiterTasks',
+	resumeAfterInterview: 'resumeAfterInterview',
+	skillsRecruiter: 'skillsRecruiter',
+	stopList: 'stopList',
+	notPrivatePerson: 'notPrivatePerson',
+};
 
 const RecruiterRequirementForm: FC = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-	const fieldNames = {
-		employeeWillGoToWorkAt: 'employeeWillGoToWorkAt',
-		recruiterTasks: 'recruiterTasks',
-		resumeAfterInterview: 'resumeAfterInterview',
-		skillsRecruiter: 'skillsRecruiter',
-		stopList: 'stopList',
-	};
 
 	const navigate = useNavigate();
 
 	const initialValues = {
 		employeeWillGoToWorkAt: null,
 		recruiterTasks: [],
-		resumeAfterInterview: false,
+		resumeAfterInterview: undefined,
 		skillsRecruiter: '',
 		stopList: '',
+		notPrivatePerson: false,
 	};
 
-	const validationSchema = Yup.object();
-	// 	.test(
-	// 		'registerAsSet-required',
-	// 		'Выберите способ оформления сотрудников',
-	// 		validateRegisterAsSet
-	// 	);
+	const validationSchema = Yup.object({
+		recruiterTasks: Yup.array()
+			.of(Yup.number())
+			.min(1, 'Отметьте, что входит в обязанности рекрутера'),
+		resumeAfterInterview: Yup.boolean().required('Выберите один из вариантов'),
+	});
 
-	const onSubmit = (values: TFormModel) => {
-		// navigate('/form/step-5');
+	const onSubmit = (values: TRadioFormModel) => {
 		setIsPopupOpen(true);
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 
 	return (
 		<>
-			<Formik<TFormModel>
+			<Formik<TRadioFormModel>
 				initialValues={initialValues}
 				validationSchema={validationSchema}
 				onSubmit={onSubmit}
@@ -87,6 +79,11 @@ const RecruiterRequirementForm: FC = () => {
 									name={fieldNames.recruiterTasks}
 									options={recruiterTasksOptions}
 								/>
+								<RadioButtonGroup
+									label="В каком виде нужно предоставить резюме кандидатов?"
+									name={fieldNames.resumeAfterInterview}
+									options={resumeAfterInterviewOptions}
+								/>
 								<MultiLineInput
 									label="Требования"
 									name={fieldNames.skillsRecruiter}
@@ -98,6 +95,11 @@ const RecruiterRequirementForm: FC = () => {
 									name={fieldNames.stopList}
 									placeholder="Укажите, если есть, перечень компаний или сотрудников, которых вы не готовы рассматривать"
 									isLabel
+								/>
+								<SimpleCheckbox
+									name={fieldNames.notPrivatePerson}
+									label="Я принимаю условия «Оферты назаключение договора о использовании   веб-сервиса HR-Space»"
+									labelPosition="left"
 								/>
 							</div>
 							<div className="two-btn-disposition">

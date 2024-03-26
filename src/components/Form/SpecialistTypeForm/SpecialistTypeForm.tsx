@@ -32,7 +32,6 @@ const SpecialistTypeForm: FC = () => {
 	// eslint-disable-next-line consistent-return
 	const onSubmit = (values: FormModel) => {
 		navigate('/form/step-2', { replace: true });
-
 		console.log('Form data', JSON.parse(JSON.stringify(values)));
 	};
 

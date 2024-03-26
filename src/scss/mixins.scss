@@ -246,7 +246,7 @@
 		cursor: pointer;
 	}
 
-	&__сustom {
+	&__custom {
 		display: inline-block;
 		height: 20px;
 		min-width: 20px;
@@ -255,11 +255,11 @@
 		position: relative;
 	}
 
-	&__input:checked + &__сustom {
+	&__input:checked + &__custom {
 		border-color: $blue-hover;
 	}
 
-	&__input:checked + &__сustom::after {
+	&__input:checked + &__custom::after {
 		content: '';
 		position: absolute;
 		left: 5px;

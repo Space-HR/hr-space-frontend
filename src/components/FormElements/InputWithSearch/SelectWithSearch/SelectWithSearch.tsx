@@ -1,11 +1,6 @@
 import { FC, ChangeEvent, useState, useEffect } from 'react';
 import './SelectWithSearch.scss';
-import {
-	// SelectProps,
-	PropOption,
-	PropOptions,
-} from '../../../../types/formik-elements';
-// import deleteIcon from '../../../../images/trash-icon.svg';
+import { PropOption, PropOptions } from '../../../../types/formik-elements';
 
 type SingleSelectProps = {
 	value?: PropOption;
@@ -83,21 +78,12 @@ const SelectWithSearch: FC<SelectProps> = ({
 			option.name.toLowerCase().includes(e.target.value.trim().toLowerCase())
 		);
 
-		// arr1.filter(item => !arr2.includes(item))
-		//  .filter((o) => o !== value));
 		if (isMulti) {
 			setFilterOptions(filterValue.filter((item) => !value.includes(item)));
 		} else {
 			setFilterOptions(filterValue);
-			// setFilterOptions(filterValue.filter((item) => value?.id !== item.id));
 		}
 	};
-
-	// const handleClickOption = (e: ChangeEvent<HTMLLIElement>, option: PropOption | undefined) => {
-	// 	e.stopPropagation();
-	// 	selectOption(option);
-	// 	setOpenOptions(false);
-	// };
 
 	const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
 		e.stopPropagation();
@@ -109,14 +95,12 @@ const SelectWithSearch: FC<SelectProps> = ({
 				setValueInput('');
 			}
 		}
-		// setOpenOptions(false);
 	};
 
 	return (
 		<div
 			className="form-control"
 			onBlur={() => setOpenOptions(false)}
-			// onClick={() => setOpenOptions((prev) => !prev)}
 			onKeyDown={() => {}}
 			role="presentation"
 		>

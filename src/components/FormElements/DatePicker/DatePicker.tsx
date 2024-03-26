@@ -46,22 +46,3 @@ const DatePicker: FC<TDatePicker> = ({ label, name, ...rest }) => {
 
 export default DatePicker;
 
-// import calendar from '../../../images/ic-calendar.svg';
-// import arrow from '../../../images/ic-arrow.svg';
-// const DatePickerUnfilled: FC = () => {
-// 	return (
-// 		<div className="date-picker-unfilled">
-// 			<img
-// 				src={calendar}
-// 				alt="calendar"
-// 				className="date-picker__image date-picker__image_right"
-// 			/>
-// 			<p>Выберите дату</p>
-// 			<img
-// 				src={arrow}
-// 				alt="arrow"
-// 				className="date-picker__image date-picker__image_left"
-// 			/>
-// 		</div>
-// 	);
-// };

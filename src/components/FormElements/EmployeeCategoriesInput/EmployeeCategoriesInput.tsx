@@ -70,7 +70,6 @@ const EmployeeCategoriesInput: FC<TEmployeeCategoriesInputProps> = ({
 						isMulti={true}
 						// eslint-disable-next-line react/jsx-boolean-value
 						isTips={false}
-						// countTips={4}
 					/>
 				) : null}
 			</div>

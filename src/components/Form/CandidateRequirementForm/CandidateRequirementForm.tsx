@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
-import { PropOption } from '../../../types/formik-elements';
 import ChipRadioButtonGroup from '../../FormElements/RadioButtons/ChipRadioButtonGroup/ChipRadioButtonGroup';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch';
-
 import { requirements } from '../../../data/data-form';
+import {
+	employeeEducationOptions,
+	employeeExperienceOptions,
+} from '../../../utils/fakeData';
 
 export type TFormModel = {
 	employeeExperienceId: number | undefined;
@@ -19,32 +21,16 @@ export type TFormModel = {
 	responsibilitiesEmployee: string;
 	requirements: number | number[] | undefined;
 };
-
-const employeeExperience: PropOption[] = [
-	{ id: 0, name: 'Без опыта' },
-	{ id: 1, name: 'От 1 года до 3 лет' },
-	{ id: 2, name: 'От 3 до 6 лет' },
-	{ id: 3, name: 'Более 6 лет' },
-];
-const employeeEducation: PropOption[] = [
-	{ id: 0, name: 'Высшее' },
-	{ id: 1, name: 'Незаконченное высшее' },
-	{ id: 2, name: 'Среднее' },
-	{ id: 3, name: 'Среднее специальное' },
-];
+const fieldNames = {
+	employeeExperienceId: 'employeeExperienceId',
+	employeeEducationId: 'employeeEducationId',
+	employeeSkills: 'employeeSkills',
+	employeeAddSkills: 'employeeAddSkills',
+	responsibilitiesEmployee: 'responsibilitiesEmployee',
+	requirements: 'requirements',
+};
 
 const CandidateRequirementForm: FC = () => {
-	const fieldNames = {
-		employeeExperienceId: 'employeeExperienceId',
-		employeeEducationId: 'employeeEducationId',
-		employeeSkills: 'employeeSkills',
-		employeeAddSkills: 'employeeAddSkills',
-		responsibilitiesEmployee: 'responsibilitiesEmployee',
-		requirements: 'requirements',
-	};
-
-	const navigate = useNavigate();
-
 	const initialValues = {
 		employeeExperienceId: undefined,
 		employeeEducationId: undefined,
@@ -53,6 +39,7 @@ const CandidateRequirementForm: FC = () => {
 		responsibilitiesEmployee: '',
 		requirements: undefined,
 	};
+	const navigate = useNavigate();
 
 	const validateResponsibilitiesEmployee = (value: Yup.AnyObject) => {
 		const { responsibilitiesEmployee } = value || {};
@@ -93,12 +80,12 @@ const CandidateRequirementForm: FC = () => {
 							<ChipRadioButtonGroup
 								label="Опыт работы"
 								name={fieldNames.employeeExperienceId}
-								options={employeeExperience}
+								options={employeeExperienceOptions}
 							/>
 							<ChipRadioButtonGroup
 								label="Образование"
 								name={fieldNames.employeeEducationId}
-								options={employeeEducation}
+								options={employeeEducationOptions}
 							/>
 							<InputWithSearch
 								label="Требования"
@@ -109,7 +96,6 @@ const CandidateRequirementForm: FC = () => {
 								isMulti={true}
 								// eslint-disable-next-line react/jsx-boolean-value
 								isTips={false}
-								// countTips={4}
 							/>
 							<MultiLineInput
 								label="Обязанности"

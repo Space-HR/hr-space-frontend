@@ -2,7 +2,6 @@
 import { FieldProps } from 'formik';
 import SelectWithSearch from './SelectWithSearch/SelectWithSearch';
 import { PropOption, PropOptions } from '../../../types/formik-elements';
-// import { OptionsType, ValueType } from "react-select/lib/types";
 
 interface CustomSelectProps extends FieldProps {
 	options: PropOptions;

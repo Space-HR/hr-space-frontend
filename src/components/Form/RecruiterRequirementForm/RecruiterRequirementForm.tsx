@@ -7,10 +7,13 @@ import Button from '../../Buttons/Button/Button';
 import DatePicker from '../../FormElements/DatePicker/DatePicker';
 import MultiLineInput from '../../FormElements/MultiLineInput/MultiLineInput';
 import CheckboxGroup from '../../FormElements/CheckboxGroup/CheckboxGroup/CheckboxGroup';
-import { PropOption } from '../../../types/formik-elements';
 import Popup from '../../Popup/Popup';
 import RadioButtonGroup from '../../FormElements/RadioButtons/RadioButtonGroup/RadioButtonGroup';
 import SimpleCheckbox from '../../FormElements/CheckboxGroup/SimpleCheckbox/SimpleCheckbox';
+import {
+	recruiterTasksOptions,
+	resumeAfterInterviewOptions,
+} from '../../../utils/fakeData';
 
 export type TRadioFormModel = {
 	employeeWillGoToWorkAt: Date | null;
@@ -21,52 +24,17 @@ export type TRadioFormModel = {
 	notPrivatePerson: boolean;
 };
 
-const recruiterTasksOptions: PropOption[] = [
-	{ id: 0, name: 'Поиск и предоставление релевантных резюме' },
-	{
-		id: 1,
-		name: 'Организация собеседований с заказчиком, синхронизация по времени соискателя и заказчика',
-	},
-	{ id: 2, name: 'Запрос рекомендаций с предыдущих мест работы' },
-	{ id: 3, name: 'Отправка кандидату тестового задания' },
-	{
-		id: 4,
-		name: 'Отправка кандидату анкеты службы безопасности вашей компании',
-	},
-	{ id: 5, name: 'Отправка финалисту приглашения на работу' },
-];
-
-type TPropRadioOption = {
-	id: number;
-	booleanValue: boolean;
-	label: string;
+const fieldNames = {
+	employeeWillGoToWorkAt: 'employeeWillGoToWorkAt',
+	recruiterTasks: 'recruiterTasks',
+	resumeAfterInterview: 'resumeAfterInterview',
+	skillsRecruiter: 'skillsRecruiter',
+	stopList: 'stopList',
+	notPrivatePerson: 'notPrivatePerson',
 };
-
-const resumeAfterInterviewOptions: TPropRadioOption[] = [
-	{
-		id: 0,
-		booleanValue: false,
-		label: 'Резюме без предварительного собеседования',
-	},
-	{
-		id: 1,
-		booleanValue: true,
-		label:
-			'Резюме кандидатов, с которыми проведено интервью, с комментариями по кандидату',
-	},
-];
 
 const RecruiterRequirementForm: FC = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-	const fieldNames = {
-		employeeWillGoToWorkAt: 'employeeWillGoToWorkAt',
-		recruiterTasks: 'recruiterTasks',
-		resumeAfterInterview: 'resumeAfterInterview',
-		skillsRecruiter: 'skillsRecruiter',
-		stopList: 'stopList',
-		notPrivatePerson: 'notPrivatePerson',
-	};
 
 	const navigate = useNavigate();
 

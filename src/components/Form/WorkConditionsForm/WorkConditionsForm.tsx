@@ -5,7 +5,6 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Button from '../../Buttons/Button/Button';
 import SalaryInput from '../../FormElements/SalaryInput/SalaryInput';
-import { PropOption } from '../../../types/formik-elements';
 import ScheduleRadioButtons from '../../FormElements/ScheduleRadioButtons/ScheduleRadioButtons';
 import ExtraConditionsInput from '../../FormElements/ExtraConditionsInput/ExtraConditionsInput';
 import EmployeeCategoriesInput from '../../FormElements/EmployeeCategoriesInput/EmployeeCategoriesInput';
@@ -13,6 +12,7 @@ import InputWithSearch from '../../FormElements/InputWithSearch/InputWithSearch'
 
 import { city } from '../../../data/data-form';
 import ChipCheckboxGroup from '../../FormElements/CheckboxGroup/ChipCheckboxGroup/ChipCheckboxGroup';
+import { employeeCategoriesOptions, registerAsSetOptions, scheduleOptions, workFormatsOptions } from '../../../utils/fakeData';
 
 export type TFormModel = {
 	minSalary: number | undefined;
@@ -28,34 +28,6 @@ export type TFormModel = {
 	foreignCountries: number[];
 	cityOrganization: number | number[] | undefined;
 };
-
-const scheduleOptions: PropOption[] = [
-	{ id: 0, name: '5/2 пн – пт' },
-	{ id: 1, name: 'Свободный' },
-	{ id: 2, name: 'Сменный' },
-	{ id: 3, name: 'Вахтовый' },
-	{ id: 4, name: 'Другой' },
-];
-
-const workFormatsOptions: PropOption[] = [
-	{ id: 0, name: 'В офисе' },
-	{ id: 1, name: 'Удаленно' },
-	{ id: 2, name: 'Гибрид' },
-];
-
-const registerAsSetOptions: PropOption[] = [
-	{ id: 0, name: 'ТК РФ' },
-	{ id: 1, name: 'Самозанятые' },
-	{ id: 2, name: 'ИП' },
-	{ id: 3, name: 'ГПХ' },
-];
-
-const employeeCategoriesOptions: PropOption[] = [
-	{ id: 0, name: 'Студентов' },
-	{ id: 1, name: 'От 14 лет' },
-	{ id: 2, name: 'От 16 лет' },
-	{ id: 3, name: 'С нарушением здоровья' },
-];
 
 const WorkConditionsForm: FC = () => {
 	const fieldNames = {

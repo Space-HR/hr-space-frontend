@@ -27,7 +27,6 @@ type TRadioButtonsProps = {
 	label: string;
 	name: string;
 	placeholder?: string;
-	// currentValues: number | undefined;
 	options: TtariffIdOption[];
 };
 
@@ -35,7 +34,6 @@ const TariffRadioButtons: FC<TRadioButtonsProps> = ({
 	label,
 	name,
 	options,
-	// currentValues,
 	...rest
 }) => {
 	return (
@@ -62,13 +60,6 @@ const TariffRadioButtons: FC<TRadioButtonsProps> = ({
 					}}
 				</Field>
 			</div>
-			{/* {currentValues !== undefined && (
-				<Input
-					placeholder="Дополнительный комментарий"
-					name="scheduleComment"
-					type="text"
-				/>
-			)} */}
 			<ErrorMessage name={name} component={TextError} />
 		</div>
 	);

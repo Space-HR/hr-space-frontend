@@ -1,11 +1,11 @@
-@import "../../../scss/variables.scss";
-@import "../../../scss/mixins.scss";
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
 
 .form-wrapper {
-    @include flex-column;
-   max-width: 688px;
+	@include flex-column;
+	max-width: 688px;
 
-    &__title {
-        @include text-section-title;
-    }
+	&__title {
+		@include text-section-title;
+	}
 }

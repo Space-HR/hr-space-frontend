@@ -11,6 +11,7 @@ type TPopup = {
 
 function Popup({ isOpen, onClose }: TPopup) {
 	const navigate = useNavigate();
+	// console.log('hjh');
 	return (
 		// eslint-disable-next-line react/jsx-no-useless-fragment
 		<>

@@ -1,0 +1,5 @@
+@import '../../../scss/mixins.scss';
+
+.label {
+	@include text-input-label;
+}
